@@ -21,7 +21,8 @@ export default {
         modelValue: String,
         item: {
             type: Object
-        }},
+        }
+    },
     emits: ['update:modelValue']
 } 
 

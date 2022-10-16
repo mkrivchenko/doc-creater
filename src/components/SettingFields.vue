@@ -2,10 +2,20 @@
     <aside class="settings">
         <form class="fixed">
             
+            <h3>Данные клиента</h3>
+
             <Input 
-                v-for="input in inputs"
-                :item="input"
-                v-model="input.content"
+                v-for="item in PersonList"
+                :item="item"
+                v-model="item.content"
+            />
+
+            <h3>Данные договора</h3>
+
+            <Input 
+                v-for="item in ContractList"
+                :item="item"
+                v-model="item.content"
             />
             
         </form>   
@@ -19,10 +29,10 @@ import Input from './Input.vue';
 export default {
     components: { Input },
     props: {
-        data: {
-            type: Object,
+        PersonList: {
+            type: Array
         },
-        inputs: {
+        ContractList: {
             type: Array
         }
     }
