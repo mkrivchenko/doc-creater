@@ -7,7 +7,7 @@ h2 {
     padding: 0;
     margin: 0;
     text-align: center;
-    font-size: 12pt;
+    font-size: inherit;
 }
 
 p {
@@ -25,21 +25,7 @@ aside {
     min-width: 5%;
 }
 
-.settings {
-    min-width: 25%;
-    background-color: bisque;
-    
-}
 
-.fixed {
-    position: fixed;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-}
 
 .work-place {
 
@@ -57,7 +43,7 @@ aside {
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
     overflow-y: scroll;
     box-sizing: border-box;
-    font-size: 12pt;
+    font-size: 10pt;
     overflow-y: hidden;
     padding: 10mm 10mm 10mm 20mm;
 }
@@ -80,7 +66,7 @@ aside {
 }
 
 .paragraph {
-    font-size: 12pt;
+    font-size: inherit;
     text-align: justify;
 }
 

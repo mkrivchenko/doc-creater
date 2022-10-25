@@ -1,9 +1,18 @@
 <template>
     <main class="main">
-        <SettingFields :PersonList="PersonList" :ContractList="ContractList" />
+        <SettingFields 
+            :PersonList="PersonList" 
+            :ContractInfoList="ContractInfoList" 
+            :ContractsList="ContractsList"
+            @my-event="selectItem"
+            @get-contracts="getContracts"
+        />
         <aside>
         </aside>
-        <A4 :inputs="inputs" :PersonList="PersonList" :ContractList="ContractList"/>
+        <A4 
+            :PersonList="PersonList" 
+            :ContractInfoList="ContractInfoList"
+        />
         <aside>
         </aside>
     </main>
@@ -23,13 +32,70 @@ export default {
                 {id: '1', title: 'ФИО', content: 'Иванов Иван Иванович'},
                 {id: '2', title: 'Серия паспорта', content: '0101'},
                 {id: '3', title: 'Номер паспорта', content: '100234'},
+                {id: '4', title: 'Дата выдачи', content: '21.01.2021'},
+                {id: '5', title: 'Орган выдачи', content: 'МВД'},
+                {id: '6', title: 'Телефон', content: '79949944949'}
             ],
-            ContractList: [
-                {id: '1', title: 'Номер договора', content: '03/21-КЮ'}
+            ContractInfoList: [
+                {id: '1', title: 'Номер договора', content: '03/21-КЮ'},
+                {id: '2', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
+                {id: '3', title: 'Дата окончания', content: '31.12.2022'},
+            ],
+            ContractsList: [
+                {id: '0', title: 'Нажми на кнопку', 
+                    name: 'Петров Петр Петрович', passportSerial: '0222', passportNumber: '222222', 
+                    contractNumber: '2222'},
+                {id: '1', title: ' "Создать" ', 
+                    name: 'Санов Сан Саныч', passportSerial: '0333', passportNumber: '333333',
+                    contractNumber: '3333'},
+                {id: '2', title: 'чтобы загрузить список договоров', 
+                    name: 'Валеров Валера Валерич', passportSerial: '04444', passportNumber: '444444',
+                    contractNumber: '4444'}
             ]
         }
     },
-    
+    methods: {
+        selectItem(item) {
+            item -= 1;
+            const countMetadataItems = 2;
+            const countContractItems = 3;
+            let dataArray = new Array();
+
+
+            for (let key in this.ContractsList[item]) {
+                dataArray.push(this.ContractsList[item][key]);
+                
+            }
+
+            console.log(dataArray);
+            dataArray.splice(0, countMetadataItems);
+            console.log(dataArray);
+
+            let i = 0;
+            while (i < dataArray.length - countContractItems) {
+                this.PersonList[i].content = dataArray[i];
+                i++;
+            } 
+
+            let j = 0;
+            while (i < dataArray.length) {
+                this.ContractInfoList[j].content = dataArray[i]; 
+                i++;
+                j++;
+            } 
+
+            console.log(item);
+        },
+        getContracts(array) {
+            this.ContractsList = new Array;
+
+            array.forEach(elem => {
+               this.ContractsList.push(elem);   
+            });
+            console.log(this.ContractsList);
+            
+        }
+    }
 }
 
 

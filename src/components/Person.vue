@@ -1,7 +1,7 @@
 <template>
 
     <p class="paragraph margin-top"><span class="paragraphMargin"></span>
-        <b>{{ PersonList[0].content }}</b>, серия {{ PersonList[1].content }}  номер {{ PersonList[2].content }}  дата выдачи {{ passportDate }},  именуемый (-ая) в дальнейшем заявителем, с другой стороны, и
+        <span class="edit-highlighting bold ">{{ PersonList[0].content }}</span>, серия <span class="edit-highlighting"> {{ PersonList[1].content }} </span> номер <span class="edit-highlighting">{{ PersonList[2].content }}</span>  дата выдачи <span class="edit-highlighting">{{ passportDate }}</span>,  именуемый (-ая) в дальнейшем заявителем, с другой стороны, и
     </p>
 
 </template>
@@ -17,3 +17,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+.bold {
+    font-weight: 700;
+}
+
+</style>

@@ -1,15 +1,11 @@
 <template>
 
-    <label for="date-conteract-input"> 
+    <label for="date-conteract-input" class="input-field"> 
         {{ item.title }}:
+        <InputApp 
+            v-model="item.content" 
+        />
     </label>
-
-    <input 
-        name="date-conteract-input" 
-        type="text"  
-        :value="modelValue" 
-        @input="$emit('update:modelValue', $event.target.value)" 
-    />
 
 </template>
 
@@ -18,7 +14,6 @@
 
 export default {
     props: {
-        modelValue: String,
         item: {
             type: Object
         }
@@ -27,3 +22,14 @@ export default {
 } 
 
 </script>
+
+<style lang="less">
+
+
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+</style>
