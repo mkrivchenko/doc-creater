@@ -17,7 +17,11 @@
             />
             
             <ButtonApp @click.prevent="getContractsAsync">
-                Создать
+                Загрузить список
+            </ButtonApp>
+
+            <ButtonApp @click.prevent="toPrint">
+                Печать
             </ButtonApp>
 
             <select multiple class="select"
@@ -59,21 +63,21 @@ export default {
             
         },
         async getContractsAsync(event) {
-            let response = await fetch("http://192.168.1.150:888/test/hs/bot-api/pregasification");
+            let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/pregasification");
             let json;
-            let resArray = new Array();
             this.ContractsOut = new Array();
             if (response.ok) {
                 json = await response.json();
                 this.ContractsOut = json.PreGasificationContracts;
-                console.log(this.ContractsOut);
-                //TODO: Удалить лишние строки
-                resArray = json.PreGasificationContracts;
-                console.log(resArray);
             }
-
-
             this.$emit('getContracts', this.ContractsOut) 
+        },
+        toPrint() {
+            const contractNum = this.ContractInfoList[0].content;
+            console.log(contractNum);
+            document.title = contractNum.slice(0, contractNum.indexOf('/'));
+            window.print();
+            document.title = 'document';
         }
     },
     data() {
@@ -121,6 +125,10 @@ export default {
 h3 {
     font-variant: small-caps;
     font-size: 20px;
+}
+
+.select {
+    width: 100%;
 }
 
 </style>

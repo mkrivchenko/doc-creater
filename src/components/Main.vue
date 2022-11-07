@@ -34,12 +34,14 @@ export default {
                 {id: '3', title: 'Номер паспорта', content: '100234'},
                 {id: '4', title: 'Дата выдачи', content: '21.01.2021'},
                 {id: '5', title: 'Орган выдачи', content: 'МВД'},
-                {id: '6', title: 'Телефон', content: '79949944949'}
+                {id: '6', title: 'Телефон', content: '79949944949'},
+                {id: '7', title: 'Адрес проживания', content: 'Смоленское'}
             ],
             ContractInfoList: [
                 {id: '1', title: 'Номер договора', content: '03/21-КЮ'},
                 {id: '2', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
                 {id: '3', title: 'Дата окончания', content: '31.12.2022'},
+                {id: '4', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},                
             ],
             ContractsList: [
                 {id: '0', title: 'Нажми на кнопку', 
@@ -58,7 +60,7 @@ export default {
         selectItem(item) {
             item -= 1;
             const countMetadataItems = 2;
-            const countContractItems = 3;
+            const countContractItems = 4;
             let dataArray = new Array();
 
 
@@ -92,7 +94,6 @@ export default {
             array.forEach(elem => {
                this.ContractsList.push(elem);   
             });
-            console.log(this.ContractsList);
             
         }
     }
@@ -100,3 +101,12 @@ export default {
 
 
 </script>
+
+<style>
+
+.g-white-block {
+    display: block;
+    height: 12pt;
+}
+
+</style>

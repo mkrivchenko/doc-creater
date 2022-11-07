@@ -101,8 +101,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>
     </table>
@@ -174,8 +174,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>    
     </table>
@@ -201,8 +201,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>   
     </table>
@@ -260,7 +260,7 @@
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
-            <span class="edit-highlighting">«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края» </span>
+            <span class="edit-highlighting">{{ContractInfoList[3].content}} </span>
             </td>   
         </tr>
     </table>
@@ -279,8 +279,8 @@
             </td>   
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>   
     </table>
@@ -336,8 +336,8 @@
             </td>
         </tr>   
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>  
     </table>
@@ -488,8 +488,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>  
     </table>
@@ -560,8 +560,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr>  
     </table>
@@ -584,8 +584,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" class="table__cell-data_white-text">
-                |
+            <td colspan="4">
+                <span class="g-white-block"></span>
             </td>
         </tr> 
         
@@ -653,6 +653,10 @@ export default {
 <style scoped lang="less">
 * {
     font-size: 10pt;
+}
+
+.margin-bottom {
+    margin-bottom: 10pt;
 }
 
 .flex {

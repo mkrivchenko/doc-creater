@@ -49,25 +49,25 @@
                     </span>
                 </td>
                 <td>
-                    <span class="str-margin bold">
+                    <span class="str-margin bold edit-highlighting">
                         {{ PersonList[0].content }}
                     </span>
-                    <span class="str-margin">
+                    <span class="str-margin edit-highlighting">
                         Адрес: {{ContractInfoList[1].content}}
                     </span>
-                    <span class="str-margin">
+                    <span class="str-margin edit-highlighting">
                         Тел: {{PersonList[5].content}}
                     </span>
-                    <span class="str-margin">
+                    <span class="str-margin edit-highlighting">
                         Паспорт: 
                         {{ PersonList[1].content }}
                         {{ PersonList[2].content }}
                     </span>
-                    <span class="str-margin">
-                        Выдан: {{ PersonList[3].content}}
+                    <span class="str-margin edit-highlighting">
+                        Выдан: {{ PersonList[3].content}} {{ PersonList[4].content}}
                     </span>
-                    <span class="str-margin">
-                        Адрес проживания:
+                    <span class="str-margin edit-highlighting">
+                        Адрес проживания: {{ PersonList[6].content}}
                     </span>
                 </td>
                 <td>
@@ -110,10 +110,8 @@
                 <td>
                     <br>
                     <br>
-                    ______________({{ createString(PersonList[0].content) }})<br>
-                    <span class="white-text">
-                    |
-                    </span>
+                    ______________(<span class="edit-highlighting">{{ createString(PersonList[0].content) }}</span>)<br>
+                    <span class="g-white-block"></span>
                 </td>
                 <td>
                     ЕОГ:<br>
@@ -190,9 +188,6 @@ span.str-margin {
     font-weight: bold;
 }
 
-.white-text {
-    color: #fff;
-}
 </style>
 
 
