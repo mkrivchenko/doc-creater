@@ -29,3 +29,7 @@ $('.A4').each(function() {
     snipMe.call(this);
 });
 });
+
+export {
+   snipMe 
+}

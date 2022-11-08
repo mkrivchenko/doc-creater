@@ -1,4 +1,8 @@
 <template>
+    <NavMenu 
+        :DocumentVariant="DocumentVariant"
+        @get-variant="getVariant"
+    />
     <main class="main">
         <SettingFields 
             :PersonList="PersonList" 
@@ -12,6 +16,8 @@
         <A4 
             :PersonList="PersonList" 
             :ContractInfoList="ContractInfoList"
+            :DocumentVariant="Variant"
+            
         />
         <aside>
         </aside>
@@ -23,9 +29,12 @@
 import SettingFields from '@/components/SettingFields.vue';
 import Person from './Person.vue';
 import A4 from './A4.vue';
+import NavMenu from './NavMenu.vue';
+
+import { snipMe } from '../../public/js/printA4';
 
 export default {
-    components: { SettingFields, Person, A4 },  
+    components: { SettingFields, Person, A4, NavMenu },  
     data() {
         return {
             PersonList: [
@@ -53,7 +62,8 @@ export default {
                 {id: '2', title: 'чтобы загрузить список договоров', 
                     name: 'Валеров Валера Валерич', passportSerial: '04444', passportNumber: '444444',
                     contractNumber: '4444'}
-            ]
+            ],
+            Variant: '',
         }
     },
     methods: {
@@ -95,6 +105,16 @@ export default {
                this.ContractsList.push(elem);   
             });
             
+        },
+        getVariant(variant) {
+            this.Variant = variant;
+            console.log(this.Variant); 
+            
+            $(document).ready(function() {
+            $('.A4').each(function() {
+                snipMe.call(this);
+            });
+            });
         }
     }
 }
