@@ -35,7 +35,7 @@ aside {
     font-family: 'Times New Roman', Times, serif;
     background: white;
     width: 21cm;
-    height: 29.7cm;
+    /* height: 29.7cm; */
     display: block;
     margin: 0 auto;
     padding: 10px 25px;

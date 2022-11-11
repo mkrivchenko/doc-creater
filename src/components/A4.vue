@@ -1,18 +1,47 @@
 <template>
     <div class="work-place">
-        <div class="A4">
-            <TemplateContractGaz v-if="DocumentVariant === 'gaz'"
+        <div class="A4" v-if="DocumentVariant === 'gaz'">
+            <TemplateContractGaz 
                 :PersonList="PersonList"
                 :ContractInfoList="ContractInfoList">
             </TemplateContractGaz>
         </div>
 
-        <div class="A4">
-            <TemplateTechnicalConditionGaz v-if="DocumentVariant === 'gaz'" 
+        <div class="A4" v-if="DocumentVariant === 'gaz'" >
+            <TemplateTechnicalConditionGaz 
                 :PersonList="PersonList" 
                 :ContractInfoList="ContractInfoList">
             </TemplateTechnicalConditionGaz>
         </div>
+
+        <div class="A4" v-if="DocumentVariant === 'connect'">
+            <TemplateContractConnect 
+                :PersonList="PersonList"
+                :ContractInfoList="ContractInfoList">
+            </TemplateContractConnect>
+        </div>
+        
+        <div class="A4 page-break-left" v-if="DocumentVariant === 'connect'" >
+            <TemplateTechnicalConditionConnect 
+                :PersonList="PersonList" 
+                :ContractInfoList="ContractInfoList">
+            </TemplateTechnicalConditionConnect>
+        </div>
+
+        <div class="A4" v-if="DocumentVariant === 'connect'">
+            <TemplateActReadiness
+                :PersonList="PersonList" 
+                :ContractInfoList="ContractInfoList">
+            </TemplateActReadiness>
+        </div>
+		
+        <div class="A4" v-if="DocumentVariant === 'connect'">
+            <TemplateActConnect
+                :PersonList="PersonList" 
+                :ContractInfoList="ContractInfoList">
+            </TemplateActConnect>
+        </div>
+        
         <div class="page-break"></div>
     </div>
 </template>
@@ -20,11 +49,20 @@
 <script>
 import TemplateTechnicalConditionGaz from './Templates/TemplateTechnicalConditionGaz.vue';
 import TemplateContractGaz from '@/components/Templates/TemplateContractGaz.vue'
+import TemplateContractConnect from './Templates/TemplateContractConnect.vue';
+import TemplateTechnicalConditionConnect from './Templates/TemplateTechnicalConditionConnect.vue';
+import TemplateActReadiness from './Templates/TemplateActReadiness.vue';
+import TemplateActConnect from './Templates/TemplateActConnect.vue';
 
 export default {
-    components: {  
-        TemplateTechnicalConditionGaz,
-        TemplateContractGaz },
+    components: {
+    TemplateTechnicalConditionGaz,
+    TemplateContractGaz,
+    TemplateContractConnect,
+    TemplateTechnicalConditionConnect,
+    TemplateActReadiness,
+    TemplateActConnect
+},
     props: {
         PersonList: {
             type: Array,
@@ -58,8 +96,14 @@ export default {
     }
 
     .work-place {
-    padding: 0px;
-}
+        padding: 0px;
+    }
+
+    .page-break-left {
+        display: block;
+        /* page-break-before: right; */
+        page-break-after: recto;   
+    }
 }
 
 </style>

@@ -5,7 +5,7 @@
                 Российской Федерации<br>
                 от 13 сентября 2021 г. N 1547</div>
 	<div class="contract-header">
-		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{ContractInfoList[0].content}} </span><br>
+		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{ContractInfoList[0]?.content}} </span><br>
 		о подключении (технологическом присоединении)<br>
 		газоиспользующего оборудования к сети газораспределения<br>
 		в рамках догазификации</b>
@@ -360,8 +360,10 @@
 	</p>
 	<table-details-parties
 		:PersonList="PersonList"
-		:ContractInfoList="ContractInfoList">
-	</table-details-parties>      
+		:ContractInfoList="ContractInfoList"
+		:Quantity="3">
+	</table-details-parties>
+    
 </template>
 
 <script>

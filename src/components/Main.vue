@@ -16,8 +16,7 @@
         <A4 
             :PersonList="PersonList" 
             :ContractInfoList="ContractInfoList"
-            :DocumentVariant="Variant"
-            
+            :DocumentVariant="Variant"  
         />
         <aside>
         </aside>
@@ -63,7 +62,7 @@ export default {
                     name: 'Валеров Валера Валерич', passportSerial: '04444', passportNumber: '444444',
                     contractNumber: '4444'}
             ],
-            Variant: '',
+            Variant: 'gaz',
         }
     },
     methods: {
@@ -110,11 +109,11 @@ export default {
             this.Variant = variant;
             console.log(this.Variant); 
             
-            $(document).ready(function() {
-            $('.A4').each(function() {
-                snipMe.call(this);
-            });
-            });
+            // $(document).ready(function() {
+            // $('.A4').each(function() {
+            //     snipMe.call(this);
+            // });
+            // });
         }
     }
 }

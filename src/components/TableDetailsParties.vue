@@ -1,10 +1,10 @@
-<template>
+<template> 
     <table class="table1">
-        <thead>
+        <caption>
             <span class="bold">
-                Реквизиты сторон
-            </span>
-        </thead>
+                Реквизиты сторон           
+            </span>  
+        </caption>
         <tbody>
             <tr>
                 <td>
@@ -17,7 +17,7 @@
                         Заявитель
                     </span>
                 </td>
-                <td>
+                <td v-if="Quantity === 3">
                     <span class="bold">
                         Единый оператор газификации или региональный оператор газификации
                     </span>
@@ -45,7 +45,7 @@
                         ИНН 2225140681,<br>КПП 222501001,<br> 
                         Р/С: 40702810602000000114, <br>
                         К/С: 30101810200000000604,  <br>
-                        БИК 040173604 в отделении №8644 Сбербанка России г. Барнаул
+                        БИК 040173604 в отделении №8644 Сбербанка России г.&nbsp;Барнаул
                     </span>
                 </td>
                 <td>
@@ -70,7 +70,7 @@
                         Адрес проживания: {{ PersonList[6].content}}
                     </span>
                 </td>
-                <td>
+                <td v-if="Quantity === 3">
                     <span class="str-margin bold">
                         ООО «Газпром газификация»
                     </span>
@@ -113,7 +113,7 @@
                     ______________(<span class="edit-highlighting">{{ createString(PersonList[0].content) }}</span>)<br>
                     <span class="g-white-block"></span>
                 </td>
-                <td>
+                <td v-if="Quantity === 3">
                     ЕОГ:<br>
                     Заместитель директора филиала по строительству и инвестициям<br>
                     ______________(Волохова Е.В.)<br>
@@ -137,7 +137,10 @@ export default {
         ContractInfoList: {
             type: Array,
             require: true
-        }
+        },
+        Quantity: {
+            type: Number,
+        },
     },
     methods: {
         createString(str) {
@@ -166,8 +169,11 @@ table {
     width: 100%;
     row-gap: 10pt;
     table-layout: fixed;
-    
-    
+}
+
+caption {
+    margin-top: 10pt;
+    text-align: left;
 }
 
 td {

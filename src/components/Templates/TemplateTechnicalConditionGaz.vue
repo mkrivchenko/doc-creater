@@ -13,7 +13,7 @@
 
         <div class="header__org-data">
             656049, г. Барнаул, ул. Никитина, 67-206, тел./факс: (3852) 63-17-80, <br>
-            E-mail: sibgaz-exp@yandex.ru, ОГРН 1132225012765,<br>
+            e-mail: sibgaz-exp@yandex.ru, ОГРН 1132225012765,<br>
             ИНН 2225140681 , КПП 222501001
         </div>
 
@@ -265,8 +265,14 @@
         </tr>
     </table>
  
+
     <!-- 9. -->
     <table class="body-table">
+        <tr>
+            <td colspan="4">
+                <span class="g-white-block"></span>
+            </td>
+        </tr>
         <tr>
             <td class="table__cell-number">
             9.

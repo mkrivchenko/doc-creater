@@ -59,4 +59,16 @@ function getNowDate() {
     return now.toLocaleDateString(); 
 }
 
-export {getMonthYearDate, getNowDate, getNowFullFormatDate}
+function createString(str) {
+    let arrayOfStr = str.split(' ');
+    let newStr = arrayOfStr[0] + ' ';
+    let i = 1;
+    while (i < arrayOfStr.length)
+    {
+        newStr = newStr + arrayOfStr[i].slice(0, 1) + '.'; 
+        i++;
+    };
+    return newStr;
+}
+
+export {getMonthYearDate, getNowDate, getNowFullFormatDate, createString}

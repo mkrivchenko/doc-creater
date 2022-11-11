@@ -18,7 +18,7 @@
     }
     .A4 {
         box-shadow: none;
-        margin: 10mm 10mm 10mm 20mm;
+        /* margin: 10mm 10mm 10mm 20mm; */
         padding: 0;
         width: auto;
         height:auto; 
@@ -36,9 +36,20 @@
         display: block;
         page-break-before: always;
     }
+
+    .page-break-left {
+        display: block;
+        /* page-break-before: right; */
+        break-before: page;   
+    }
+
+    table {
+        /* page-break-inside: avoid; */
+    }
 }
 
 @page {
     margin: 0;
     size: A4 portrait;
+    margin: 10mm 10mm 10mm 20mm;
 }

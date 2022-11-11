@@ -25,9 +25,10 @@ if (removed.length > 0) {
 }
 
 $(document).ready(function() {
-$('.A4').each(function() {
+    $('.A4').each(function() {
     snipMe.call(this);
-});
+
+    });
 });
 
 export {
