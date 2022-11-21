@@ -23,6 +23,7 @@
         width: auto;
         height:auto; 
         page-break-before: always;
+        font-size: 10pt;
     }
 
     .noprint {

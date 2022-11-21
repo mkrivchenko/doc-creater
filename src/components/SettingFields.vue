@@ -15,9 +15,29 @@
                 v-for="item in ContractInfoList"
                 :item="item"    
             />
+
+            <select name="" @change="selectBoiler">
+                <option value=""></option>
+                <option value="Protherm 24кВт">Protherm 24кВт</option>
+                <option value="Kiturami 24кВт">Kiturami 24кВт</option>
+                <option value="Bugatti Verte 24кВт">Bugatti Verte 24кВт</option>
+                <option value="Bocsh 24кВт">Bocsh 24кВт</option>
+            </select>
+
+            <select name="" @change="selectCounter">
+                <option value=""></option>
+                <option value="Сигнал СГБ-G4">Сигнал СГБ-G4</option>
+                <option value="Элехант СГБ-4">Элехант СГБ-4</option>
+                <option value="Вектор СГБ-G4">Вектор СГБ-G4</option>
+                <option value="Гранд 6ТК">Гранд 6ТК</option>
+                <option value="Бетар СГБМ-4">Бетар СГБМ-4</option>
+            </select>
             
             <ButtonApp @click.prevent="getContractsAsync">
                 Загрузить список
+            </ButtonApp>
+            <ButtonApp @click.prevent="getGRPContractsAsync">
+                Загрузить ГРП 6
             </ButtonApp>
 
             <ButtonApp @click.prevent="toPrint">
@@ -55,7 +75,7 @@ export default {
             type: Array
         } 
     },
-    emits: ['myEvent', 'getContracts'],
+    emits: ['myEvent', 'getContracts', 'selectBoiler'],
     methods: {
         selectItem(event) {
             this.Contract = event.target.value;
@@ -72,12 +92,28 @@ export default {
             }
             this.$emit('getContracts', this.ContractsOut) 
         },
+        async getGRPContractsAsync(event) {
+            let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/grp/6");
+            let json;
+            this.ContractsOut = new Array();
+            if (response.ok) {
+                json = await response.json();
+                this.ContractsOut = json.Contracts;
+            }
+            this.$emit('getContracts', this.ContractsOut) 
+        },
         toPrint() {
             const contractNum = this.ContractInfoList[0].content;
             console.log(contractNum);
             document.title = contractNum.slice(0, contractNum.indexOf('/'));
             window.print();
             document.title = 'document';
+        },
+        selectBoiler(event) {
+            this.$emit('selectBoiler', event.target.value); 
+        },
+        selectCounter(e) {
+            this.$emit('selectCounter', e.target.value); 
         }
     },
     data() {

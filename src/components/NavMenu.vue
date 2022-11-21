@@ -9,6 +9,10 @@
 				<input id="radio-2" type="radio" name="radio" value="connect" @change="getVariant">
 				<label for="radio-2">Техническое присоединение</label>
 			</li>
+			<li class="navbar__item">
+				<input id="radio-2" type="radio" name="radio" value="act" @change="getVariant">
+				<label for="radio-2">Акты</label>
+			</li>
 		</ul>
 	</nav>		
 </template>

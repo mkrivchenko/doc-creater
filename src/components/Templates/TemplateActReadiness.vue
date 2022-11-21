@@ -2,8 +2,8 @@
     <div class="break"></div>
     <div class="mark">
 		Приложение №2 к договору<br>
-		<span class="edit-highlighting"> ТП/{{ContractInfoList[0].content}} </span>
-		от <span class="edit-highlighting">{{getNowDate()}} г.</span>
+		<span class="edit-highlighting"> {{ContractInfoList[0].content}} </span>
+		от <span class="edit-highlighting">{{ContractInfoList[6].content}} г.</span>
 	</div>
 	<div class="header" >
         <div class="header__condition-name margin-top">
@@ -24,7 +24,10 @@
 	</table>
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Общество с Ограниченной Ответственностью «Сибгаз-Эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице представителя технического директора <b>Гилева Геннадия Филипповича</b>, действующего на основании доверенности N 01 от «09» января 2020г., с одной стороны, и <b><span class="contract-header__number edit-highlighting" >{{PersonList[0]?.content}} </span></b>, именуемый в дальнейшем <b>«Заявитель»</b>, с другой стороны, в дальнейшем именуемые сторонами, оформили и подписали настоящий акт о том, что в соответствии с договором <span class="edit-highlighting">№ ТП/{{ContractInfoList[0].content}} </span> от <span class="edit-highlighting">{{getNowDate()}} г.</span>
+		<b>Общество с Ограниченной Ответственностью «Сибгаз-Эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице представителя технического директора <b>Гилева Геннадия Филипповича</b>, действующего на основании доверенности N 01 от «09» января 2020г., с одной стороны, и <b><span class="contract-header__number edit-highlighting" >{{PersonList[0]?.content}} </span></b>, именуемый в дальнейшем <b>«Заявитель»</b>, с другой стороны, в дальнейшем именуемые сторонами, оформили и подписали настоящий акт о том, что в соответствии с договором <span class="edit-highlighting">№ {{ContractInfoList[0].content}} </span> от <span class="edit-highlighting">
+            {{ContractInfoList[6].content}} г.
+            <!-- {{getNowDate()}} г. -->
+        </span>
 	</p>
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
@@ -33,7 +36,7 @@
 
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		<b>1.&ensp;Исполнительно-техническая документация объекта капитального строительства:</b><br>
-		Наименование  объекта в соответствии с проектной документацией с указанием шифра проекта: <b>«Газоснабжение жилого дома <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>». Шифр <span class="edit-highlighting">П-21.10.21/1</span></b><br> Наименование проектной организации <b>ООО «СибГазСтрой»</b>.
+		Наименование  объекта в соответствии с проектной документацией с указанием шифра проекта: <b>«Газоснабжение жилого дома <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>». Шифр <span class="edit-highlighting">{{ContractInfoList[4].content}}</span></b><br> Наименование проектной организации <b><span class="edit-highlighting">{{ContractInfoList[5].content}}</span></b>.
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		<b>2.&ensp;Сеть газопотребления, построенная на территории земельного участка Заявителя по адресу: 
@@ -41,13 +44,13 @@
 		<span class="edit-highlighting">среднего</span> давления 
 		<span class="edit-highlighting">подземный/надземный</span>, диаметр 
 		<span class="edit-highlighting">32/25 мм</span>, давление 
-		<span class="edit-highlighting">0,0024 МПа</span> длину 
-		<span class="edit-highlighting">20,01 м</span>; 
+		<span class="edit-highlighting">0,15 МПа</span> длину 
+		<span class="edit-highlighting">0 м</span>; 
 		<span class="edit-highlighting">низкого</span> давления 
 		<span class="edit-highlighting">надземный</span> диаметр 
-		<span class="edit-highlighting">76 мм</span>, давление  
+		<span class="edit-highlighting">20 мм</span>, давление  
 		<span class="edit-highlighting">0,0024 МПа</span> длину 
-		<span class="edit-highlighting">0,3 м</span>.
+		<span class="edit-highlighting">{{ContractInfoList[8].content}} м</span>.
 	</p>
 
     <table class="point-table margin-top">
@@ -91,8 +94,10 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
+                {{Boiler}}
             </td>   
             <td class="table__cell-data_align-center">
+                1
             </td>   
             <td class="table__cell-data_align-center">
             </td>   
@@ -104,8 +109,10 @@
             2.
             </td>
             <td class="table__cell-data_align-center">
+                {{Counter}}
             </td>   
             <td class="table__cell-data_align-center">
+                1
             </td>   
             <td class="table__cell-data_align-center">
             </td>   
@@ -131,8 +138,11 @@
 		<b>Заключение:</b>
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
-		1.&ensp;Техническая документация соответствует техническим условиям  <span class="edit-highlighting"> ТП/{{ContractInfoList[0].content}} </span>
-		от <span class="edit-highlighting">{{getNowDate()}} г.</span>
+		1.&ensp;Техническая документация соответствует техническим условиям  <span class="edit-highlighting"> {{ContractInfoList[7].content}} </span>
+		от <span class="edit-highlighting">
+            {{ContractInfoList[6].content}} г.
+            <!-- {{getNowDate()}} г. -->
+        </span>
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		2.&ensp;Строительно-монтажные работы выполнены в полном объеме в соответствии с проектом заявителя.
@@ -159,7 +169,7 @@
 			<td><b>Гражданин РФ</b></td>
         </tr>
 		<tr>
-			<td>___________________/____________/</td>
+			<td>___________________/ Г.Ф.Гилев</td>
 			<td>___________________/____________/</td>
         </tr>
     </table>
@@ -180,7 +190,9 @@ export default {
         ContractInfoList: {
             type: Array,
             require: true
-        }
+        },
+        Boiler: "",
+        Counter: "",
     },
     methods:{
         getMonthYearDate,

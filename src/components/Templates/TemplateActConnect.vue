@@ -76,14 +76,14 @@
             <td class="table__cell-number">
             </td>
             <td colspan="3">
-				Расположение газопровода: подземное, надземное (нужное подчеркнуть).
+				Расположение газопровода: подземное, <u>надземное</u> (нужное подчеркнуть).
             </td>
         </tr>
         <tr>
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				Наружный диаметр <span class="edit-highlighting">______мм</span> 
+				Наружный диаметр <span class="edit-highlighting">25мм</span> 
 			</td>
         </tr>
 		<tr>
@@ -105,7 +105,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				максимальный расход газа <span class="edit-highlighting">______ м3/час</span> 
+				максимальный расход газа <span class="edit-highlighting">5.0 м<sup>3</sup>/час</span> 
 			</td>
 			<td>
 				
@@ -129,7 +129,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				режим газоснабжения: постоянный, на условиях прерывания (нужное подчеркнуть). 
+				режим газоснабжения: <u>постоянный</u>, на условиях прерывания (нужное подчеркнуть). 
 			</td>
         </tr>
 		<tr>
@@ -165,7 +165,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				газопровод: подземный, надземный, (нужное подчеркнуть);
+				газопровод: подземный, <u>надземный</u>, (нужное подчеркнуть);
 			</td>
 			<td>
 				
@@ -175,21 +175,21 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				материал: сталь, полиэтилен и иное (нужное подчеркнуть); 
+				материал: <u>сталь</u>, полиэтилен и иное (нужное подчеркнуть); 
 			</td>
         </tr>
 		<tr>
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				диаметр <span class="edit-highlighting">_____ мм</span>, давление (максимальное) <span class="edit-highlighting">_____ МПа</span>, длина <span class="edit-highlighting">_____ м</span>  
+				диаметр <span class="edit-highlighting">20мм</span>, давление (максимальное) <span class="edit-highlighting">0,0024 МПа</span>, длина <span class="edit-highlighting"> {{ContractInfoList[8].content}} м</span>  
 			</td>
         </tr>
 		<tr>
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				Отключающие устройства:  <span class="edit-highlighting">_____</span> 
+				Отключающие устройства:  <span class="edit-highlighting">КШГ25</span> 
 			</td>
         </tr>
 		<tr>
@@ -247,8 +247,10 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
+                {{Boiler}}
             </td>   
             <td class="table__cell-data_align-center">
+                1
             </td>   
             <td class="table__cell-data_align-center">
             </td>   
@@ -260,8 +262,10 @@
             2.
             </td>
             <td class="table__cell-data_align-center">
+                {{Counter}}
             </td>   
             <td class="table__cell-data_align-center">
+                1
             </td>   
             <td class="table__cell-data_align-center">
             </td>   
@@ -284,7 +288,7 @@
     </table>
  
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		Стороны составили настоящий акт о том, что границей разграничения имущественной принадлежности сторон является: Разграничение установленное в точке врезки газопровода потребителя на подземном газопроводе ПЭ Ø63 в районе земельного участка по адресу
+		Стороны составили настоящий акт о том, что границей разграничения имущественной принадлежности сторон является: КШГ25
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline">
@@ -320,7 +324,7 @@
 		принадлежит заявителю.
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
-		Стороны оформили и подписали настоящий акт о том, что границей разграничения эксплуатационной ответственности сторон является: Разграничение установленное в точке врезки газопровода потребителя на подземном газопроводе ПЭ Ø63 в районе земельного участка по адресу 
+		Стороны оформили и подписали настоящий акт о том, что границей разграничения эксплуатационной ответственности сторон является: КШГ25
 		<span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
 	</p>
 
@@ -329,7 +333,8 @@
 			<b>Схема газопроводов с указанием границы разграничения<br>
 			имущественной принадлежности</b>
 		</p>
-		<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
+        
+		<svg v-if="fff === 1" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
 				<!-- viewBox="0 0 508.6 235" styl e=enable-background: n e w 0 0 508.6 235; -->
 				<g>
 					<g>
@@ -372,6 +377,77 @@
 					</g>
 				</g>
 		</svg>
+        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve">
+    
+        <g>
+            <g>
+                <line class="st0" x1="0.2" y1="38.8" x2="508.6" y2="38.8"/>
+            </g>
+            <g>
+                <line class="st1" x1="0" y1="60" x2="508.4" y2="60"/>
+            </g>
+            <rect x="102.3" y="145.4" class="st2" width="124.1" height="67.9"/>
+            <line class="st3" x1="152.3" y1="145.4" x2="152.3" y2="94"/>
+            <line class="st0" x1="152.3" y1="94" x2="152.3" y2="40.1"/>
+            <g>
+                <circle class="st3" cx="408.5" cy="21.3" r="9.5"/>
+                <g>
+                    <path d="M407.4,17.9L407.4,17.9l-1.5,0.8l-0.2-0.9l1.9-1h1v8.5h-1.1L407.4,17.9L407.4,17.9z"/>
+                    <path d="M411.7,24.7c0-0.5,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8s-0.3,0.8-0.8,0.8S411.7,25.1,411.7,24.7z"/>
+                </g>
+            </g>
+            <g>
+                <circle class="st3" cx="212" cy="159.5" r="9.5"/>
+                <g>
+                    <path d="M209,163.7V163l0.9-0.9c2.2-2.1,3.1-3.1,3.1-4.4c0-0.9-0.4-1.6-1.7-1.6c-0.8,0-1.4,0.4-1.8,0.7l-0.4-0.8
+                        c0.6-0.5,1.4-0.9,2.4-0.9c1.8,0,2.6,1.2,2.6,2.5c0,1.6-1.1,2.8-2.9,4.5l-0.7,0.6l0,0h3.8v0.9L209,163.7L209,163.7z"/>
+                    <path d="M215.7,163c0-0.5,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8s-0.3,0.8-0.8,0.8S215.7,163.5,215.7,163z"/>
+                </g>
+            </g>
+            <text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
+            <text transform="matrix(1 0 0 1 283.0249 122.1662)" class="st7 st8 st9">Граница раздела собственности </text>
+            <g>
+                <g>
+                    <defs>
+                        <rect id="SVGID_1_" x="49.6" y="415.8" width="497.3" height="10.3"/>
+                    </defs>
+                    <clipPath id="SVGID_2_">
+                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                    </clipPath>
+                    <g style="clip-path:url(#SVGID_2_);">
+                        <text transform="matrix(1.0007 0 0 1 49.5938 424.1866)"><tspan x="0" y="0" class="st7" style="font-size:9.0155px;">Ад</tspan><tspan x="11.1" y="0" class="st7" style="font-size:9.0155px;">р</tspan><tspan x="15.6" y="0" class="st7" style="font-size:9.0155px;">е</tspan><tspan x="19.6" y="0" class="st7" style="font-size:9.0155px;">с</tspan></text>
+                    </g>
+                </g>
+                <g>
+                    <defs>
+                        <rect id="SVGID_3_" x="49.6" y="415.8" width="497.3" height="10.3"/>
+                    </defs>
+                    <clipPath id="SVGID_4_">
+                        <use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+                    </clipPath>
+                    <g style="clip-path:url(#SVGID_4_);">
+                        <text transform="matrix(1.0007 0 0 1 73.1719 424.1866)" class="st7" style="font-size:9.9772px;"> </text>
+                    </g>
+                </g>
+                <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
+            </g>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{ContractInfoList[1].content}}</text>
+            <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
+            <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
+            <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
+            <text transform="matrix(1 0 0 1 13.4742 143.2255)" class="st7 st8 st9">жилого здания</text>
+            <g>
+                <polygon class="st11" points="138.8,121 152.3,107.5 165.8,121 152.3,121 		"/>
+                <polygon class="st11" points="165.8,94 152.3,107.5 138.8,94 152.3,94 		"/>
+            </g>
+            <g>
+                <line class="st3" x1="280.3" y1="114.3" x2="152.8" y2="60"/>
+                <line class="st12" x1="152.8" y1="60" x2="158.1" y2="65.4"/>
+                <line class="st12" x1="152.8" y1="60" x2="160.3" y2="60"/>
+            </g>
+            </g>
+        </svg>
  	</div>
 
 	<p class="paragraph margin-top">
@@ -389,7 +465,7 @@
 			<b>Схема газопроводов с указанием границы разграничения<br> 
 				эксплуатационной ответственности</b>
 		</p>
-		<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
+		<svg v-if="fff === 1" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
 				<!-- viewBox="0 0 508.6 235" styl e=enable-background: n e w 0 0 508.6 235; -->
 				<g>
 					<g>
@@ -427,12 +503,87 @@
 					<rect x="13.5" y="124.3" class="st6" width="108.3" height="21.1"/>
 					<text transform="matrix(1 0 0 1 13.4742 131.2255)"><tspan x="0" y="0" class="st7 st8 st9">сеть газопотребления</tspan><tspan x="91.8" y="0" class="st7 st8 st9 st10">	</tspan><tspan x="0" y="12" class="st7 st8 st9">жилого здания</tspan></text>
 					<polygon class="st3" points="138.8,52.3 152.3,38.8 165.8,52.3 152.3,52.3 	"/>
+                    
 					<g>
 						<circle class="st11" cx="152.3" cy="38.9" r="7"/>
 					</g>
 				</g>
 		</svg>
+        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve">
+    
+        <g>
+            <g>
+                <line class="st0" x1="0.2" y1="38.8" x2="508.6" y2="38.8"/>
+            </g>
+            <g>
+                <line class="st1" x1="0" y1="60" x2="508.4" y2="60"/>
+            </g>
+            <rect x="102.3" y="145.4" class="st2" width="124.1" height="67.9"/>
+            <line class="st3" x1="152.3" y1="145.4" x2="152.3" y2="94"/>
+            <line class="st0" x1="152.3" y1="94" x2="152.3" y2="40.1"/>
+            <g>
+                <circle class="st3" cx="408.5" cy="21.3" r="9.5"/>
+                <g>
+                    <path d="M407.4,17.9L407.4,17.9l-1.5,0.8l-0.2-0.9l1.9-1h1v8.5h-1.1L407.4,17.9L407.4,17.9z"/>
+                    <path d="M411.7,24.7c0-0.5,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8s-0.3,0.8-0.8,0.8S411.7,25.1,411.7,24.7z"/>
+                </g>
+            </g>
+            <g>
+                <circle class="st3" cx="212" cy="159.5" r="9.5"/>
+                <g>
+                    <path d="M209,163.7V163l0.9-0.9c2.2-2.1,3.1-3.1,3.1-4.4c0-0.9-0.4-1.6-1.7-1.6c-0.8,0-1.4,0.4-1.8,0.7l-0.4-0.8
+                        c0.6-0.5,1.4-0.9,2.4-0.9c1.8,0,2.6,1.2,2.6,2.5c0,1.6-1.1,2.8-2.9,4.5l-0.7,0.6l0,0h3.8v0.9L209,163.7L209,163.7z"/>
+                    <path d="M215.7,163c0-0.5,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8s-0.3,0.8-0.8,0.8S215.7,163.5,215.7,163z"/>
+                </g>
+            </g>
+            <text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
+            <text transform="matrix(1 0 0 1 283.0249 122.1662)" class="st7 st8 st9">Граница раздела собственности </text>
+            <g>
+                <g>
+                    <defs>
+                        <rect id="SVGID_1_" x="49.6" y="415.8" width="497.3" height="10.3"/>
+                    </defs>
+                    <clipPath id="SVGID_2_">
+                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                    </clipPath>
+                    <g style="clip-path:url(#SVGID_2_);">
+                        <text transform="matrix(1.0007 0 0 1 49.5938 424.1866)"><tspan x="0" y="0" class="st7" style="font-size:9.0155px;">Ад</tspan><tspan x="11.1" y="0" class="st7" style="font-size:9.0155px;">р</tspan><tspan x="15.6" y="0" class="st7" style="font-size:9.0155px;">е</tspan><tspan x="19.6" y="0" class="st7" style="font-size:9.0155px;">с</tspan></text>
+                    </g>
+                </g>
+                <g>
+                    <defs>
+                        <rect id="SVGID_3_" x="49.6" y="415.8" width="497.3" height="10.3"/>
+                    </defs>
+                    <clipPath id="SVGID_4_">
+                        <use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+                    </clipPath>
+                    <g style="clip-path:url(#SVGID_4_);">
+                        <text transform="matrix(1.0007 0 0 1 73.1719 424.1866)" class="st7" style="font-size:9.9772px;"> </text>
+                    </g>
+                </g>
+                <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
+            </g>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{ContractInfoList[1].content}}</text>
+            <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
+            <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
+            <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
+            <text transform="matrix(1 0 0 1 13.4742 143.2255)" class="st7 st8 st9">жилого здания</text>
+            <g>
+                <polygon class="st11" points="138.8,121 152.3,107.5 165.8,121 152.3,121 		"/>
+                <polygon class="st11" points="165.8,94 152.3,107.5 138.8,94 152.3,94 		"/>
+            </g>
+            <g>
+                <line class="st3" x1="280.3" y1="114.3" x2="152.8" y2="60"/>
+                <line class="st12" x1="152.8" y1="60" x2="158.1" y2="65.4"/>
+                <line class="st12" x1="152.8" y1="60" x2="160.3" y2="60"/>
+            </g>
+            </g>
+        </svg>
 	</div>
+
+        
+
 	<p class="paragraph margin-top">
 	Условные обозначения:
 	</p>
@@ -472,8 +623,10 @@
 				Рабочее давление
             </td>
             <td class="table__cell-data_align-center">
+                0,15
             </td>   
             <td class="table__cell-data_align-center">
+                0,0024
             </td>   
         </tr>
 		<tr>
@@ -481,8 +634,10 @@
 				Способ прокладки
             </td>
             <td class="table__cell-data_align-center">
+                подземно
             </td>   
             <td class="table__cell-data_align-center">
+                надземно
             </td>   
         </tr>
 		<tr>
@@ -490,8 +645,10 @@
                 Диаметр, мм
             </td>
             <td class="table__cell-data_align-center">
+                ду25
             </td>   
             <td class="table__cell-data_align-center">
+                ду20
             </td>     
         </tr>
 		<tr>
@@ -499,8 +656,10 @@
 				Материал труб
             </td>
             <td class="table__cell-data_align-center">
+                Ст
             </td>   
             <td class="table__cell-data_align-center">
+                Ст
             </td>     
         </tr>
 		<tr>
@@ -508,8 +667,10 @@
 				Технологическое устройство
             </td>
             <td class="table__cell-data_align-center">
+                КШГ25
             </td>   
             <td class="table__cell-data_align-center">
+                ---
             </td>     
         </tr>
     </table>
@@ -540,7 +701,7 @@
 			<td><b>Гражданин РФ</b></td>
         </tr>
 		<tr>
-			<td>___________________/____________/</td>
+			<td>___________________/ Г.Ф.Гилев</td>
 			<td>___________________/____________/</td>
         </tr>
 		<tr>
@@ -565,7 +726,9 @@ export default {
         ContractInfoList: {
             type: Array,
             require: true
-        }
+        },
+        Boiler: "",
+        Counter: "",
     },
     methods:{
         getMonthYearDate,
@@ -778,13 +941,14 @@ td {
 .st2{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#020203;stroke-width:1.4173;stroke-linecap:square;stroke-miterlimit:10;}
 .st3{fill:none;stroke:#020203;stroke-width:1.4173;stroke-miterlimit:10;}
 .st4{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#020203;stroke-width:1.4173;stroke-miterlimit:10;}
-.st5{fill:#020203;}
+//.st5{fill:#020203;}
 .st6{fill:none;}
 .st7{fill:#010202;}
 .st8{font-family:'TimesNewRomanPSMT';}
 .st9{font-size:10px;}
 .st10{letter-spacing:5;}
 .st11{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#020203;stroke-width:1.4173;stroke-miterlimit:10;}
+        
 
 @media print {
 

@@ -15,8 +15,11 @@
         </div>
         
         <div class="header__condition-name margin-top">
-            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> ТП/{{ContractInfoList[0].content}} </span><br>
-			от <span class="edit-highlighting">{{getNowDate()}} г.</span><br>
+            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> {{ContractInfoList[7].content}} </span><br>
+			от <span class="edit-highlighting">
+                {{ContractInfoList[6].content}} г.
+                <!-- {{getNowDate()}} г. -->
+            </span><br>
             на подключение (технологическое присоединение)<br>газоиспользующего оборудования к сети газораспределения
 
         </div>
@@ -110,7 +113,7 @@
             Величина максимального часового расхода газа(мощности) газоиспользующего оборудования
             </td>
             <td class="underline cell">
-            5  
+            5,0  
             </td>
             <td class="cell">
             куб. метров.
@@ -135,7 +138,7 @@
             максимальное
             </td>
             <td class="underline cell-2">
-            0,3  
+            0,15  
             </td>
             <td class="cell-2">
             МПа;
@@ -208,10 +211,10 @@
                 <span class="edit-highlighting">{{getMonthYearDate(ContractInfoList[2].content)}}</span>
             </td>   
             <td class="table__cell-data_align-center">
-            5
+            5,0
             </td>   
             <td class="table__cell-data_align-center">
-            0,3;0,15
+            0,15;0,15
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
@@ -236,7 +239,7 @@
             Точка подключения (планируемая)
             </td>
             <td class="underline" colspan="2">
-                Подземный заглушенный газопровод на границе земельного участка ДУ 32     
+                Отключающее устройство ду25 на действующем газопроводе среднего давления в районе расположения рассматриваемого жилого дома
             </td>   
         </tr>
         <tr>

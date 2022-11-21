@@ -28,17 +28,21 @@
             </TemplateTechnicalConditionConnect>
         </div>
 
-        <div class="A4" v-if="DocumentVariant === 'connect'">
+        <div class="A4" v-if="DocumentVariant === 'act'">
             <TemplateActReadiness
                 :PersonList="PersonList" 
-                :ContractInfoList="ContractInfoList">
+                :ContractInfoList="ContractInfoList"
+                :Boiler="Boiler"
+                :Counter="Counter">
             </TemplateActReadiness>
         </div>
 		
-        <div class="A4" v-if="DocumentVariant === 'connect'">
+        <div class="A4" v-if="DocumentVariant === 'act'">
             <TemplateActConnect
                 :PersonList="PersonList" 
-                :ContractInfoList="ContractInfoList">
+                :ContractInfoList="ContractInfoList"
+                :Boiler="Boiler"
+                :Counter="Counter">
             </TemplateActConnect>
         </div>
         
@@ -76,6 +80,8 @@ export default {
             type: String,
             require: true,
         },
+        Boiler: "",
+        Counter: "",
     },
 }
 </script>

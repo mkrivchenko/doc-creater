@@ -10,6 +10,8 @@
             :ContractsList="ContractsList"
             @my-event="selectItem"
             @get-contracts="getContracts"
+            @select-boiler="selectBoiler"
+            @select-counter="selectCounter"
         />
         <aside>
         </aside>
@@ -17,6 +19,8 @@
             :PersonList="PersonList" 
             :ContractInfoList="ContractInfoList"
             :DocumentVariant="Variant"  
+            :Boiler="Boiler"
+            :Counter="Counter"
         />
         <aside>
         </aside>
@@ -46,10 +50,15 @@ export default {
                 {id: '7', title: 'Адрес проживания', content: 'Смоленское'}
             ],
             ContractInfoList: [
-                {id: '1', title: 'Номер договора', content: '03/21-КЮ'},
-                {id: '2', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
-                {id: '3', title: 'Дата окончания', content: '31.12.2022'},
-                {id: '4', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},                
+                {id: '0', title: 'Номер договора', content: '03/21-КЮ'},
+                {id: '1', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
+                {id: '2', title: 'Дата окончания', content: '31.12.2022'},
+                {id: '3', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
+                {id: '4', title: 'Шифр', content: 'П-21.10.21/1'},
+                {id: '5', title: 'Организация проекта', content: 'ООО «Архилайн»'},
+                {id: '6', title: 'Дата договора', content: '09.11.2022'},
+                {id: '7', title: 'Номер ТУ', content: '0'},
+                {id: '8', title: 'Длина', content: '0'},                    
             ],
             ContractsList: [
                 {id: '0', title: 'Нажми на кнопку', 
@@ -62,6 +71,9 @@ export default {
                     name: 'Валеров Валера Валерич', passportSerial: '04444', passportNumber: '444444',
                     contractNumber: '4444'}
             ],
+            Boiler: '',
+            Counter: '',
+            CountList: [],
             Variant: 'gaz',
         }
     },
@@ -108,12 +120,12 @@ export default {
         getVariant(variant) {
             this.Variant = variant;
             console.log(this.Variant); 
-            
-            // $(document).ready(function() {
-            // $('.A4').each(function() {
-            //     snipMe.call(this);
-            // });
-            // });
+        },
+        selectBoiler(boiler) {
+            this.Boiler = boiler;
+        },
+        selectCounter(counter) {
+            this.Counter = counter;
         }
     }
 }
