@@ -1,6 +1,6 @@
 <template>
     <NavMenu 
-        :DocumentVariant="DocumentVariant"
+        :DocumentVariant="Variant"
         @get-variant="getVariant"
     />
     <main class="main">
@@ -28,15 +28,16 @@
 </template>
 
 
-<script>
+<script lang="ts">
 import SettingFields from '@/components/SettingFields.vue';
 import Person from './Person.vue';
 import A4 from './A4.vue';
 import NavMenu from './NavMenu.vue';
 
-import { snipMe } from '../../public/js/printA4';
+import { dataList} from '@/model/dataList.js'
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent ({
     components: { SettingFields, Person, A4, NavMenu },  
     data() {
         return {
@@ -87,12 +88,9 @@ export default {
 
             for (let key in this.ContractsList[item]) {
                 dataArray.push(this.ContractsList[item][key]);
-                
             }
 
-            console.log(dataArray);
             dataArray.splice(0, countMetadataItems);
-            console.log(dataArray);
 
             let i = 0;
             while (i < dataArray.length - countContractItems) {
@@ -126,9 +124,24 @@ export default {
         },
         selectCounter(counter) {
             this.Counter = counter;
-        }
+        },
+    },
+	mounted() {
+		const searchData = document.location.search;
+		if (searchData != '') {
+			const data = new dataList(searchData);
+
+            for (let key in data) {
+                console.log(key);
+                console.log(data[key]);  
+            }
+
+			this.getContracts(new Array(data));
+			this.selectItem(1);
+		}
+
     }
-}
+});
 
 
 </script>

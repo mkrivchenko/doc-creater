@@ -1,9 +1,9 @@
 <template>
     <aside class="settings">
         <form class="fixed">
-            
-            <h3>данные клиента</h3>
 
+            <h3>данные клиента</h3>
+            
             <Input 
                 v-for="item in PersonList"
                 :item="item"
@@ -88,7 +88,8 @@ export default {
             this.ContractsOut = new Array();
             if (response.ok) {
                 json = await response.json();
-                this.ContractsOut = json.PreGasificationContracts;
+                this.ContractsOut = json.PreGasificationContracts
+                console.log(this.ContractsOut);
             }
             this.$emit('getContracts', this.ContractsOut) 
         },
@@ -123,7 +124,7 @@ export default {
                 type: Array
             }
         }
-    }
+    },
 }
 
 </script>
