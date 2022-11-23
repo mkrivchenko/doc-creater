@@ -31,13 +31,15 @@
                 <option value="Kiturami 24кВт">Kiturami 24кВт</option>
                 <option value="Bugatti Verte 24кВт">Bugatti Verte 24кВт</option>
                 <option value="Bocsh 24кВт">Bocsh 24кВт</option>
+                <option value="Baxi 24кВт">Baxi 24кВт</option>
+                <option value="Navien 16кВт">Navien 16кВт</option>
             </select>
 
             <select name="" @change="selectCounter">
                 <option value=""></option>
                 <option value="Сигнал СГБ-G4">Сигнал СГБ-G4</option>
                 <option value="Элехант СГБ-4">Элехант СГБ-4</option>
-                <option value="Вектор СГБ-G4">Вектор СГБ-G4</option>
+                <option value="Вектор М4.0 LRG 1">Вектор М4.0 LRG 1</option>
                 <option value="Гранд 6ТК">Гранд 6ТК</option>
                 <option value="Бетар СГБМ-4">Бетар СГБМ-4</option>
             </select>

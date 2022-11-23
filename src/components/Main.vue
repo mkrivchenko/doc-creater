@@ -41,28 +41,29 @@ import { defineComponent } from 'vue';
 
 export default defineComponent ({
     components: { SettingFields, Person, A4, NavMenu },  
-	data() {
-		return {
+    data() {
+        return {
             ContractTest: new ContractGaz(),
-			PersonList: [
-				{id: '1', title: 'ФИО', content: 'Иванов Иван Иванович'},
-				{id: '2', title: 'Серия паспорта', content: '0101'},
-				{id: '3', title: 'Номер паспорта', content: '100234'},
-				{id: '4', title: 'Дата выдачи', content: '21.01.2021'},
-				{id: '5', title: 'Орган выдачи', content: 'МВД'},
-				{id: '6', title: 'Телефон', content: '79949944949'},
-				{id: '7', title: 'Адрес проживания', content: 'Смоленское'}
-			],
-			ContractInfoList: [
-				{id: '0', title: 'Номер договора', content: '03/21-КЮ'},
-				{id: '1', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
-				{id: '2', title: 'Дата окончания', content: '31.12.2022'},
-				{id: '3', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
-				{id: '4', title: 'Шифр', content: 'П-21.10.21/1'},
-				{id: '5', title: 'Организация проекта', content: 'ООО «Архилайн»'},
-				{id: '6', title: 'Дата договора', content: '09.11.2022'},
-				{id: '7', title: 'Номер ТУ', content: '0'},
-				{id: '8', title: 'Длина', content: '0'},                    
+            PersonList: [
+                {id: '1', title: 'ФИО', content: 'Иванов Иван Иванович'},
+                {id: '2', title: 'Серия паспорта', content: '0101'},
+                {id: '3', title: 'Номер паспорта', content: '100234'},
+                {id: '4', title: 'Дата выдачи', content: '21.01.2021'},
+                {id: '5', title: 'Орган выдачи', content: 'МВД'},
+                {id: '6', title: 'Телефон', content: '79949944949'},
+                {id: '7', title: 'Адрес проживания', content: 'Смоленское'}
+            ],
+            ContractInfoList: [
+                {id: '0', title: 'Номер договора', content: '03/21-КЮ'},
+                {id: '1', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
+                {id: '2', title: 'Дата окончания', content: '31.12.2022'},
+                {id: '3', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
+                {id: '4', title: 'Шифр', content: 'П-21.10.21/1'},
+                {id: '5', title: 'Организация проекта', content: 'ООО «Архилайн»'},
+                {id: '6', title: 'Дата договора', content: '09.11.2022'},
+                {id: '7', title: 'Номер ТУ', content: '0'},
+                {id: '8', title: 'Длина', content: '0'},
+                {id: '9', title: 'Длина2', content: '0'},                    
             ],
             ContractsList: [
                 {id: '0', title: 'Нажми на кнопку', 

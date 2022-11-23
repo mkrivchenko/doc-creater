@@ -45,7 +45,7 @@
 		<span class="edit-highlighting">подземный/надземный</span>, диаметр 
 		<span class="edit-highlighting">32/25 мм</span>, давление 
 		<span class="edit-highlighting">0,15 МПа</span> длину 
-		<span class="edit-highlighting">0 м</span>; 
+		<span class="edit-highlighting">{{ContractInfoList[9].content}} м</span>; 
 		<span class="edit-highlighting">низкого</span> давления 
 		<span class="edit-highlighting">надземный</span> диаметр 
 		<span class="edit-highlighting">20 мм</span>, давление  
