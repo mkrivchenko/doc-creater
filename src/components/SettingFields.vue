@@ -1,13 +1,22 @@
 <template>
     <aside class="settings">
         <form class="fixed">
-
+            
             <h3>данные клиента</h3>
             
             <Input 
-                v-for="item in PersonList"
+                v-for="item in ContractTest.person"
                 :item="item"
             />
+            
+            <Input 
+                v-for="item in ContractTest"
+                :item="item"
+            />
+            <!-- <Input 
+                v-for="item in PersonList"
+                :item="item"
+            /> -->
 
             <h3>данные договора</h3>
 
@@ -60,11 +69,17 @@
 
 <script>
 
+import { ContractGaz } from '@/model/ContractGaz';
+import { TitleData } from '@/model/TitleData';
+import { defineComponent } from 'vue';
 import Input from './Input.vue';
 
-export default {
+export default defineComponent({
     components: { Input },
     props: {
+        ContractTest: {
+            type: ContractGaz
+        },
         PersonList: {
             type: Array
         },
@@ -75,7 +90,7 @@ export default {
             type: Array
         } 
     },
-    emits: ['myEvent', 'getContracts', 'selectBoiler'],
+    emits: ['myEvent', 'getContracts', 'selectBoiler', 'inputValue'],
     methods: {
         selectItem(event) {
             this.Contract = event.target.value;
@@ -115,7 +130,10 @@ export default {
         },
         selectCounter(e) {
             this.$emit('selectCounter', e.target.value); 
-        }
+        },
+        inputValue(e) {
+            this.$emit('inputValue', e.target.value); 
+        },
     },
     data() {
         return {
@@ -125,7 +143,7 @@ export default {
             }
         }
     },
-}
+});
 
 </script>
 

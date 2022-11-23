@@ -2,6 +2,7 @@
     <div class="work-place">
         <div class="A4" v-if="DocumentVariant === 'gaz'">
             <TemplateContractGaz 
+                :ContractTest="ContractTest"
                 :PersonList="PersonList"
                 :ContractInfoList="ContractInfoList">
             </TemplateContractGaz>
@@ -57,8 +58,10 @@ import TemplateContractConnect from './Templates/TemplateContractConnect.vue';
 import TemplateTechnicalConditionConnect from './Templates/TemplateTechnicalConditionConnect.vue';
 import TemplateActReadiness from './Templates/TemplateActReadiness.vue';
 import TemplateActConnect from './Templates/TemplateActConnect.vue';
+import { defineComponent } from 'vue';
+import { ContractGaz } from '@/model/ContractGaz';
 
-export default {
+export default defineComponent({
     components: {
     TemplateTechnicalConditionGaz,
     TemplateContractGaz,
@@ -68,6 +71,9 @@ export default {
     TemplateActConnect
 },
     props: {
+        ContractTest: {
+            type: ContractGaz
+        },
         PersonList: {
             type: Array,
             require: true
@@ -83,7 +89,7 @@ export default {
         Boiler: "",
         Counter: "",
     },
-}
+});
 </script>
 
 <style>

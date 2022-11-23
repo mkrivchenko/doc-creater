@@ -1,12 +1,12 @@
 declare interface IDataList {
 	Pipeline: string;
 	contractAddress: string;
-	contractEnd: Date;
+	contractEnd: string;
 	contractNumber: string;
 	fullname: string;
 	id: number;
 	identityAddress: string
-	identityCardDate: Date;
+	identityCardDate: string;
 	identityCardNumber: string
 	identityCardOrgName: string
 	identityCardSeries: string

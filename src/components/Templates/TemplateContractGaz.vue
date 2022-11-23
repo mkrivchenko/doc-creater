@@ -9,6 +9,7 @@
 		о подключении (технологическом присоединении)<br>
 		газоиспользующего оборудования к сети газораспределения<br>
 		в рамках догазификации</b>
+		{{ContractTest.person.fullname.data}}
 	</div>
 	
 	<table class="table">
@@ -369,6 +370,7 @@
 <script>
 import Person from '@/components/Person.vue';
 import TableDetailsParties from '@/components/TableDetailsParties.vue';
+import { ContractGaz } from '@/model/ContractGaz';
 
 export default {
     components: { 
@@ -376,6 +378,9 @@ export default {
 		TableDetailsParties
 	},
     props: {
+		ContractTest: {
+			type: ContractGaz
+		},
         PersonList: {
             type: Array,
             require: true

@@ -3,7 +3,7 @@
     <label for="date-conteract-input" class="input-field"> 
         {{ item.title }}:
         <InputApp 
-            v-model="item.content" 
+            v-model="item.data" 
         />
     </label>
 
