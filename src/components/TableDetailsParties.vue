@@ -50,24 +50,26 @@
                 </td>
                 <td>
                     <span class="str-margin bold edit-highlighting">
-                        {{ PersonList[0].content }}
+                        {{ DataContract.person.fullname.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Адрес: {{ContractInfoList[1].content}}
+                        Адрес: {{ DataContract.contract.contractAddress.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Тел: {{PersonList[5].content}}
+                        Тел: {{DataContract.person.phone.data}}
                     </span>
                     <span class="str-margin edit-highlighting">
                         Паспорт: 
-                        {{ PersonList[1].content }}
-                        {{ PersonList[2].content }}
+                        {{ DataContract.person.identityCardSeries.data }}
+                        {{ DataContract.person.identityCardNumber.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Выдан: {{ PersonList[3].content}} {{ PersonList[4].content}}
+                        Выдан: 
+                        {{ DataContract.person.identityCardDate.data }}
+                        {{ DataContract.person.identityCardOrgName.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Адрес проживания: {{ PersonList[6].content}}
+                        Адрес проживания: {{ DataContract.person.identityAddress.data }}
                     </span>
                 </td>
                 <td v-if="Quantity === 3">
@@ -110,7 +112,7 @@
                 <td>
                     <br>
                     <br>
-                    ______________(<span class="edit-highlighting">{{ createString(PersonList[0].content) }}</span>)<br>
+                    ______________(<span class="edit-highlighting">{{ createString(DataContract.person.fullname.data) }}</span>)<br>
                     <span class="g-white-block"></span>
                 </td>
                 <td v-if="Quantity === 3">
@@ -125,11 +127,16 @@
 </template>
 
 <script>
+import { DataContract } from '@/model/DataContract';
+
 
 
 
 export default {
     props: {
+        DataContract: {
+            type: DataContract
+        },
         PersonList: {
             type: Array,
             require: true

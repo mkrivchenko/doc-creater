@@ -6,12 +6,16 @@
 				<label for="radio-1">Догазификация</label>
 			</li>
 			<li class="navbar__item">
-				<input id="radio-2" type="radio" name="radio" value="connect" @change="getVariant">
-				<label for="radio-2">Техническое присоединение</label>
+				<input id="radio-2" type="radio" name="radio" value="additional" @change="getVariant">
+				<label for="radio-2">Допник</label>
 			</li>
 			<li class="navbar__item">
-				<input id="radio-2" type="radio" name="radio" value="act" @change="getVariant">
-				<label for="radio-2">Акты</label>
+				<input id="radio-3" type="radio" name="radio" value="connect" @change="getVariant">
+				<label for="radio-3">Техническое присоединение</label>
+			</li>
+			<li class="navbar__item">
+				<input id="radio-4" type="radio" name="radio" value="act" @change="getVariant">
+				<label for="radio-4">Акты</label>
 			</li>
 		</ul>
 	</nav>		

@@ -15,9 +15,9 @@
         </div>
         
         <div class="header__condition-name margin-top">
-            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> {{ContractInfoList[7].content}} </span><br>
+            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> {{DataContract?.contract.conditionNumber.data}} </span><br>
 			от <span class="edit-highlighting">
-                {{ContractInfoList[6].content}} г.
+                {{DataContract?.contract.contractData.data}} г.
                 <!-- {{getNowDate()}} г. -->
             </span><br>
             на подключение (технологическое присоединение)<br>газоиспользующего оборудования к сети газораспределения
@@ -47,7 +47,7 @@
             2.
             </td>
             <td class="underline" colspan="3">
-            <span class="edit-highlighting">{{PersonList[0].content}}</span>   
+            <span class="edit-highlighting">{{DataContract?.person.fullname.data}}</span>   
             </td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@
             расположенный по адресу:   
             </td>
             <td class="underline" colspan="2">
-                <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+                <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -138,7 +138,8 @@
             максимальное
             </td>
             <td class="underline cell-2">
-            0,15  
+            <!-- 0,004   -->
+            0,15
             </td>
             <td class="cell-2">
             МПа;
@@ -151,7 +152,8 @@
             фактическое (расчетное)
             </td>
             <td class="underline cell-2">
-            0,15 
+            <!-- 0,004 -->
+            0,15
             </td>
             <td class="cell-2">
             МПа.
@@ -167,7 +169,7 @@
             Срок подключения (технологического присоединения) объекта капитального строительства к сети газораспределения
             </td>
             <td  class="cell-2 underline" >
-                <span class="edit-highlighting">{{getMonthYearDate(ContractInfoList[2].content)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
             </td>
         </tr>
         <tr>
@@ -208,17 +210,18 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
-                <span class="edit-highlighting">{{getMonthYearDate(ContractInfoList[2].content)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
             </td>   
             <td class="table__cell-data_align-center">
             5,0
             </td>   
             <td class="table__cell-data_align-center">
             0,15;0,15
+            <!-- 0,004;0,004 -->
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
-            <span class="edit-highlighting">{{ContractInfoList[3].content}} </span>
+            <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}} </span>
             </td>   
         </tr>
     </table>
@@ -239,7 +242,11 @@
             Точка подключения (планируемая)
             </td>
             <td class="underline" colspan="2">
+                <!-- седловой отвод ПЭ63/32 на действующем подземном газопроводе среднего давления ПЭ63 -->
                 Отключающее устройство ду25 на действующем газопроводе среднего давления в районе расположения рассматриваемого жилого дома
+                <!-- Отключающее устройство ду25 на действующем газопроводе низкого давления в районе расположения рассматриваемого жилого дома -->
+                <!-- заглушенный подземный газопровод ПЭ32 низкого давления в границах участка рассматриваемого жилого дома -->
+                <!-- заглушенный подземный газопровод ПЭ32 среднего давления в границах участка рассматриваемого жилого дома -->
             </td>   
         </tr>
         <tr>
@@ -308,213 +315,12 @@
 				проводит мониторинг готовности объекта заявителя с выдачей соответствующих документов;
 			</td>
         </tr>
-		<tr>
+		<!-- <tr>
             <td colspan="4">
                 <span class="g-white-block"></span>
             </td>
-        </tr>
+        </tr> -->
     </table>
-
-    <!-- 11.1 -->
-    <!-- <table class="body-table">       
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td>
-                диаметром
-            </td>
-            <td class="cell-6">
-                Определить при проектировании
-            </td>
-            <td class="cell-5"> 
-                мм
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td>
-                протяженностью
-            </td>
-            <td class="cell-6">
-                до 30
-            </td>
-            <td class="cell-5">
-                м
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td>
-                Материалом труб:
-            </td>
-            <td class="cell-6">
-                Полиэтилен
-            </td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td>
-                Максимальным рабочим давлением
-            </td>
-            <td class="cell-6">
-                0,15
-            </td>
-            <td class="cell-5">
-                МПа  
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td>
-                тип прокладки:
-            </td>
-            <td class="cell-6">
-                Подземный
-            </td>
-            <td>
-                 
-            </td>
-        </tr>
-    </table> -->
-
-    <!-- 11.2 -->
-    <!-- <table class="body-table"> 
-        <tr>
-            <td class="table__cell-marker">
-            </td>
-            <td colspan="3">
-                по адресу: <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                проектирование и строительство пункта редуцирования газа;
-            </td>
-            <td class="cell-5" colspan="2">
-            Нет
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                Проектирование и строительство отключающего устройства (указывается место расположения отключающего устройства);
-            </td>
-            <td class="cell-5" colspan="2" >
-                На границе земельного участка
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                Проектирование и строительство (реконструкция) станции катодной защиты;
-            </td>
-            <td class="cell-5" colspan="2">
-                Нет
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                получение разрешения на строительство газопроводов и определение охранных зон газопроводов на земельных участках, принадлежащих иным лицам.
-            </td>
-            <td class="cell-5" colspan="2">
-                Нет
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <span class="g-white-block"></span>
-            </td>
-        </tr>  
-    </table> -->
-
-    <!-- 12 -->
-    <!-- <table class="body-table">
-        <tr>
-            <td class="table__cell-number">
-            12.
-            </td>
-            <td colspan="3">
-                Заявитель осуществляет (выбирается необходимое):
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-            -
-            </td>
-            <td>
-                Предоставление схемы расположения сети газопотребления (с указанием длины, диаметра и материала трубы), а также размещение подключаемого газоиспользующего оборудования;
-            </td>
-            <td class="cell-5" colspan="2">
-                Да
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                строительство(реконструкцию) сети газопотребления от точки подключения до газоиспользующего оборудования по адресу:<br> <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
-            </td>
-            <td class="cell-5" colspan="2">
-                Да
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                проектирование и строительство пункта редуцирования газа;
-            </td>
-            <td class="cell-5" colspan="2">
-                Нет
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                Обеспечение подключаемого объекта капитального строительства газоиспользующим оборудованием и приборами учета газа, которые соответствуют обязательным требованиям, установленным законодательством Российской Федерации о техническом регулировании.
-            </td>
-            <td class="cell-5" colspan="2">
-                Да
-            </td>
-        </tr>
-        <tr>
-            <td class="table__cell-marker">
-                -
-            </td>
-            <td>
-                получение разрешения на строительство газопроводов и определение охранных зон газопроводов на земельных участках, принадлежащих иным лицам.
-            </td>
-            <td class="cell-5" colspan="2">
-                Нет
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <span class="g-white-block"></span>
-            </td>
-        </tr>  
-    </table> -->
 
     <!-- 13 -->
     <table class="body-table">
@@ -541,18 +347,6 @@
         
     </table>
 
-    <!-- 14 -->
-    <!-- <table class="body-table">
-        <tr>
-            <td class="table__cell-number">
-            14.
-            </td>
-            <td colspan="3">
-                Срок действия настоящих технических условий составляет 3 года со дня заключения договора о подключении (технологическом присоединении) объекта капитального строительства к сети газораспределения.
-            </td>
-        </tr>
-    </table> -->
-
     <table class="parties-table margin-top">
         <tr>
             <td>
@@ -575,27 +369,30 @@
 
 </template>
 
-<script>
+<script lang="ts">
 
-import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/func'
+import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/func'
+import { DataContract } from '@/model/DataContract';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     props: {
+        DataContract: {
+           type: Object as PropType<DataContract>,
+        },
         PersonList: {
             type: Array,
-            require: true
         },
         ContractInfoList: {
             type: Array,
-            require: true
-        }
+        },
     },
     methods:{
         getMonthYearDate,
         getNowDate,
         getNowFullFormatDate
     }
-}
+});
 
 </script>
 
@@ -783,7 +580,6 @@ td {
 .underline {
     border-bottom: 1pt solid #000;
 }
-
 
 
 </style>

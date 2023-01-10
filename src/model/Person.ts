@@ -2,8 +2,8 @@ import { TitleData } from './TitleData';
 
 export class Person implements IPerson{
 	fullname: TitleData;
-	identityCardNumber: TitleData;
 	identityCardSeries: TitleData;
+	identityCardNumber: TitleData;
 	identityCardDate: TitleData;
 	identityCardOrgName: TitleData;
 	identityAddress: TitleData;

@@ -1,5 +1,5 @@
 declare interface IDataList {
-	Pipeline: string;
+	pipeline: string;
 	contractAddress: string;
 	contractEnd: string;
 	contractNumber: string;

@@ -2,8 +2,8 @@
     <div class="break"></div>
     <div class="mark">
 		Приложение №2 к договору<br>
-		<span class="edit-highlighting"> {{ContractInfoList[0].content}} </span>
-		от <span class="edit-highlighting">{{ContractInfoList[6].content}} г.</span>
+		<span class="edit-highlighting">{{DataContract?.contract.contractNumber.data}} </span>
+		от <span class="edit-highlighting">{{DataContract?.contract.contractData.data}} г.</span>
 	</div>
 	<div class="header" >
         <div class="header__condition-name margin-top">
@@ -24,8 +24,8 @@
 	</table>
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Общество с Ограниченной Ответственностью «Сибгаз-Эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице представителя технического директора <b>Гилева Геннадия Филипповича</b>, действующего на основании доверенности N 01 от «09» января 2020г., с одной стороны, и <b><span class="contract-header__number edit-highlighting" >{{PersonList[0]?.content}} </span></b>, именуемый в дальнейшем <b>«Заявитель»</b>, с другой стороны, в дальнейшем именуемые сторонами, оформили и подписали настоящий акт о том, что в соответствии с договором <span class="edit-highlighting">№ {{ContractInfoList[0].content}} </span> от <span class="edit-highlighting">
-            {{ContractInfoList[6].content}} г.
+		<b>Общество с Ограниченной Ответственностью «Сибгаз-Эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице представителя технического директора <b>Гилева Геннадия Филипповича</b>, действующего на основании доверенности N 01 от «09» января 2020г., с одной стороны, и <b><span class="contract-header__number edit-highlighting" > {{DataContract?.person.fullname.data}} </span></b>, именуемый в дальнейшем <b>«Заявитель»</b>, с другой стороны, в дальнейшем именуемые сторонами, оформили и подписали настоящий акт о том, что в соответствии с договором <span class="edit-highlighting">№ {{DataContract?.contract.contractNumber.data}} </span> от <span class="edit-highlighting">
+            {{DataContract?.contract.contractData.data}} г.
             <!-- {{getNowDate()}} г. -->
         </span>
 	</p>
@@ -36,21 +36,30 @@
 
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		<b>1.&ensp;Исполнительно-техническая документация объекта капитального строительства:</b><br>
-		Наименование  объекта в соответствии с проектной документацией с указанием шифра проекта: <b>«Газоснабжение жилого дома <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>». Шифр <span class="edit-highlighting">{{ContractInfoList[4].content}}</span></b><br> Наименование проектной организации <b><span class="edit-highlighting">{{ContractInfoList[5].content}}</span></b>.
+		Наименование  объекта в соответствии с проектной документацией с указанием шифра проекта: <b>«Газоснабжение жилого дома <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>». Шифр <span class="edit-highlighting">{{actData?.projectCode.data}}</span></b><br> Наименование проектной организации <b><span class="edit-highlighting">{{actData?.projectOrg.data}}</span></b>.
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		<b>2.&ensp;Сеть газопотребления, построенная на территории земельного участка Заявителя по адресу: 
-		<span class="edit-highlighting">{{ContractInfoList[1].content}}</span>»</b>, включая газопровод 
-		<span class="edit-highlighting">среднего</span> давления 
+		<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>»</b>, включая газопровод 
+		<span class="edit-highlighting">
+            среднего
+            <!-- низкого -->
+        </span> давления 
 		<span class="edit-highlighting">подземный/надземный</span>, диаметр 
 		<span class="edit-highlighting">32/25 мм</span>, давление 
-		<span class="edit-highlighting">0,15 МПа</span> длину 
-		<span class="edit-highlighting">{{ContractInfoList[9].content}} м</span>; 
+		<span class="edit-highlighting">
+            0,15 МПа
+            <!-- 0,004 МПа -->
+        </span> длину 
+		<span class="edit-highlighting">{{actData?.undergrounPipeLength.data}} м</span>; 
 		<span class="edit-highlighting">низкого</span> давления 
 		<span class="edit-highlighting">надземный</span> диаметр 
 		<span class="edit-highlighting">20 мм</span>, давление  
-		<span class="edit-highlighting">0,0024 МПа</span> длину 
-		<span class="edit-highlighting">{{ContractInfoList[8].content}} м</span>.
+		<span class="edit-highlighting">
+            <!-- 0,004 МПа -->
+            0,0024 МПа
+        </span> длину 
+		<span class="edit-highlighting">{{actData?.outwardPipeLength.data}} м</span>.
 	</p>
 
     <table class="point-table margin-top">
@@ -138,9 +147,9 @@
 		<b>Заключение:</b>
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
-		1.&ensp;Техническая документация соответствует техническим условиям  <span class="edit-highlighting"> {{ContractInfoList[7].content}} </span>
+		1.&ensp;Техническая документация соответствует техническим условиям  <span class="edit-highlighting"> {{DataContract?.contract.conditionNumber.data}} </span>
 		от <span class="edit-highlighting">
-            {{ContractInfoList[6].content}} г.
+            {{DataContract?.contract.contractData.data}} г.
             <!-- {{getNowDate()}} г. -->
         </span>
 	</p>
@@ -177,29 +186,46 @@
 
 </template>
 
-<script>
+<script lang="ts">
 
-import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/func'
+import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/func';
+import { Act } from '@/model/Act';
+import { DataContract } from '@/model/DataContract'
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     props: {
+        DataContract: {
+            type: Object as PropType<DataContract>,
+        },
+        actData: {
+            type: Object as PropType<Act>,
+        },
         PersonList: {
             type: Array,
-            require: true
         },
         ContractInfoList: {
             type: Array,
-            require: true
         },
-        Boiler: "",
-        Counter: "",
+        Boiler: {
+            type: String,
+            default: () => {
+                ""
+            },
+        },
+        Counter: {
+            type: String,
+            default: () => {
+                ""
+            },
+        },
     },
     methods:{
         getMonthYearDate,
         getNowDate,
         getNowFullFormatDate
     }
-}
+});
 
 </script>
 

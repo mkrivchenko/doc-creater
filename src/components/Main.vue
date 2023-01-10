@@ -5,7 +5,9 @@
     />
     <main class="main">
         <SettingFields 
-            :ContractTest="ContractTest"
+            :DataContract="DataContract"
+            :actData="actData"
+
             :PersonList="PersonList" 
             :ContractInfoList="ContractInfoList" 
             :ContractsList="ContractsList"
@@ -17,7 +19,9 @@
         <aside>
         </aside>
         <A4 
-            :ContractTest="ContractTest"
+            :DataContract="DataContract"
+            :actData="actData"
+
             :PersonList="PersonList" 
             :ContractInfoList="ContractInfoList"
             :DocumentVariant="Variant"  
@@ -36,34 +40,36 @@ import Person from './Person.vue';
 import A4 from './A4.vue';
 import NavMenu from './NavMenu.vue';
 
-import { ContractGaz } from '@/model/ContractGaz';
 import { defineComponent } from 'vue';
+import { DataContract } from '@/model/DataContract';
+import { Act } from '@/model/Act';
 
 export default defineComponent ({
     components: { SettingFields, Person, A4, NavMenu },  
     data() {
         return {
-            ContractTest: new ContractGaz(),
+            DataContract: new DataContract(),
+            actData: new Act(),
             PersonList: [
-                {id: '1', title: 'ФИО', content: 'Иванов Иван Иванович'},
-                {id: '2', title: 'Серия паспорта', content: '0101'},
-                {id: '3', title: 'Номер паспорта', content: '100234'},
-                {id: '4', title: 'Дата выдачи', content: '21.01.2021'},
-                {id: '5', title: 'Орган выдачи', content: 'МВД'},
-                {id: '6', title: 'Телефон', content: '79949944949'},
-                {id: '7', title: 'Адрес проживания', content: 'Смоленское'}
+                {id: '1', title: 'ФИО', data: 'Иванов Иван Иванович'},
+                {id: '2', title: 'Серия паспорта', data: '0101'},
+                {id: '3', title: 'Номер паспорта', data: '100234'},
+                {id: '4', title: 'Дата выдачи', data: '21.01.2021'},
+                {id: '5', title: 'Орган выдачи', data: 'МВД'},
+                {id: '6', title: 'Телефон', data: '79949944949'},
+                {id: '7', title: 'Адрес проживания', data: 'Смоленское'}
             ],
             ContractInfoList: [
-                {id: '0', title: 'Номер договора', content: '03/21-КЮ'},
-                {id: '1', title: 'Адрес', content: 'Населенный пункт, Улица, Дом'},
-                {id: '2', title: 'Дата окончания', content: '31.12.2022'},
-                {id: '3', title: 'ГРП', content: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
-                {id: '4', title: 'Шифр', content: 'П-21.10.21/1'},
-                {id: '5', title: 'Организация проекта', content: 'ООО «Архилайн»'},
-                {id: '6', title: 'Дата договора', content: '09.11.2022'},
-                {id: '7', title: 'Номер ТУ', content: '0'},
-                {id: '8', title: 'Длина', content: '0'},
-                {id: '9', title: 'Длина2', content: '0'},                    
+                {id: '0', title: 'Номер договора', data: '03/21-КЮ'},
+                {id: '1', title: 'Адрес', data: 'Населенный пункт, Улица, Дом'},
+                {id: '2', title: 'Дата окончания', data: '31.12.2022'},
+                {id: '3', title: 'ГРП', data: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
+                {id: '4', title: 'Шифр', data: 'П-21.10.21/1'},
+                {id: '5', title: 'Организация проекта', data: 'ООО «Архилайн»'},
+                {id: '6', title: 'Дата договора', data: '09.11.2022'},
+                {id: '7', title: 'Номер ТУ', data: '0'},
+                {id: '8', title: 'Длина', data: '0'},
+                {id: '9', title: 'Длина2', data: '0'},                    
             ],
             ContractsList: [
                 {id: '0', title: 'Нажми на кнопку', 
@@ -98,13 +104,13 @@ export default defineComponent ({
 
             let i = 0;
             while (i < dataArray.length - countContractItems) {
-                this.PersonList[i].content = dataArray[i];
+                this.PersonList[i].data = dataArray[i];
                 i++;
             } 
 
             let j = 0;
             while (i < dataArray.length) {
-                this.ContractInfoList[j].content = dataArray[i]; 
+                this.ContractInfoList[j].data = dataArray[i]; 
                 i++;
                 j++;
             } 
@@ -129,20 +135,17 @@ export default defineComponent ({
         selectCounter(counter) {
             this.Counter = counter;
         },
-        fillFromQuery(data: ContractGaz) {
+        fillFromQuery(data: DataContract) {
 
-        },
-
-        inputValue(data) {
-            this.ContractTest.person.fullname.data = data;
         },
 
     },
 	mounted() {
+
 		const searchData = document.location.search;
 
 		if (searchData != '') {
-			const contract = new ContractGaz();
+			const contract = new DataContract();
 			contract.setFromQuery(searchData);
 			// const data = new DataList(searchData);
 
@@ -151,7 +154,7 @@ export default defineComponent ({
                 console.log(contract[key]);  
             }
 
-            this.ContractTest = contract;
+            this.DataContract = contract;
             // this.ContractTest = contract
 			// this.getContracts(new Array(contract));
 			// this.selectItem(1);

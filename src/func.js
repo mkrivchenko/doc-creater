@@ -71,4 +71,11 @@ function createString(str) {
     return newStr;
 }
 
-export {getMonthYearDate, getNowDate, getNowFullFormatDate, createString}
+export {
+    getMonthYearDate, 
+    getNowDate, 
+    getNowFullFormatDate, 
+    createString,
+    getStringMonth,
+    getMonth,
+}

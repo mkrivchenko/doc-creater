@@ -5,12 +5,21 @@
             <h3>данные клиента</h3>
             
             <Input 
-                v-for="item in ContractTest.person"
+                v-for="item in DataContract.person"
                 :item="item"
             />
             
+            <h3>данные договора</h3>
+
             <Input 
-                v-for="item in ContractTest"
+                v-for="item in DataContract.contract"
+                :item="item"
+            />
+
+            <h3>характеристики газопроводов</h3>
+
+            <Input 
+                v-for="item in actData"
                 :item="item"
             />
             <!-- <Input 
@@ -18,21 +27,28 @@
                 :item="item"
             /> -->
 
-            <h3>данные договора</h3>
+            <h3>Оборудование</h3>
 
-            <Input 
+            <!-- <Input 
                 v-for="item in ContractInfoList"
                 :item="item"    
-            />
+            /> -->
 
             <select name="" @change="selectBoiler">
                 <option value=""></option>
                 <option value="Protherm 24кВт">Protherm 24кВт</option>
+                <option value="Protherm 12кВт">Protherm 12кВт</option>
                 <option value="Kiturami 24кВт">Kiturami 24кВт</option>
+                <option value="Kentansu 24кВт">Kentansu 24кВт</option>
                 <option value="Bugatti Verte 24кВт">Bugatti Verte 24кВт</option>
                 <option value="Bocsh 24кВт">Bocsh 24кВт</option>
                 <option value="Baxi 24кВт">Baxi 24кВт</option>
+                <option value="Baxi 31кВт">Baxi 31кВт</option>
                 <option value="Navien 16кВт">Navien 16кВт</option>
+                <option value="Navien 24кВт">Navien 24кВт</option>
+                <option value="Immergas 24кВт">Immergas 24кВт</option>
+                <option value="Лемакс 15,5кВт">Лемакс 15,5кВт</option>
+                
             </select>
 
             <select name="" @change="selectCounter">
@@ -42,6 +58,7 @@
                 <option value="Вектор М4.0 LRG 1">Вектор М4.0 LRG 1</option>
                 <option value="Гранд 6ТК">Гранд 6ТК</option>
                 <option value="Бетар СГБМ-4">Бетар СГБМ-4</option>
+                <option value="Скайметр СГВ-VM-G4">Скайметр СГВ-VM-G4</option>
             </select>
             
             <ButtonApp @click.prevent="getContractsAsync">
@@ -71,16 +88,20 @@
 
 <script>
 
-import { ContractGaz } from '@/model/ContractGaz';
-import { TitleData } from '@/model/TitleData';
+import { Act } from '@/model/Act';
+import { DataContract } from '@/model/DataContract';
 import { defineComponent } from 'vue';
 import Input from './Input.vue';
 
 export default defineComponent({
     components: { Input },
     props: {
-        ContractTest: {
-            type: ContractGaz
+        actData: {
+            type: Act,
+            require: true
+        },
+        DataContract: {
+            type: DataContract
         },
         PersonList: {
             type: Array
@@ -121,9 +142,10 @@ export default defineComponent({
             this.$emit('getContracts', this.ContractsOut) 
         },
         toPrint() {
-            const contractNum = this.ContractInfoList[0].content;
+            const contractNum = this.DataContract.contract.contractNumber;
             console.log(contractNum);
-            document.title = contractNum.slice(0, contractNum.indexOf('/'));
+            document.title = contractNum; 
+            // .slice(0, contractNum.indexOf('/'));
             window.print();
             document.title = 'document';
         },

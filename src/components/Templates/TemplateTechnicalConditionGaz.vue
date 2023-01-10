@@ -3,12 +3,16 @@
     <div class="flex">
         <div class="mark fifty-persent">
             Приложение N 1 к договору о подключении(технологическом присоединении)газоиспользующего оборудования к сети газораспределения в рамках догазификации<br>
-            от <span class="edit-highlighting">{{ getNowFullFormatDate() }} г. № {{ContractInfoList[0].content}}</span>
+            от <span class="edit-highlighting">
+                <!-- {{ getNowFullFormatDate() }} г.  -->
+                «{{ DataContract?.contract.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(DataContract?.contract.contractData.data), true) }} {{ DataContract?.contract.contractData.data.split('.')[2] }} г.
+                № {{DataContract?.contract.contractNumber.data}}
+            </span>
         </div>
     </div>
     <div class="header">
         <div class="header__org-name underline">
-            <b>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ  «СИБГАЗ-ЭКСПЛУАТАЦИЯ»</b>	
+            <b>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «СИБГАЗ-ЭКСПЛУАТАЦИЯ»</b>	
         </div>
 
         <div class="header__org-data">
@@ -18,7 +22,7 @@
         </div>
 
         <div class="header__condition-number">
-            <span class="edit-highlighting">№ {{ContractInfoList[0].content.replace('АК', 'ТУ')}} от {{getNowDate()}} г. </span>
+            <span class="edit-highlighting">№ {{DataContract?.contract.contractNumber.data.replace('АК', 'ТУ')}} от {{DataContract?.contract.contractData.data}} г. </span>
         </div>
 
         <div class="header__condition-name">
@@ -50,7 +54,7 @@
             2.
             </td>
             <td class="underline" colspan="3">
-            <span class="edit-highlighting">{{PersonList[0].content}}</span>   
+            <span class="edit-highlighting">{{DataContract?.person.fullname.data}}</span>   
             </td>
         </tr>
         <tr>
@@ -88,7 +92,7 @@
             расположенный по адресу:   
             </td>
             <td class="underline" colspan="2">
-                <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+                <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -170,7 +174,7 @@
             Срок подключения (технологического присоединения) объекта капитального строительства к сети газораспределения
             </td>
             <td  class="cell-2 underline" >
-                <span class="edit-highlighting">{{getMonthYearDate(ContractInfoList[2].content)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
             </td>
         </tr>
         <tr>
@@ -250,7 +254,7 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
-                <span class="edit-highlighting">{{getMonthYearDate(ContractInfoList[2].content)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
             </td>   
             <td class="table__cell-data_align-center">
             5
@@ -260,7 +264,7 @@
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
-            <span class="edit-highlighting">{{ContractInfoList[3].content}} </span>
+            <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}} </span>
             </td>   
         </tr>
     </table>
@@ -446,7 +450,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-                по адресу: <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+                по адресу: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -526,7 +530,7 @@
                 -
             </td>
             <td>
-                строительство(реконструкцию) сети газопотребления от точки подключения до газоиспользующего оборудования по адресу:<br> <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+                строительство(реконструкцию) сети газопотребления от точки подключения до газоиспользующего оборудования по адресу:<br> <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
             </td>
             <td class="cell-5" colspan="2">
                 Да
@@ -631,27 +635,32 @@
 
 </template>
 
-<script>
+<script lang="ts">
 
-import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/func'
+import {getMonthYearDate, getNowDate, getNowFullFormatDate, getStringMonth, getMonth} from '@/func'
+import { DataContract } from '@/model/DataContract';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     props: {
+        DataContract: {
+            type: Object as PropType<DataContract>,
+        },
         PersonList: {
             type: Array,
-            require: true
         },
         ContractInfoList: {
             type: Array,
-            require: true
         }
     },
     methods:{
         getMonthYearDate,
         getNowDate,
-        getNowFullFormatDate
+        getNowFullFormatDate,
+        getStringMonth,
+        getMonth,
     }
-}
+});
 
 </script>
 

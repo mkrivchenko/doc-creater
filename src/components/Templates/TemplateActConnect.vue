@@ -33,7 +33,7 @@
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline"><span class="paragraphMargin"></span>
-			<b><span class="contract-header__number edit-highlighting" >{{PersonList[0]?.content}} </span></b>
+			<b><span class="contract-header__number edit-highlighting" >{{DataContract?.person.fullname.data}} </span></b>
 		</p>
 		<p class="paragraph-comment">
 			(фамилия, имя, отчество лица - представителя заявителя)
@@ -42,7 +42,7 @@
 
 	<p>
 		именуемый в дальнейшем «Заявитель», в дальнейшем именуемые <b>сторонами</b>, оформили и подписали настоящий акт о том, что в соответствии с договором о подключении (технологическом присоединении) объекта капитального строительства к сети газораспределения (далее-договор) произведено подключение (технологическое присоединение) объекта капитального строительства, расположенного по адресу:
-		<span class="edit-highlighting"><b> {{ContractInfoList[1].content}} </b></span>, к сети газораспределения, принадлежащей исполнителю <b>ООО «СибГазСтрой». Основной абонент</b>.                                                   
+		<span class="edit-highlighting"><b> {{DataContract?.contract.contractAddress.data}} </b></span>, к сети газораспределения, принадлежащей исполнителю <b>ООО «СибГазСтрой». Основной абонент</b>.                                                   
 	</p>
 
 	<table class="body-table">
@@ -62,7 +62,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				присоединение сети газораспределения в точке подключения: <span class="edit-highlighting"> {{ContractInfoList[3].content}} </span> 
+				присоединение сети газораспределения в точке подключения: <span class="edit-highlighting"> {{DataContract?.contract.pipeline.data}} </span> 
 			</td>
         </tr>
 		<tr>
@@ -76,14 +76,19 @@
             <td class="table__cell-number">
             </td>
             <td colspan="3">
-				Расположение газопровода: подземное, <u>надземное</u> (нужное подчеркнуть).
+				<!-- Расположение газопровода: <u>подземное</u>, надземное (нужное подчеркнуть). -->
+                Расположение газопровода: подземное, <u>надземное</u> (нужное подчеркнуть).
             </td>
         </tr>
         <tr>
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				Наружный диаметр <span class="edit-highlighting">25мм</span> 
+				Наружный диаметр 
+                <span class="edit-highlighting">
+                    25мм
+                    <!-- 32мм -->
+                </span> 
 			</td>
         </tr>
 		<tr>
@@ -165,7 +170,8 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				газопровод: подземный, <u>надземный</u>, (нужное подчеркнуть);
+				<!-- газопровод: <u>подземный</u>, надземный, (нужное подчеркнуть); -->
+                газопровод: подземный, <u>надземный</u>, (нужное подчеркнуть);
 			</td>
 			<td>
 				
@@ -175,14 +181,24 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				материал: <u>сталь</u>, полиэтилен и иное (нужное подчеркнуть); 
+				<!-- материал: сталь, <u>полиэтилен</u> и иное (нужное подчеркнуть);  -->
+                материал: <u>сталь</u>, полиэтилен и иное (нужное подчеркнуть); 
 			</td>
         </tr>
 		<tr>
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				диаметр <span class="edit-highlighting">20мм</span>, давление (максимальное) <span class="edit-highlighting">0,0024 МПа</span>, длина <span class="edit-highlighting"> {{ContractInfoList[8].content}} м</span>  
+				диаметр 
+                <span class="edit-highlighting">
+                    20мм
+                    <!-- 25мм -->
+                    <!-- 32мм -->
+                </span>, давление (максимальное) <span class="edit-highlighting">
+                    <!-- 0,15 МПа -->
+                    0,0024 МПа
+                    <!-- 0,004 МПа -->
+                </span>, длина <span class="edit-highlighting"> {{actData?.outwardPipeLength.data}} м</span>  
 			</td>
         </tr>
 		<tr>
@@ -288,17 +304,20 @@
     </table>
  
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		Стороны составили настоящий акт о том, что границей разграничения имущественной принадлежности сторон является: КШГ25
+		Стороны составили настоящий акт о том, что границей разграничения имущественной принадлежности сторон является: 
+        КШГ25
+        <!-- стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка -->
+        <!-- седловой отвод ПЭ63/32 -->
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline">
-			<span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+			<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
 		</p>
 	</div>	
 
 	<div class="margin-tb">
 		<p class="paragraph underline"><span class="paragraphMargin"></span>
-			Существующий газопровод: <span class="edit-highlighting">{{ContractInfoList[3].content}}</span>
+			Существующий газопровод: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
 		</p>
 		<p class="paragraph-comment">
 			(наименование сети газораспределения, адрес)
@@ -314,7 +333,7 @@
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline">
-			<span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+			<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
 		</p>
 		<p class="paragraph-comment">
 			(наименование объекта капитального строительства; адрес)
@@ -324,8 +343,11 @@
 		принадлежит заявителю.
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
-		Стороны оформили и подписали настоящий акт о том, что границей разграничения эксплуатационной ответственности сторон является: КШГ25
-		<span class="edit-highlighting">{{ContractInfoList[1].content}}</span>
+		Стороны оформили и подписали настоящий акт о том, что границей разграничения эксплуатационной ответственности сторон является:
+        КШГ25
+        <!-- стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка -->
+        <!-- седловой отвод ПЭ63/32 -->
+		<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
 	</p>
 
 	<div class="elem-print-avoid">
@@ -366,7 +388,7 @@
 					<rect x="303" y="44.6" class="st6" width="140.6" height="10.1"/>
 					<text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
 					<rect x="283" y="115.2" class="st6" width="203.3" height="73.7"/>
-					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{ContractInfoList[1].content}}</tspan></text>
+					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{DataContract?.contract.contractAddress.data}}</tspan></text>
 					<rect x="110.5" y="196.3" class="st6" width="69.6" height="10.2"/>
 					<text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
 					<rect x="13.5" y="124.3" class="st6" width="108.3" height="21.1"/>
@@ -432,7 +454,7 @@
                 </g>
                 <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
             </g>
-            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{ContractInfoList[1].content}}</text>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{DataContract?.contract.contractAddress.data}}</text>
             <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
             <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
             <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
@@ -454,10 +476,10 @@
 		Условные обозначения:
 	</p>
 	<p class="paragraph">
-		1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{ContractInfoList[3].content}}</span>
+		1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
 	</p>
 	<p class="paragraph">
-		2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{ContractInfoList[1].content}}»</span>  
+		2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}»</span>  
 	</p>
 
 	<div class="elem-print-avoid">
@@ -497,7 +519,7 @@
 					<rect x="303" y="44.6" class="st6" width="140.6" height="10.1"/>
 					<text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
 					<rect x="283" y="115.2" class="st6" width="203.3" height="73.7"/>
-					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{ContractInfoList[1].content}}</tspan></text>
+					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{DataContract?.contract.contractAddress.data}}</tspan></text>
 					<rect x="110.5" y="196.3" class="st6" width="69.6" height="10.2"/>
 					<text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
 					<rect x="13.5" y="124.3" class="st6" width="108.3" height="21.1"/>
@@ -564,7 +586,7 @@
                 </g>
                 <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
             </g>
-            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{ContractInfoList[1].content}}</text>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{DataContract?.contract.contractAddress.data}}</text>
             <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
             <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
             <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
@@ -588,10 +610,10 @@
 	Условные обозначения:
 	</p>
 	<p class="paragraph">
-	1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{ContractInfoList[3].content}}</span>
+	1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
 	</p>
 	<p class="paragraph">
-	2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{ContractInfoList[1].content}}»</span>  
+	2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}»</span>  
 	</p>
 
 	<table class="point-table table-fixed margin-top">
@@ -624,8 +646,11 @@
             </td>
             <td class="table__cell-data_align-center">
                 0,15
+                <!-- 0,004 -->
             </td>   
             <td class="table__cell-data_align-center">
+                <!-- 0,15 -->
+                <!-- 0,004 -->
                 0,0024
             </td>   
         </tr>
@@ -637,6 +662,7 @@
                 подземно
             </td>   
             <td class="table__cell-data_align-center">
+                <!-- подземно -->
                 надземно
             </td>   
         </tr>
@@ -645,9 +671,12 @@
                 Диаметр, мм
             </td>
             <td class="table__cell-data_align-center">
+                <!-- 63 -->
+                <!-- 32 -->
                 ду25
             </td>   
             <td class="table__cell-data_align-center">
+                <!-- 32 -->
                 ду20
             </td>     
         </tr>
@@ -656,9 +685,11 @@
 				Материал труб
             </td>
             <td class="table__cell-data_align-center">
+                <!-- ПЭ -->
                 Ст
             </td>   
             <td class="table__cell-data_align-center">
+                <!-- ПЭ -->
                 Ст
             </td>     
         </tr>
@@ -667,10 +698,12 @@
 				Технологическое устройство
             </td>
             <td class="table__cell-data_align-center">
+                <!-- --- -->
                 КШГ25
+                <!-- Седловой отвод -->
             </td>   
             <td class="table__cell-data_align-center">
-                ---
+                <!-- --- -->
             </td>     
         </tr>
     </table>
@@ -682,11 +715,7 @@
 		Настоящий акт имеет силу акта сдачи приемки выполненных работ (оказанных услуг).
 	</p>
 
-	<!-- <p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Подписи сторон</b>
-	</p> -->
-
-    <table class="parties-table margin-top elem-print-avoid">
+    <table class="parties-table margin-top ">
 		<caption><b>Подписи сторон</b></caption>
         <tr>
             <td>
@@ -713,29 +742,47 @@
 
 </template>
 
-<script>
+<script lang="ts">
 
 import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/func'
+import { Act } from '@/model/Act';
+import { DataContract } from '@/model/DataContract';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     props: {
+        DataContract: {
+            type: Object as PropType<DataContract>,
+        },
+        actData: {
+            type: Object as PropType<Act>,
+        },
         PersonList: {
             type: Array,
-            require: true
         },
         ContractInfoList: {
             type: Array,
-            require: true
+
         },
-        Boiler: "",
-        Counter: "",
+        Boiler: {
+            type: String,
+            default: () => {
+                ""
+            }
+        },
+        Counter: {
+            type: String,
+            default: () => {
+                ""
+            }
+        },
     },
     methods:{
         getMonthYearDate,
         getNowDate,
         getNowFullFormatDate
     }
-}
+});
 
 </script>
 

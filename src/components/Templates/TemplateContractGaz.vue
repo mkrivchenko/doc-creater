@@ -5,11 +5,10 @@
                 Российской Федерации<br>
                 от 13 сентября 2021 г. N 1547</div>
 	<div class="contract-header">
-		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{ContractInfoList[0]?.content}} </span><br>
+		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{DataContract?.contract.contractNumber.data}} </span><br>
 		о подключении (технологическом присоединении)<br>
 		газоиспользующего оборудования к сети газораспределения<br>
 		в рамках догазификации</b>
-		{{ContractTest.person.fullname.data}}
 	</div>
 	
 	<table class="table">
@@ -27,7 +26,10 @@
 			<td>
 			</td>
 			<td align="right">
-				<span class="edit-highlighting"> «{{ new Date().getDate() }}» {{ getStringMonth(new Date().getMonth(), true) }} {{ new Date().getFullYear() }} г.</span><br>
+				<span class="edit-highlighting"> 
+					<!-- «{{ new Date().getDate() }}» {{ getStringMonth(new Date().getMonth(), true) }} {{ new Date().getFullYear() }} г. -->
+					«{{ DataContract?.contract.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(DataContract?.contract.contractData.data), true) }} {{ DataContract?.contract.contractData.data.split('.')[2] }} г.
+				</span><br>
 				(дата подготовки проекта договора)
 			</td>
 		</tr>
@@ -37,12 +39,16 @@
 		<b>Общество с ограниченной ответственностью «Сибгаз-эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице  директора Осиповой Татьяны Сергеевны,  действующей   на   основании   Устава, с одной стороны, и
 	</p>
 
-	<Person 
+	<!-- <Person 
 		:PersonList="PersonList" 
-	/>
+	/> -->
 	
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Общество с ограниченной ответственностью «Газпром газификация»</b>, именуемое в дальнейшем <b>Единым Оператором газификации (ЕОГ)</b> на основании договора № ПД-05-0039/2021 от 07.10.2021 в лице Заместителя генерального директора по строительству и инвестициям ООО «Газпром газораспределение Барнаул» Волоховой Екатерины Валентиновны, действующего на основании доверенности, удостоверенной 06.05.2022 Калиновской Марией Евгеньевной, временно исполняющей обязанности нотариуса Барнаульского нотариального округа Худяковой Татьяной Петровной, зарегистрированной в реестре № 22/16-н/22-2022-1-1019
+        <span class="edit-highlighting bold ">{{ DataContract?.person.fullname.data }}</span>, серия <span class="edit-highlighting"> {{ DataContract?.person.identityCardSeries.data }} </span> номер <span class="edit-highlighting">{{ DataContract?.person.identityCardNumber.data }}</span> дата выдачи <span class="edit-highlighting">{{ DataContract?.person.identityCardDate.data }}</span>,  именуемый (-ая) в дальнейшем заявителем, с другой стороны, и
+    </p>
+
+	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+		<b>Общество с ограниченной ответственностью «Газпром газификация»</b>, именуемое в дальнейшем <b>Единым Оператором газификации (ЕОГ)</b> на основании договора № ПД-05-0003/2021 от 07.10.2021 в лице Заместителя генерального директора по строительству и инвестициям ООО «Газпром газораспределение Барнаул» Волоховой Екатерины Валентиновны, действующего на основании доверенности, удостоверенной нотариусом Барнаульского нотариального округа Худяковой Татьяной Петровной, зарегистрированной в реестре № 22/16-н/22-2022-4-746.
 	</p>
 
 	<h2 class="margin-top">
@@ -60,7 +66,7 @@
 		учетом выполнения мероприятий в рамках такого подключения (технологического присоединения)  
 		до  границ  земельных участков без взимания его средств при условии,  что  в  населенном  
 		пункте,  в котором располагается домовладение физического лица, проложены 
-		газораспределительные сети <b> «Газоснабжение жилого дома по адресу: <span class="edit-highlighting">{{ContractInfoList[1].content}}</span> »</b>,  к   
+		газораспределительные сети <b> «Газоснабжение жилого дома по адресу: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span> »</b>,  к   
 		сети   газораспределения,    принадлежащей исполнителю  на  праве  собственности или на 
 		ином законном основании, или к технологически  связанным  с  сетями  исполнителя сетям 
 		газораспределения и (или) газопотребления основного абонента (далее - сеть 
@@ -75,7 +81,7 @@
 		г. N 1547 "Об утверждении    Правил    подключения    (технологического    присоединения) 
 		газоиспользующего  оборудования  и  объектов  капитального  строительства к сетям  
 		газораспределения  и  о  признании  утратившими силу некоторых актов Правительства 
-		Российской Федерации") (далее - Правила), расположенного <b> «Газоснабжение жилого дома по адресу: <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>»</b>, а   единый  оператор  газификации  или  региональный  
+		Российской Федерации") (далее - Правила), расположенного <b> «Газоснабжение жилого дома по адресу: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>»</b>, а   единый  оператор  газификации  или  региональный  
 		оператор  газификации обеспечит  подключение (технологическое присоединение) объекта 
 		капитального строительства к сети газораспределения.
 	</p>
@@ -84,7 +90,8 @@
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		3. Срок выполнения мероприятий по подключению (технологическому присоединению) объекта капитального строительства и пуску газа составляет <span class="edit-highlighting">
-			{{ getStringMonth(getMonth(ContractInfoList[2].content)) }} {{ ContractInfoList[2].content.split('.')[2] }}
+			{{ getStringMonth(getMonth(DataContract?.contract.contractEnd.data)) }} 
+			{{ DataContract?.contract.contractEnd.data.split('.')[2] }}
 		</span>.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
@@ -360,6 +367,7 @@
 		36. Любые изменения, вносимые в настоящий договор, заключенный в электронной форме, действительны лишь при условии подписания усиленной квалифицированной подписью (в отношении юридических лиц или индивидуальных предпринимателей), простой электронной подписью или усиленной неквалифицированной электронной подписью (в отношении физических лиц). При этом оформление договора дополнительно на бумажном носителе не требуется.           
 	</p>
 	<table-details-parties
+		:DataContract="DataContract"
 		:PersonList="PersonList"
 		:ContractInfoList="ContractInfoList"
 		:Quantity="3">
@@ -367,19 +375,20 @@
     
 </template>
 
-<script>
+<script lang="ts">
 import Person from '@/components/Person.vue';
 import TableDetailsParties from '@/components/TableDetailsParties.vue';
-import { ContractGaz } from '@/model/ContractGaz';
+import { DataContract } from '@/model/DataContract';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     components: { 
 		Person, 
 		TableDetailsParties
 	},
     props: {
-		ContractTest: {
-			type: ContractGaz
+		DataContract: {
+			type: Object as PropType<DataContract>,
 		},
         PersonList: {
             type: Array,
@@ -430,9 +439,15 @@ export default {
             }
         },
         getMonth(str) {
-         let monthNumber = str.split('.')[1];
-         return monthNumber - 1;
+			let monthNumber
+			try {
+        		monthNumber = str.split('.')[1];
+				return monthNumber - 1;
+			}
+			catch(e) {
+				console.log('Не удалось применить .split TemplateContractGaz.vue')
+			}
         }
     }
-}
+});
 </script>

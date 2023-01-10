@@ -1,7 +1,7 @@
 <template>
 	<div class="break"></div>
 	<div class="contract-header">
-		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{ContractInfoList[0]?.content}} </span><br>
+		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{DataContract?.contract.contractNumber.data}}</span><br>
 			о подключении (технологическом присоединении) объектов<br>
 			капитального строительства к сети газораспределения
 		</b>
@@ -15,14 +15,17 @@
 			<td align="right">
 				<span class="edit-highlighting">
 					<!-- TODO: Сделать нормально дату -->
-					«9» ноября 2022 г.</span><br>
+					«{{ DataContract?.contract.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(DataContract?.contract.contractData.data), true) }} {{ DataContract?.contract.contractData.data.split('.')[2] }} г.
+					<!-- «18» ноября 2022 г.</span> -->
+					<br>
 					<!-- «{{ new Date().getDate() }}» {{ getStringMonth(new Date().getMonth(), true) }} {{ new Date().getFullYear() }} г.</span><br> -->
+				</span>
 			</td>
 		</tr>
 	</table>
 	
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Общество с ограниченной ответственностью «Сибгаз-эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице  директора <b>Осиповой Татьяны Сергеевны</b>,  действующей   на   основании   Устава,  с одной стороны, и <span class="contract-header__number edit-highlighting" >{{PersonList[0]?.content}} </span>, именуемый в дальнейшем «Заявителем» с  другой  стороны, заключили настоящий договор о нижеследующем:
+		<b>Общество с ограниченной ответственностью «Сибгаз-эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице  директора <b>Осиповой Татьяны Сергеевны</b>,  действующей   на   основании   Устава,  с одной стороны, и <span class="contract-header__number edit-highlighting" >{{DataContract?.person.fullname.data}} </span>, именуемый в дальнейшем «Заявителем» с  другой  стороны, заключили настоящий договор о нижеследующем:
 	</p>
 
 	<h2 class="margin-top">
@@ -31,7 +34,7 @@
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		1.&ensp;По  настоящему договору исполнитель принимает на себя обязательства по   подключению   (технологическому  присоединению)  объекта  капитального строительства: <b>жилой дом</b> к  сети   газораспределения, принадлежащей   исполнителю   на  праве  собственности  или  ином  законном основании,   с   учетом   максимальной  нагрузки  (часовым  расходом  газа) газоиспользующего оборудования. 
-		<br><span class="paragraphMargin"></span>Заявитель  принимает  на  себя  обязательства по обеспечению готовности объекта   капитального   строительства   к   подключению  (технологическому присоединению) в пределах границ  принадлежащего  ему  земельного  участка: <span class="edit-highlighting">{{ContractInfoList[1].content}}</span>.
+		<br><span class="paragraphMargin"></span>Заявитель  принимает  на  себя  обязательства по обеспечению готовности объекта   капитального   строительства   к   подключению  (технологическому присоединению) в пределах границ  принадлежащего  ему  земельного  участка: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		2.&ensp;Подключение осуществляется в соответствии с техническими условиями на подключение (технологическое присоединение) объектов капитального строительства к сетям газораспределения по форме согласно приложению № 1 (далее - технические условия), являющимися неотъемлемой частью настоящего договора.
@@ -216,6 +219,7 @@
 	</p>
 	
 	<table-details-parties
+		:DataContract="DataContract"
 		:PersonList="PersonList"
 		:ContractInfoList="ContractInfoList"
 		:Quantity="2">
@@ -224,10 +228,10 @@
 	<div class="page-break-left"></div>
 	
 	<div class="mark">
-		Приложение №6 к договору <span class="edit-highlighting">№ {{ContractInfoList[0].content}} </span>
+		Приложение №6 к договору <span class="edit-highlighting">№ {{DataContract?.contract.contractNumber.data}} </span>
 		от <span class="edit-highlighting">
 			<!--TODO: сделать нормально дату  -->
-			{{ContractInfoList[6].content}}
+			{{DataContract?.contract.contractData.data}}
 			<!-- {{getNowDate()}} г. -->
 		</span>
         <br>о подключении (технологическом присоединении) объекта
@@ -334,26 +338,31 @@
 			<td>
 				Заявитель:<br>
 				<span class="g-white-block"></span>
-				_______________(<span class="edit-highlighting">{{ createString(PersonList[0].content) }}</span>)<br>
+				_______________(<span class="edit-highlighting">{{ createString(DataContract?.person.fullname.data) }}</span>)<br>
 			</td>
 		</tr>
 	</table>
 
 </template>
 
-<script>
+<script lang="ts">
 import Person from '@/components/Person.vue';
 import TableDetailsParties from '@/components/TableDetailsParties.vue';
 
 import { createString, getNowDate } from '@/func'
+import { DataContract } from '@/model/DataContract';
+import { defineComponent, PropType } from 'vue';
 
 
-export default {
+export default defineComponent({
     components: { 
 		Person, 
 		TableDetailsParties
 	},
     props: {
+		DataContract: {
+			type: Object as PropType<DataContract>
+		},
         PersonList: {
             type: Array,
             require: true
@@ -409,7 +418,7 @@ export default {
 		createString,
 		getNowDate
     }
-}
+});
 </script>
 
 <style scoped lang="less">

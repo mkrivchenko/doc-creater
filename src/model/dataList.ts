@@ -1,5 +1,5 @@
-class DataList implements IDataList {
-	Pipeline: string = '';
+export class DataList implements IDataList {
+	pipeline: string = '';
 	contractAddress: string = '';
 	contractEnd: string = '';
 	contractNumber: string = '';
@@ -19,8 +19,4 @@ class DataList implements IDataList {
 			this[param[0]] = param[1];
 		}
 	}
-}
-
-export {
-	DataList
 }
