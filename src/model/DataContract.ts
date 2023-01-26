@@ -25,7 +25,8 @@ export class DataContract implements IDataContract {
 		this.contract.contractAddress.data = searchData.contractAddress;
 		this.contract.pipeline.data = searchData.pipeline;
 		this.contract.contractNumber.data = searchData.contractNumber; 
-		this.contract.contractEnd.data = searchData.contractEnd;
+		//this.contract.contractEnd.data = searchData.contractEnd;
+		this.contract.contractData.data = searchData.contractData;
 		
 	}
 }

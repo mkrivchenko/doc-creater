@@ -47,6 +47,7 @@
                 <option value="Navien 16кВт">Navien 16кВт</option>
                 <option value="Navien 24кВт">Navien 24кВт</option>
                 <option value="Immergas 24кВт">Immergas 24кВт</option>
+                <option value="Лемакс 12,5кВт">Лемакс 12,5кВт</option>
                 <option value="Лемакс 15,5кВт">Лемакс 15,5кВт</option>
                 
             </select>
@@ -59,6 +60,7 @@
                 <option value="Гранд 6ТК">Гранд 6ТК</option>
                 <option value="Бетар СГБМ-4">Бетар СГБМ-4</option>
                 <option value="Скайметр СГВ-VM-G4">Скайметр СГВ-VM-G4</option>
+                <option value="Газдевайс NPM G4">Газдевайс NPM G4</option>
             </select>
             
             <ButtonApp @click.prevent="getContractsAsync">
@@ -71,17 +73,19 @@
             <ButtonApp @click.prevent="toPrint">
                 Печать
             </ButtonApp>
-
-            <select multiple class="select"
-                @click="selectItem"> 
-                <option 
-                    v-for="item in ContractsList" 
-                    :value="item.id"
-                    >
-                    {{item.title}}
-                </option>
-            </select>
-
+            
+            <div>
+                <select multiple class="select"
+                    @click="selectItem"> 
+                    <option 
+                        v-for="item in ContractsList" 
+                        :value="item.id"
+                        >
+                        {{item.title}}
+                    </option>
+                </select>
+            </div>
+           
         </form>   
     </aside>
 </template>
@@ -187,6 +191,9 @@ export default defineComponent({
     background-color: @main-blue-color;
     color: @light-default-color;
 
+    
+   
+
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -194,11 +201,32 @@ export default defineComponent({
 }
 
 .fixed {
+    bottom: 0;
+    position: fixed;
+    overflow-y: auto;
+    height: 90%;
+    
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin: 10px;
+    margin: 10px 0 10px 10px;
+    padding-right: 10px;
     
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: @second-blue-color; 
+        border: 1px solid @second-blue-color;    
+        border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: @second-blue-color;    /* цвет бегунка */
+        border-radius: 20px;       /* округлось бегунка */
+        border: 3px solid @main-yellow-color;  /* отступ вокруг бегунка */
+    }
 }
 
 h3 {
@@ -208,6 +236,7 @@ h3 {
 
 .select {
     width: 100%;
+    height: 100%;
 }
 
 </style>

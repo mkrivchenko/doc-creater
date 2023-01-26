@@ -3,6 +3,7 @@ export class DataList implements IDataList {
 	contractAddress: string = '';
 	contractEnd: string = '';
 	contractNumber: string = '';
+	contractData: string = '';
 	fullname: string = '';
 	id: number = 0;
 	identityAddress: string = '';

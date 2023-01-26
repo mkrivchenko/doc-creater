@@ -590,7 +590,7 @@
             <td class="table__cell-number">
             </td>
             <td class="underline table__cell-data_align-center"  colspan="3">
-                -
+                ООО «СибГазСтрой»
             </td>
         </tr>
         <tr>

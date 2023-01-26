@@ -78,10 +78,6 @@ export default {
 		width: 20px;
 		height: 20px;
 	}
-	
-	&__item > label {
-		font-size: 18px;
-	}
 }
 
 @media print {

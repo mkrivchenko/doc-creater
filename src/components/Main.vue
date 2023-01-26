@@ -16,20 +16,24 @@
             @select-boiler="selectBoiler"
             @select-counter="selectCounter"
         />
-        <aside>
-        </aside>
-        <A4 
-            :DataContract="DataContract"
-            :actData="actData"
+       
+        <section class="leyout__view-field">
+            <aside>
+            </aside>
+            <A4 
+                :DataContract="DataContract"
+                :actData="actData"
 
-            :PersonList="PersonList" 
-            :ContractInfoList="ContractInfoList"
-            :DocumentVariant="Variant"  
-            :Boiler="Boiler"
-            :Counter="Counter"
-        />
-        <aside>
-        </aside>
+                :PersonList="PersonList" 
+                :ContractInfoList="ContractInfoList"
+                :DocumentVariant="Variant"  
+                :Boiler="Boiler"
+                :Counter="Counter"
+            />
+            <aside>
+            </aside>    
+        </section>
+        
     </main>
 </template>
 
@@ -45,7 +49,12 @@ import { DataContract } from '@/model/DataContract';
 import { Act } from '@/model/Act';
 
 export default defineComponent ({
-    components: { SettingFields, Person, A4, NavMenu },  
+    components: { 
+        SettingFields, 
+        Person, 
+        A4, 
+        NavMenu 
+    },  
     data() {
         return {
             DataContract: new DataContract(),
@@ -89,7 +98,7 @@ export default defineComponent ({
         }
     },
     methods: {
-        selectItem(item) {
+        selectItem(item: number) {
             item -= 1;
             const countMetadataItems = 2;
             const countContractItems = 4;
@@ -147,7 +156,6 @@ export default defineComponent ({
 		if (searchData != '') {
 			const contract = new DataContract();
 			contract.setFromQuery(searchData);
-			// const data = new DataList(searchData);
 
             for (let key in contract) {
                 console.log(key);
@@ -155,9 +163,6 @@ export default defineComponent ({
             }
 
             this.DataContract = contract;
-            // this.ContractTest = contract
-			// this.getContracts(new Array(contract));
-			// this.selectItem(1);
 		}
 
     }
@@ -168,9 +173,94 @@ export default defineComponent ({
 
 <style>
 
+.leyout__view-field {
+    display: grid;
+    grid-template-columns: 5% auto 5%;
+}
+
 .g-white-block {
     display: block;
     height: 12pt;
+}
+
+body {
+    margin: 0;
+    /* padding: 10mm 10mm 10mm 20mm;    */
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 350px auto;
+}
+
+aside {
+    /* min-width: 5%; */
+}
+
+
+.A4 {
+    font-family: 'Times New Roman', Times, serif;
+    background: white;
+    width: 21cm;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 25px;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    box-sizing: border-box;
+    font-size: 10pt;
+    overflow-y: hidden;
+    padding: 10mm 10mm 10mm 20mm;
+}
+
+A4 .white-text {
+    color: #fff;
+}
+
+.mark {
+    font-size: 9pt;
+    text-align: right;
+}
+
+.contract-header {
+    padding: 24pt 24pt 24pt 18pt;
+    text-align: center;
+}
+
+.table {
+    display: table;
+    border-spacing: 0pt 10pt;
+    width: 100%;
+    row-gap: 10pt;
+}
+
+.paragraph {
+    font-size: inherit;
+    text-align: justify;
+}
+
+.margin-top {
+    margin-top: 16pt;
+}
+
+p.margin-top:first-of-type {
+    margin-top: 10pt;
+}
+
+.paragraphMargin {
+    margin-left: 1.4cm;
 }
 
 </style>

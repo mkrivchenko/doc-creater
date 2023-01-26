@@ -703,7 +703,7 @@
                 <!-- Седловой отвод -->
             </td>   
             <td class="table__cell-data_align-center">
-                <!-- --- -->
+                ---
             </td>     
         </tr>
     </table>
