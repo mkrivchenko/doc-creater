@@ -1,4 +1,4 @@
-import { DataList } from './DataList'
+import { DataList } from './dataList'
 import { Contract } from './Contract';
 import { Person } from './Person';
 

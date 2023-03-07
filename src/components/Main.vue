@@ -204,10 +204,6 @@ p {
     grid-template-columns: 350px auto;
 }
 
-aside {
-    /* min-width: 5%; */
-}
-
 
 .A4 {
     font-family: 'Times New Roman', Times, serif;

@@ -1,7 +1,10 @@
 <template>
     <aside class="settings">
         <form class="fixed">
-            
+            <ButtonApp @click.prevent="toPrint">
+                Печать
+            </ButtonApp>
+
             <h3>данные клиента</h3>
             
             <Input 
@@ -68,10 +71,6 @@
             </ButtonApp>
             <ButtonApp @click.prevent="getGRPContractsAsync">
                 Загрузить ГРП 6
-            </ButtonApp>
-
-            <ButtonApp @click.prevent="toPrint">
-                Печать
             </ButtonApp>
             
             <div>
@@ -146,9 +145,9 @@ export default defineComponent({
             this.$emit('getContracts', this.ContractsOut) 
         },
         toPrint() {
-            const contractNum = this.DataContract.contract.contractNumber;
-            console.log(contractNum);
-            document.title = contractNum; 
+            const contractNum = this.DataContract.contract.contractNumber.data;
+            // console.log(contractNum);
+            document.title = contractNum.replace('/','-').replace('-АК',''); 
             // .slice(0, contractNum.indexOf('/'));
             window.print();
             document.title = 'document';
