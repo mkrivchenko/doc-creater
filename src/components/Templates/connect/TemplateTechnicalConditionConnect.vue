@@ -371,8 +371,8 @@
 
 <script lang="ts">
 
-import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/func'
-import { DataContract } from '@/model/DataContract';
+import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/common/func'
+import { DataContract } from '@/model/dataContract';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({

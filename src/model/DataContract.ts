@@ -1,6 +1,6 @@
 import { DataList } from './dataList'
-import { Contract } from './Contract';
-import { Person } from './Person';
+import { Contract } from './contract.model';
+import { Person } from './person.model';
 
 export class DataContract implements IDataContract {
 	person: Person;

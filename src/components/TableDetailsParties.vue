@@ -127,7 +127,7 @@
 </template>
 
 <script>
-import { DataContract } from '@/model/DataContract';
+import { DataContract } from '@/model/dataContract';
 
 
 

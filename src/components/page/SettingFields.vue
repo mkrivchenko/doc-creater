@@ -8,14 +8,14 @@
             <h3>данные клиента</h3>
             
             <Input 
-                v-for="item in DataContract.person"
+                v-for="item in dataContract?.person"
                 :item="item"
             />
             
             <h3>данные договора</h3>
 
             <Input 
-                v-for="item in DataContract.contract"
+                v-for="item in dataContract?.contract"
                 :item="item"
             />
 
@@ -25,17 +25,8 @@
                 v-for="item in actData"
                 :item="item"
             />
-            <!-- <Input 
-                v-for="item in PersonList"
-                :item="item"
-            /> -->
 
             <h3>Оборудование</h3>
-
-            <!-- <Input 
-                v-for="item in ContractInfoList"
-                :item="item"    
-            /> -->
 
             <select name="" @change="selectBoiler">
                 <option value=""></option>
@@ -65,36 +56,17 @@
                 <option value="Скайметр СГВ-VM-G4">Скайметр СГВ-VM-G4</option>
                 <option value="Газдевайс NPM G4">Газдевайс NPM G4</option>
             </select>
-            
-            <ButtonApp @click.prevent="getContractsAsync">
-                Загрузить список
-            </ButtonApp>
-            <ButtonApp @click.prevent="getGRPContractsAsync">
-                Загрузить ГРП 6
-            </ButtonApp>
-            
-            <div>
-                <select multiple class="select"
-                    @click="selectItem"> 
-                    <option 
-                        v-for="item in ContractsList" 
-                        :value="item.id"
-                        >
-                        {{item.title}}
-                    </option>
-                </select>
-            </div>
            
         </form>   
     </aside>
 </template>
 
-<script>
+<script lang="ts">
 
-import { Act } from '@/model/Act';
-import { DataContract } from '@/model/DataContract';
+import { Act } from '@/model/act.model';
+import { DataContract } from '@/model/dataContract';
 import { defineComponent } from 'vue';
-import Input from './Input.vue';
+import Input from '../Input.vue';
 
 export default defineComponent({
     components: { Input },
@@ -103,52 +75,38 @@ export default defineComponent({
             type: Act,
             require: true
         },
-        DataContract: {
+        dataContract: {
             type: DataContract
         },
-        PersonList: {
-            type: Array
-        },
-        ContractInfoList: {
-            type: Array
-        },
-        ContractsList: {
-            type: Array
-        } 
     },
-    emits: ['myEvent', 'getContracts', 'selectBoiler', 'inputValue'],
+    emits: ['getContracts', 'selectBoiler', 'selectCounter', 'inputValue',],
     methods: {
-        selectItem(event) {
-            this.Contract = event.target.value;
-            this.$emit('myEvent', this.Contract);
-            
-        },
-        async getContractsAsync(event) {
-            let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/pregasification");
-            let json;
-            this.ContractsOut = new Array();
-            if (response.ok) {
-                json = await response.json();
-                this.ContractsOut = json.PreGasificationContracts
-                console.log(this.ContractsOut);
-            }
-            this.$emit('getContracts', this.ContractsOut) 
-        },
-        async getGRPContractsAsync(event) {
-            let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/grp/6");
-            let json;
-            this.ContractsOut = new Array();
-            if (response.ok) {
-                json = await response.json();
-                this.ContractsOut = json.Contracts;
-            }
-            this.$emit('getContracts', this.ContractsOut) 
-        },
+     
+        // async getContractsAsync(event) {
+        //     let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/pregasification");
+        //     let json;
+        //     this.ContractsOut = new Array();
+        //     if (response.ok) {
+        //         json = await response.json();
+        //         this.ContractsOut = json.PreGasificationContracts
+        //         console.log(this.ContractsOut);
+        //     }
+        //     this.$emit('getContracts', this.ContractsOut) 
+        // },
+        // async getGRPContractsAsync(event) {
+        //     let response = await fetch("http://192.168.1.150:888/prod/hs/bot-api/grp/6");
+        //     let json;
+        //     this.ContractsOut = new Array();
+        //     if (response.ok) {
+        //         json = await response.json();
+        //         this.ContractsOut = json.Contracts;
+        //     }
+        //     this.$emit('getContracts', this.ContractsOut) 
+        // },
         toPrint() {
-            const contractNum = this.DataContract.contract.contractNumber.data;
-            // console.log(contractNum);
-            document.title = contractNum.replace('/','-').replace('-АК',''); 
-            // .slice(0, contractNum.indexOf('/'));
+            const contractNum = this.dataContract?.contract.contractNumber.data;
+            if (contractNum)
+                document.title = contractNum.replace('/','-').replace('-АК',''); 
             window.print();
             document.title = 'document';
         },
@@ -164,10 +122,7 @@ export default defineComponent({
     },
     data() {
         return {
-            Contract: '',
-            ContractsOut: {
-                type: Array
-            }
+            contract: '',
         }
     },
 });

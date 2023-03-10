@@ -1,18 +1,13 @@
 <template>
     <NavMenu 
-        :DocumentVariant="Variant"
+        :documentVariant="variant"
         @get-variant="getVariant"
     />
     <main class="main">
         <SettingFields 
-            :DataContract="DataContract"
+            :dataContract="dataContract"
             :actData="actData"
 
-            :PersonList="PersonList" 
-            :ContractInfoList="ContractInfoList" 
-            :ContractsList="ContractsList"
-            @my-event="selectItem"
-            @get-contracts="getContracts"
             @select-boiler="selectBoiler"
             @select-counter="selectCounter"
         />
@@ -21,14 +16,12 @@
             <aside>
             </aside>
             <A4 
-                :DataContract="DataContract"
+                :dataContract="dataContract"
                 :actData="actData"
 
-                :PersonList="PersonList" 
-                :ContractInfoList="ContractInfoList"
-                :DocumentVariant="Variant"  
-                :Boiler="Boiler"
-                :Counter="Counter"
+                :documentVariant="variant"  
+                :boiler="boiler"
+                :counter="counter"
             />
             <aside>
             </aside>    
@@ -39,115 +32,79 @@
 
 
 <script lang="ts">
-import SettingFields from '@/components/SettingFields.vue';
-import Person from './Person.vue';
-import A4 from './A4.vue';
-import NavMenu from './NavMenu.vue';
+
+import A4 from '@/components/page/A4.vue';
+import NavMenu from '@/components/page/NavMenu.vue';
+import SettingFields from '@/components/page/SettingFields.vue';
 
 import { defineComponent } from 'vue';
-import { DataContract } from '@/model/DataContract';
-import { Act } from '@/model/Act';
+import { DataContract } from '@/model/dataContract';
+import { Act } from '@/model/act.model';
 
 export default defineComponent ({
     components: { 
         SettingFields, 
-        Person, 
         A4, 
         NavMenu 
     },  
     data() {
         return {
-            DataContract: new DataContract(),
+            dataContract: new DataContract(),
             actData: new Act(),
-            PersonList: [
-                {id: '1', title: 'ФИО', data: 'Иванов Иван Иванович'},
-                {id: '2', title: 'Серия паспорта', data: '0101'},
-                {id: '3', title: 'Номер паспорта', data: '100234'},
-                {id: '4', title: 'Дата выдачи', data: '21.01.2021'},
-                {id: '5', title: 'Орган выдачи', data: 'МВД'},
-                {id: '6', title: 'Телефон', data: '79949944949'},
-                {id: '7', title: 'Адрес проживания', data: 'Смоленское'}
-            ],
-            ContractInfoList: [
-                {id: '0', title: 'Номер договора', data: '03/21-КЮ'},
-                {id: '1', title: 'Адрес', data: 'Населенный пункт, Улица, Дом'},
-                {id: '2', title: 'Дата окончания', data: '31.12.2022'},
-                {id: '3', title: 'ГРП', data: '«Газоснабжение жилых домов в границах ул. Советская, Сосновая в с. Павловск Павловского района Алтайского края»'},
-                {id: '4', title: 'Шифр', data: 'П-21.10.21/1'},
-                {id: '5', title: 'Организация проекта', data: 'ООО «Архилайн»'},
-                {id: '6', title: 'Дата договора', data: '09.11.2022'},
-                {id: '7', title: 'Номер ТУ', data: '0'},
-                {id: '8', title: 'Длина', data: '0'},
-                {id: '9', title: 'Длина2', data: '0'},                    
-            ],
-            ContractsList: [
-                {id: '0', title: 'Нажми на кнопку', 
-                    name: 'Петров Петр Петрович', passportSerial: '0222', passportNumber: '222222', 
-                    contractNumber: '2222'},
-                {id: '1', title: ' "Создать" ', 
-                    name: 'Санов Сан Саныч', passportSerial: '0333', passportNumber: '333333',
-                    contractNumber: '3333'},
-                {id: '2', title: 'чтобы загрузить список договоров', 
-                    name: 'Валеров Валера Валерич', passportSerial: '04444', passportNumber: '444444',
-                    contractNumber: '4444'}
-            ],
-            Boiler: '',
-            Counter: '',
-            CountList: [],
-            Variant: 'gaz',
+           
+            boiler: '',
+            counter: '',
+            countList: [],
+            variant: 'gaz',
         }
     },
     methods: {
-        selectItem(item: number) {
-            item -= 1;
-            const countMetadataItems = 2;
-            const countContractItems = 4;
-            let dataArray = new Array();
+        // selectItem(item: number) {
+        //     item -= 1;
+        //     const countMetadataItems = 2;
+        //     const countContractItems = 4;
+        //     let dataArray = new Array();
 
 
-            for (let key in this.ContractsList[item]) {
-                dataArray.push(this.ContractsList[item][key]);
-            }
+        //     for (let key in this.ContractsList[item]) {
+        //         dataArray.push(this.ContractsList[item][key]);
+        //     }
 
-            dataArray.splice(0, countMetadataItems);
+        //     dataArray.splice(0, countMetadataItems);
 
-            let i = 0;
-            while (i < dataArray.length - countContractItems) {
-                this.PersonList[i].data = dataArray[i];
-                i++;
-            } 
+        //     let i = 0;
+        //     while (i < dataArray.length - countContractItems) {
+        //         this.PersonList[i].data = dataArray[i];
+        //         i++;
+        //     } 
 
-            let j = 0;
-            while (i < dataArray.length) {
-                this.ContractInfoList[j].data = dataArray[i]; 
-                i++;
-                j++;
-            } 
+        //     let j = 0;
+        //     while (i < dataArray.length) {
+        //         this.ContractInfoList[j].data = dataArray[i]; 
+        //         i++;
+        //         j++;
+        //     } 
 
-            console.log(item);
-        },
-        getContracts(array) {
-            this.ContractsList = new Array;
+        //     console.log(item);
+        // },
+        // getContracts(array) {
+        //     this.ContractsList = new Array;
 
-            array.forEach(elem => {
-               this.ContractsList.push(elem);   
-            });
+        //     array.forEach(elem => {
+        //        this.ContractsList.push(elem);   
+        //     });
             
+        // },
+        getVariant(variant: string) {
+            this.variant = variant;
+            console.log(this.variant); 
         },
-        getVariant(variant) {
-            this.Variant = variant;
-            console.log(this.Variant); 
+        selectBoiler(boiler: string) {
+            this.boiler = boiler;
         },
-        selectBoiler(boiler) {
-            this.Boiler = boiler;
+        selectCounter(counter: string) {
+            this.counter = counter;
         },
-        selectCounter(counter) {
-            this.Counter = counter;
-        },
-        fillFromQuery(data: DataContract) {
-
-        },
-
     },
 	mounted() {
 
@@ -162,7 +119,7 @@ export default defineComponent ({
                 console.log(contract[key]);  
             }
 
-            this.DataContract = contract;
+            this.dataContract = contract;
 		}
 
     }

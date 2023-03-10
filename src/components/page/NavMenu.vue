@@ -21,23 +21,25 @@
 	</nav>		
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-export default {
+
+export default defineComponent({
 	name: 'NavMenu',
 	methods: {
 		getVariant(e) {
 			console.log(e);
-			this.$emit('getVariant', this.DocumentVariant = e.target.value)
-			console.log(this.DocumentVariant)
+			this.$emit('getVariant', this.documentVariant = e.target.value)
+			console.log(this.documentVariant)
 		}
 	},
 	data() {
 		return {
-			DocumentVariant: '',
+			documentVariant: '',
 		}
 	}
-}
+});
 
 </script>
 

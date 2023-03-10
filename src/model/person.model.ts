@@ -1,4 +1,4 @@
-import { TitleData } from './TitleData';
+import { TitleData } from './titleData';
 
 export class Person implements IPerson{
 	fullname: TitleData;

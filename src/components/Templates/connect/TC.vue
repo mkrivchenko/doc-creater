@@ -627,7 +627,7 @@
 
 <script>
 
-import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/func'
+import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/common/funcon/func'
 
 export default {
     props: {

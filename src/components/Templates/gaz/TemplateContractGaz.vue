@@ -376,14 +376,12 @@
 </template>
 
 <script lang="ts">
-import Person from '@/components/Person.vue';
 import TableDetailsParties from '@/components/TableDetailsParties.vue';
-import { DataContract } from '@/model/DataContract';
+import { DataContract } from '@/model/dataContract';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: { 
-		Person, 
 		TableDetailsParties
 	},
     props: {
