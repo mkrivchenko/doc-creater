@@ -5,7 +5,8 @@
                 Российской Федерации<br>
                 от 13 сентября 2021 г. N 1547</div>
 	<div class="contract-header">
-		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{DataContract?.contract.contractNumber.data}} </span><br>
+		<!-- <b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{DataContract?.contract.contractNumber.data}} </span><br> -->
+		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{contractStore.contractNumber.data}} </span><br>
 		о подключении (технологическом присоединении)<br>
 		газоиспользующего оборудования к сети газораспределения<br>
 		в рамках догазификации</b>
@@ -44,7 +45,7 @@
 	/> -->
 	
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-        <span class="edit-highlighting bold ">{{ DataContract?.person.fullname.data }}</span>, серия <span class="edit-highlighting"> {{ DataContract?.person.identityCardSeries.data }} </span> номер <span class="edit-highlighting">{{ DataContract?.person.identityCardNumber.data }}</span> дата выдачи <span class="edit-highlighting">{{ DataContract?.person.identityCardDate.data }}</span>,  именуемый (-ая) в дальнейшем заявителем, с другой стороны, и
+        <span class="edit-highlighting bold ">{{ personStore.fullname.data }}</span>, серия <span class="edit-highlighting"> {{ DataContract?.person.identityCardSeries.data }} </span> номер <span class="edit-highlighting">{{ DataContract?.person.identityCardNumber.data }}</span> дата выдачи <span class="edit-highlighting">{{ DataContract?.person.identityCardDate.data }}</span>,  именуемый (-ая) в дальнейшем заявителем, с другой стороны, и
     </p>
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
@@ -378,11 +379,17 @@
 <script lang="ts">
 import TableDetailsParties from '@/components/TableDetailsParties.vue';
 import { DataContract } from '@/model/dataContract';
+import { useContractStore } from '@/stores/contract.store';
+import { usePersonStore } from '@/stores/person.store';
+import { mapStores } from 'pinia';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: { 
 		TableDetailsParties
+	},
+	computed: {
+		...mapStores(useContractStore, usePersonStore),
 	},
     props: {
 		DataContract: {

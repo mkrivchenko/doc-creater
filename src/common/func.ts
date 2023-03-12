@@ -1,3 +1,6 @@
+import { DataList } from '@/model/dataList';
+import { Store } from 'pinia';
+
 function getStringMonth(index = 0, bool = false) {
     let arrayMonthCase = [
         'января',
@@ -71,6 +74,15 @@ function createString(str) {
     return newStr;
 }
 
+function assignKeyValue(store: Store, key: string, assigneList: DataList): void {
+    try {
+        store.$state[key].data = assigneList[key];
+    }
+    catch(e) {
+        // игнорируем исключение
+    }
+}
+
 export {
     getMonthYearDate, 
     getNowDate, 
@@ -78,4 +90,6 @@ export {
     createString,
     getStringMonth,
     getMonth,
+    assignKeyValue
 }
+

@@ -1,53 +1,57 @@
 <template>
     <div class="work-place">
-        <div class="A4" v-if="documentVariant === 'gaz'">
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.contractGaz">
             <TemplateContractGaz 
-                :DataContract="dataContract">
-            </TemplateContractGaz>
+                :DataContract="dataContract"
+            />
         </div>
 
-        <div class="A4" v-if="documentVariant === 'gaz'" >
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.contractGaz">
             <TemplateTechnicalConditionGaz 
-                :DataContract="dataContract">
-            </TemplateTechnicalConditionGaz>
+                :DataContract="dataContract"
+            />
         </div>
 
-        <div class="A4" v-if="documentVariant === 'additional'" >
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.additional">
             <TemplateAdditionalGaz 
-                :DataContract="dataContract">
-            </TemplateAdditionalGaz>
+                :DataContract="dataContract"
+            />
         </div>
 
-        <div class="A4" v-if="documentVariant === 'connect'">
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.contractConnect">
             <TemplateContractConnect 
-                :DataContract="dataContract">
-            </TemplateContractConnect>
+                :DataContract="dataContract"
+            />
         </div>
         
-        <div class="A4 page-break-left" v-if="documentVariant === 'connect'" >
+        <div class="A4 page-break-left" v-if="globalStore.documentVariant === DocumentVariant.contractConnect">
             <TemplateTechnicalConditionConnect 
-                :DataContract="dataContract">
-            </TemplateTechnicalConditionConnect>
+                :DataContract="dataContract"
+            />
         </div>
 
-        <div class="A4" v-if="documentVariant === 'act'">
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.act">
             <TemplateActReadiness
                 :DataContract="dataContract"
                 :actData="actData"
 
                 :Boiler="boiler"
-                :Counter="counter">
-            </TemplateActReadiness>
+                :Counter="counter"
+            />
         </div>
 		
-        <div class="A4" v-if="documentVariant === 'act'">
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.act">
             <TemplateActConnect
                 :DataContract="dataContract"
                 :actData="actData"
 
                 :Boiler="boiler"
-                :Counter="counter">
-            </TemplateActConnect>
+                :Counter="counter"
+            />
+        </div>
+
+        <div class="A4" v-if="globalStore.documentVariant === DocumentVariant.claim">
+            <TemplateClaim/>
         </div>
         
         <div class="page-break"></div>
@@ -62,32 +66,35 @@ import TemplateTechnicalConditionConnect from '../Templates/connect/TemplateTech
 import TemplateActReadiness from '../Templates/acts/TemplateActReadiness.vue';
 import TemplateActConnect from '../Templates/acts/TemplateActConnect.vue';
 import TemplateAdditionalGaz from '../Templates/gaz/TemplateAdditionalGaz.vue';
+import TemplateClaim from '../Templates/claims/TemplateClaim.vue';
 
 import { defineComponent, PropType } from 'vue';
 
 import { DataContract } from '@/model/dataContract';
 import { Act } from '@/model/act.model';
+import { mapStores } from 'pinia';
+import { useGlobalStore, DocumentVariant } from '@/stores/global.store';
 
 export default defineComponent({
     components: {
-    TemplateTechnicalConditionGaz,
-    TemplateContractGaz,
-    TemplateContractConnect,
-    TemplateTechnicalConditionConnect,
-    TemplateActReadiness,
-    TemplateActConnect,
-    TemplateAdditionalGaz,
-},
+        TemplateTechnicalConditionGaz,
+        TemplateContractGaz,
+        TemplateContractConnect,
+        TemplateTechnicalConditionConnect,
+        TemplateActReadiness,
+        TemplateActConnect,
+        TemplateAdditionalGaz,
+        TemplateClaim,
+    },
+    computed: {
+        ...mapStores(useGlobalStore),
+    },
     props: {
         dataContract: {
             type: Object as PropType<DataContract>
         },
         actData: {
             type: Object as PropType<Act>
-        },
-        documentVariant: {
-            type: String,
-            // require: true,
         },
         boiler: {
             type: String,
@@ -102,6 +109,11 @@ export default defineComponent({
             }
         },
     },
+    data () {
+        return {
+            DocumentVariant: DocumentVariant
+        }
+    }
 });
 </script>
 
@@ -112,7 +124,7 @@ export default defineComponent({
 }
 
 .work-place {
-    padding: 40px 0px;
+    padding: 80px 0px;
 }
 
 @media print {
