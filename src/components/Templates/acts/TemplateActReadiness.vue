@@ -118,7 +118,8 @@
             2.
             </td>
             <td class="table__cell-data_align-center">
-                {{Counter}}
+                <!-- {{Counter}} -->
+                {{ globalStore.counter }}
             </td>   
             <td class="table__cell-data_align-center">
                 1
@@ -191,6 +192,8 @@
 import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/common/func';
 import { Act } from '@/model/act.model';
 import { DataContract } from '@/model/dataContract'
+import { useGlobalStore } from '@/stores/global.store';
+import { mapStores } from 'pinia';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
@@ -219,6 +222,9 @@ export default defineComponent({
                 ""
             },
         },
+    },
+    computed: {
+        ...mapStores(useGlobalStore),
     },
     methods:{
         getMonthYearDate,

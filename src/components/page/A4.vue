@@ -119,6 +119,10 @@ export default defineComponent({
 
 <style>
 
+* {
+    line-height: 1.2;
+}
+
 .edit-highlighting {
     background-color: beige;
 }

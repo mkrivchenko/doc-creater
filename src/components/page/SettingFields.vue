@@ -1,84 +1,94 @@
 <template>
 	<aside class="settings">
 		<form class="fixed">
-			<ButtonApp @click.prevent="toPrint">
-				Печать
-			</ButtonApp>
 
-			<div class="settings">
-				<div class="settings__title">
+			<div class="fixed__conteiner">
+				<v-btn 
+					block
+					variant="outlined"
+					@click.prevent="toPrint"
+				>
+					Печать
+				</v-btn>
 
-					<div class="settings__header">
-						<h3>Данные клиента</h3>
-					</div>
-					
-					<div class="settings__show">
-						<span
-							class="cut" 
-							@click.prevent="globalStore.showPersonInputs = !globalStore.showPersonInputs">    
-								<span v-if="globalStore.showPersonInputs == true"><u>свернуть</u></span>
-								<span v-if="globalStore.showPersonInputs == false"><u>развернуть</u></span>
-						</span>
-					</div>
-					
+				<div class="dropdown">
+
+					<v-autocomplete
+						clearable
+						label="Счетчик"
+						:items="globalStore.counters"
+						v-model="globalStore.counter"
+						variant="underlined"
+					>
+					</v-autocomplete>
 				</div>
-				
-				<div class="settings__inputs">
-					<Input
-						v-show="globalStore.showPersonInputs == true"
-						v-for="item in personStore.$state"
-						:item="item"/>
+				<div class="dropdown">
+
+					<v-autocomplete
+						clearable
+						label="Газовый котел"
+						:items="globalStore.boilers"
+						v-model="globalStore.boiler"
+						variant="underlined"
+					>
+					</v-autocomplete>
 				</div>
+
 			</div>
+
 			
-			<div class="settings">
-				<div class="settings__title">
 
-					<div class="settings__header">	
-						<h3>Данные договора</h3>
-					</div>
+			<v-expansion-panels
+				variant="accordion">
+				<v-expansion-panel>
+					<v-expansion-panel-title>
+						Данные клиента
+					</v-expansion-panel-title>
 
-					<div class="settings__show">
-						<span
-							class="cut" 
-							@click.prevent="globalStore.showContractInputs = !globalStore.showContractInputs">    
-								<span v-if="globalStore.showContractInputs == true"><u>свернуть</u></span>
-								<span v-if="globalStore.showContractInputs == false"><u>развернуть</u></span>
-						</span>
-					</div>
-				</div>
+					<v-expansion-panel-text>
+						<v-text-field
+							clearable
+							v-for="item in personStore.$state" 
+							v-model="item.data"
+							:label="item.title"
+							variant="underlined">
+						</v-text-field>
+					</v-expansion-panel-text>
+				</v-expansion-panel>
+				
+				<v-expansion-panel>
+					<v-expansion-panel-title>
+						Данные договора
+					</v-expansion-panel-title>
 
-				<div class="settings__inputs">
-					<Input
-						v-show="globalStore.showContractInputs == true" 
-						v-for="item in contractStore.$state"
-						:item="item"/>
-				</div>
-			</div>
+					<v-expansion-panel-text>
+						<v-text-field
+							clearable
+							v-for="item in contractStore.$state"
+							v-model="item.data"
+							:label="item.title"
+							variant="underlined">
+						</v-text-field>
+					</v-expansion-panel-text>
+				</v-expansion-panel>
+					
+				<v-expansion-panel>
+					<v-expansion-panel-title>
+						Газопровод
+					</v-expansion-panel-title>
 
-			<div class="settings">
-				<div class="settings__title">
+					<v-expansion-panel-text>
+						<v-text-field
+							clearable
+							v-for="item in actData"
+							v-model="item.data"
+							:label="item.title"
+							variant="underlined">
+						</v-text-field>
+					</v-expansion-panel-text>
+				</v-expansion-panel>
+			</v-expansion-panels>
 
-					<div class="settings__header">	
-						<h3>Газопровод</h3>
-					</div>
-
-					<div class="settings__show">
-						<span
-							class="cut" 
-							@click.prevent="globalStore.showPipelineInputs = !globalStore.showPipelineInputs">    
-								<span v-if="globalStore.showPipelineInputs == true"><u>свернуть</u></span>
-								<span v-if="globalStore.showPipelineInputs == false"><u>развернуть</u></span>
-						</span>
-					</div>
-				</div>
-				<div class="settings__inputs">
-					<Input 
-						v-show="globalStore.showPipelineInputs == true"
-						v-for="item in actData"
-						:item="item" />
-				</div>
-			</div>
 
 			<h3>Оборудование</h3>
 
@@ -111,6 +121,9 @@
 				<option value="Газдевайс NPM G4">Газдевайс NPM G4</option>
 			</select>
 		   
+			
+
+
 		</form>   
 	</aside>
 </template>
@@ -192,34 +205,10 @@ export default defineComponent({
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 
 @import '@/style/_var-library.less';
 
-
-.settings {
-	
-	&__title {
-		display: flex;
-		align-items: center; 
-		justify-content: space-between;
-	}
-
-	&__show {
-		padding: 0 10px;
-		font-size: 12px;
-		color: @main-graf-color;
-	}
-
-	&__inputs {
-		padding: 5px 10px;
-	}
-}
-
-.cut {
-	cursor: pointer;
-	
-}
 
 .select {
 	width: 300px;
@@ -229,15 +218,14 @@ export default defineComponent({
 .settings {
 	
 	min-width: 25%;
-	background-color: @main-blue-color;
-	color: @light-default-color;
+	//background-color: @main-blue-color;
+	//color: @light-default-color;
 
-	
-   
-
+	width: 360px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 600;
 	font-size: 14px;
+	box-shadow: 0 0 0.1cm rgb(0 0 0 / 10%);
 	
 }
 
@@ -247,30 +235,35 @@ export default defineComponent({
 	overflow-y: auto;
 	height: 90%;
 
-	max-width: 330px;
-	min-width: 330px;
-	width: 330px;
+	max-width: 360px;
+	min-width: 360px;
+	width: 360px;
 	
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	margin: 10px 0 10px 10px;
-	padding-right: 10px;
+
+
+	&__conteiner {
+		width: 100%;
+		padding: 10px 0 10px 10px;
+		padding-right: 10px;
+	}
 	
 	&::-webkit-scrollbar {
 		width: 10px;
 	}
 
 	&::-webkit-scrollbar-track {
-		background: @second-blue-color; 
-		border: 1px solid @second-blue-color;    
+		background: #F5F4F4; 
+		border: 1px solid #F5F4F4;    
 		border-radius: 20px;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: @second-blue-color;    /* цвет бегунка */
+		background-color: #dddddd;    /* цвет бегунка */
 		border-radius: 20px;       /* округлось бегунка */
-		border: 3px solid @main-yellow-color;  /* отступ вокруг бегунка */
+		// border: 3px solid #dddddd;  /* отступ вокруг бегунка */
 	}
 }
 

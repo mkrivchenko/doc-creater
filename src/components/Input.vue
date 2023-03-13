@@ -23,9 +23,7 @@ export default {
 
 </script>
 
-<style lang="less">
-
-
+<style lang="less" scoped>
 
 .input-field {
     display: flex;

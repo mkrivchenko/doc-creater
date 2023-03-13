@@ -8,7 +8,7 @@ export class Contract implements IContract {
 	contractAddress: TitleData;
 	contractEnd: TitleData;
 	pipeline: TitleData;
-	connectPoint?: TitleData;
+	connectPoint: TitleData;
 
 	
 	
