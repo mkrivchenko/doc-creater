@@ -1,6 +1,12 @@
 import { DataList } from '@/model/dataList';
 import { Store } from 'pinia';
 
+import PizZipUtils from 'pizzip/utils/index';
+import Docxtemplater from 'docxtemplater';
+import PizZip from 'pizzip';
+import { saveAs } from 'file-saver';
+
+
 function getStringMonth(index = 0, bool = false) {
     let arrayMonthCase = [
         'января',
@@ -83,6 +89,46 @@ function assignKeyValue(store: Store, key: string, assigneList: DataList): void 
     }
 }
 
+function loadFile(url: string, callback: (...args) => void) {
+    PizZipUtils.getBinaryContent(url, callback);
+}
+
+function renderDoc() {
+    loadFile(
+        // 'https://drive.google.com/uc?export=download&id=1Fx6jkdUmPr9UarQizPaJevdOixUxRYfK',
+        'http://192.168.1.150:888/files/TestWord.docx',
+        function(error, content) {
+            if (error) {
+                throw error;
+            }
+            const zip = new PizZip(content);
+            const doc = new Docxtemplater(zip, {
+                paragraphLoop: true, 
+                linebreaks: true
+            });
+            doc.setData({
+                name: 'Максим',
+            });
+
+            try {
+                doc.render();
+            }
+            catch (error) {
+                throw error;
+            }
+            const out = doc.getZip().generate({
+                type: "blob",
+                mimeType:
+                  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            });
+            saveAs(out, 'output.docx');
+        }
+    );
+}
+
+// 1Fx6jkdUmPr9UarQizPaJevdOixUxRYfK
+// https://drive.google.com/uc?export=download&id=1Fx6jkdUmPr9UarQizPaJevdOixUxRYfK
+
 export {
     getMonthYearDate, 
     getNowDate, 
@@ -90,6 +136,7 @@ export {
     createString,
     getStringMonth,
     getMonth,
-    assignKeyValue
+    assignKeyValue,
+    renderDoc
 }
 

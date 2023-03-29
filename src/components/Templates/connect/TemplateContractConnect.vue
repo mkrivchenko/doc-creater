@@ -1,7 +1,7 @@
 <template>
 	<div class="break"></div>
 	<div class="contract-header">
-		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{DataContract?.contract.contractNumber.data}}</span><br>
+		<b>ДОГОВОР <span class="contract-header__number edit-highlighting" >№ {{contractStore.contractNumber.data}}</span><br>
 			о подключении (технологическом присоединении) объектов<br>
 			капитального строительства к сети газораспределения
 		</b>
@@ -15,17 +15,17 @@
 			<td align="right">
 				<span class="edit-highlighting">
 					<!-- TODO: Сделать нормально дату -->
-					«{{ DataContract?.contract.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(DataContract?.contract.contractData.data), true) }} {{ DataContract?.contract.contractData.data.split('.')[2] }} г.
+					«{{ contractStore.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(contractStore.contractData.data), true) }} {{ contractStore.contractData.data.split('.')[2] }} г.
 					<!-- «18» ноября 2022 г.</span> -->
 					<br>
-					<!-- «{{ new Date().getDate() }}» {{ getStringMonth(new Date().getMonth(), true) }} {{ new Date().getFullYear() }} г.</span><br> -->
+					
 				</span>
 			</td>
 		</tr>
 	</table>
 	
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		<b>Общество с ограниченной ответственностью «Сибгаз-эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице  директора <b>Осиповой Татьяны Сергеевны</b>,  действующей   на   основании   Устава,  с одной стороны, и <span class="contract-header__number edit-highlighting" >{{DataContract?.person.fullname.data}} </span>, именуемый в дальнейшем «Заявителем» с  другой  стороны, заключили настоящий договор о нижеследующем:
+		<b>Общество с ограниченной ответственностью «Сибгаз-эксплуатация»</b>, именуемое в дальнейшем <b>«Исполнитель»</b>, в лице  директора <b>Осиповой Татьяны Сергеевны</b>,  действующей   на   основании   Устава,  с одной стороны, и <span class="contract-header__number edit-highlighting" >{{personStore.fullname.data}} </span>, именуемый в дальнейшем «Заявителем» с  другой  стороны, заключили настоящий договор о нижеследующем:
 	</p>
 
 	<h2 class="margin-top">
@@ -34,7 +34,7 @@
 
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		1.&ensp;По  настоящему договору исполнитель принимает на себя обязательства по   подключению   (технологическому  присоединению)  объекта  капитального строительства: <b>жилой дом</b> к  сети   газораспределения, принадлежащей   исполнителю   на  праве  собственности  или  ином  законном основании,   с   учетом   максимальной  нагрузки  (часовым  расходом  газа) газоиспользующего оборудования. 
-		<br><span class="paragraphMargin"></span>Заявитель  принимает  на  себя  обязательства по обеспечению готовности объекта   капитального   строительства   к   подключению  (технологическому присоединению) в пределах границ  принадлежащего  ему  земельного  участка: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>.
+		<br><span class="paragraphMargin"></span>Заявитель  принимает  на  себя  обязательства по обеспечению готовности объекта   капитального   строительства   к   подключению  (технологическому присоединению) в пределах границ  принадлежащего  ему  земельного  участка: <span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		2.&ensp;Подключение осуществляется в соответствии с техническими условиями на подключение (технологическое присоединение) объектов капитального строительства к сетям газораспределения по форме согласно приложению № 1 (далее - технические условия), являющимися неотъемлемой частью настоящего договора.
@@ -53,82 +53,82 @@
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		5.&ensp;Исполнитель обязан:
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		разработать проектную документацию на создание (реконструкцию) сети газораспределения до точки (точек) подключения (технологического присоединения) на границе земельного участка заявителя (проект газоснабжения) и получить на нее положительное заключение экспертизы (при необходимости создания сети газораспределения) в случае, предусмотренном законодательством Российской Федерации;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		направить заявителю в течение 5 рабочих дней после получения положительного заключения экспертизы на проектную документацию информацию о расположении точки (точек) подключения (технологического присоединения) (при необходимости создания сети газораспределения);
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		осуществить действия по созданию (реконструкции) сети газораспределения до точки (точек) подключения, а также по подготовке сети газораспределения к подключению объектов капитального строительства заявителя и пуску газа не позднее срока, предусмотренного пунктом 3 настоящего договора;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		проверить выполнение заявителем технических условий при условии обеспечения заявителем доступа исполнителя к объекту капитального строительства в срок не позднее чем за 14 дней до дня подключения к сетям газораспределения и составить акт о готовности сетей газопотребления и газоиспользующего оборудования объекта капитального строительства к подключению (технологическому присоединению) по форме согласно приложению N 2 (далее - акт о готовности сетей), являющийся неотъемлемой частью настоящего договора;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		осуществить действия по подключению (технологическому присоединению) не позднее установленного настоящим договором дня подключения (технологического присоединения), но не ранее подписания акта о готовности сетей;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		направить заявителю информацию о ходе выполнения мероприятий по подключению (технологическому присоединению) объекта капитального строительства не позднее 10 дней со дня получения запроса заявителя в письменной форме;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		согласовать в письменной форме с собственником земельного участка строительство сетей газораспределения, необходимых для подключения объекта капитального строительства заявителя, в случае строительства сетей газораспределения на земельных участках, находящихся в собственности третьих лиц;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		направить в адрес заявителя в течение 3 рабочих дней со дня осуществления действий по подключению (технологическому присоединению) подписанный со своей стороны акт о подключении (технологическом присоединении) по форме согласно приложению N 3 (далее - акт о подключении), являющийся неотъемлемой частью настоящего договора.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		6.&ensp;Исполнитель вправе:	
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		участвовать в приемке скрытых работ при строительстве заявителем газопроводов от газоиспользующего оборудования до точек подключения;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		перенести срок подключения (технологического присоединения) объекта капитального строительства заявителя к сети газораспределения без изменения сроков внесения платы за технологическое присоединение на срок, необходимый для проведения проверки исполнителем готовности сети заявителя, если заявитель не предоставил
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		исполнителю возможность осуществить проверку готовности сетей газопотребления и газоиспользующего оборудования к подключению и пуску газа.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		7.&ensp;Заявитель обязан:
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		осуществить мероприятия по обеспечению готовности объекта капитального строительства к подключению (технологическому присоединению) в пределах границ принадлежащего ему земельного участка;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		разработать на основании технических условий проектную документацию (в случае, предусмотренном законодательством Российской Федерации) о создании сети газопотребления от точки (точек) подключения (технологического присоединения) до газоиспользующего оборудования (информацию о точках подключения направляет исполнитель);
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		представить исполнителю 1 экземпляр раздела утвержденной в установленном порядке проектной документации, который включает в себя сведения об инженерном оборудовании, о сетях газопотребления, перечень инженерно-технических мероприятий и содержание технологических решений (представляется в случае, если разработка проектной документации заявителем предусмотрена законодательством Российской Федерации);
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		в случае внесения изменений в проектную документацию, влекущих изменение указанного в настоящем договоре максимального часового расхода газа, в срок, определенный сторонами, направить исполнителю предложение о внесении соответствующих изменений в настоящий договор (изменение заявленного максимального часового расхода газа не может превышать величину, указанную в технических условиях);
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		обеспечить создание сети газопотребления на принадлежащем заявителю земельном участке от точки (точек) подключения (технологического присоединения) до газоиспользующего оборудования;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		представить исполнителю документ о согласовании собственником земельного участка строительства объектов сетей инженерно-технического обеспечения для подключения объекта капитального строительства заявителя, расположенного на земельном участке, находящемся в собственности третьих лиц;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		уведомить исполнителя о выполнении технических условий после выполнения мероприятий по технологическому присоединению в пределах границ участка заявителя, предусмотренных техническими условиями;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		обеспечить исполнителю доступ к объектам капитального строительства для проверки выполнения технических условий и готовности сетей газопотребления и газоиспользующего оборудования к подключению и пуску газа в согласованные с исполнителем сроки, но не позднее 20 дней до дня подключения;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		внести плату за подключение (технологическое присоединение) в размере и сроки, которые установлены настоящим договором;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		подписать акт о готовности сетей в день его составления исполнителем.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		8.&ensp;Заявитель вправе:
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
-		получать информацию о ходе выполнения исполнителем мероприятий по подключению (технологическому присоединению) объекта капитального строительства не позднее 10 дней со дня получения исполнителем запроса заявителя в письменной форме;
+	<p class="paragraph"><span class="paragraphMargin"></span>
+		получать информацию о ходе выполнения исполнителем мероприятий по подключению (технологическому присоединению) объекта капитального строительства не поздне со дня получения исполнителем запроса заявителя в письменной форме;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		выполнять мероприятия по подключению (технологическому присоединению) объекта капитального строительства за границами своего участка (либо их часть), если максимальный расход газа газоиспользующего оборудования составляет 500 куб. метров и более и (или) проектное рабочее давление в присоединяемом газопроводе составляет более 0,6 МПа (за исключением мероприятий, связанных с расширением пропускной способности существующей сети газораспределения).
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
@@ -140,8 +140,12 @@
 	</h2>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		10.&ensp;Размер платы за подключение (технологическое присоединение) объекта капитального строительства (далее - плата) определяется  по  индивидуальному проекту, в соответствии с решением Управления Алтайского края по государственному регулированию цен и тарифов от 
-		<!-- <u>24.11.2021</u> № <u>315</u>  -->
-		<u>25.11.2022</u> № <u>479</u>
+		<span v-if="globalStore.contractConnectGlobalDate == 2022">
+			<u>24.11.2021</u> № <u>315</u> 
+		</span>
+		<span v-if="globalStore.contractConnectGlobalDate == 2023">
+			<u>25.11.2022</u> № <u>479</u>
+		</span> 
 		и составляет <b><u>4 770</u></b> рублей <b><u>12</u></b> копеек <b>(Четыре тысячи семьсот семьдесят рублей двенадцать копеек)</b>, на основании предварительного расчета размера платы согласно приложению №4 (далее предварительный размер расчета платы), являющегося неотъемлемой частью настоящего договора 
 		<br><span class="paragraphMargin"></span>Внесение платы осуществляется заявителем в следующем порядке:
 		<br><span class="paragraphMargin"></span>50 процентов платы, что составляет <b><u>2 385</u></b> рубля <b><u>06</u></b> копеек <b>(Две тысячи триста восемьдесят пять рублей шесть копеек)</b>, в течение 15 дней со дня заключения настоящего договора;
@@ -202,16 +206,16 @@
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		21.&ensp;Настоящий договор считается заключенным с даты поступления подписанного заявителем экземпляра настоящего договора исполнителю.
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		Датой поступления настоящего договора исполнителю является:
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		при направлении настоящего договора почтовым отправлением - дата передачи почтового отправления исполнителю организацией почтовой связи;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		при направлении настоящего договора курьерской службой, организациями, осуществляющими услуги по доставке корреспонденции (кроме организаций почтовой связи), - дата проставления отметки исполнителем в уведомлении о вручении письма;
 	</p>
-	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
+	<p class="paragraph"><span class="paragraphMargin"></span>
 		при передаче настоящего договора нарочным - дата отметки исполнителя о дате получения настоящего договора, проставленная на экземпляре настоящего договора заявителя.
 	</p>
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
@@ -222,19 +226,16 @@
 	</p>
 	
 	<table-details-parties
-		:DataContract="DataContract"
-		:PersonList="PersonList"
-		:ContractInfoList="ContractInfoList"
 		:Quantity="2">
 	</table-details-parties>   
 	
 	<div class="page-break-left"></div>
 	
 	<div class="mark">
-		Приложение №6 к договору <span class="edit-highlighting">№ {{DataContract?.contract.contractNumber.data}} </span>
+		Приложение №6 к договору <span class="edit-highlighting">№ {{contractStore.contractNumber.data}} </span>
 		от <span class="edit-highlighting">
 			<!--TODO: сделать нормально дату  -->
-			{{DataContract?.contract.contractData.data}}
+			{{contractStore.contractData.data}}
 			<!-- {{getNowDate()}} г. -->
 		</span>
         <br>о подключении (технологическом присоединении) объекта
@@ -258,8 +259,12 @@
 		<tr>
 			<td>С1</td>
 			<td>
-				<!-- Прил.1 Решения № 315 от 24.11.2021 -->
-				Прил.1 Решения № 479 от 25.11.2022	
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.1 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.1 Решения № 479 от 25.11.2022	
+				</span>
 			</td>
 			<td>2 498,72</td>
 			<td>руб./ одно подключение</td>
@@ -269,8 +274,12 @@
 		<tr>
 			<td>С2</td>
 			<td>
-				<!-- Прил.2 Решения № 315 от 24.11.2021 -->
-				Прил.2 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.2 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.2 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>999 695,55</td>
 			<td>руб./км</td>
@@ -280,8 +289,12 @@
 		<tr>
 			<td>СЗ</td>
 			<td>
-				<!-- Прил.3 Решения № 315 от 24.11.2021 -->
-				Прил.3 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.3 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.3 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>1 623 487,57</td>
 			<td>руб./км</td>
@@ -291,8 +304,12 @@
 		<tr>
 			<td>С4</td>
 			<td>
-				<!-- Прил.4 Решения № 315 от 24.11.2021 -->
-				Прил.4 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.4 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.4 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>2 961 710,00</td>
 			<td>руб./км</td>
@@ -302,8 +319,12 @@
 		<tr>
 			<td>С5</td>
 			<td>
-				<!-- Прил.5 Решения № 315 от 24.11.2021 -->
-				Прил.5 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.5 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.5 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>2 886,55</td>
 			<td>руб./м3 в час</td>
@@ -313,8 +334,12 @@
 		<tr>
 			<td>С6</td>
 			<td>
-				<!-- Прил.6 Решения № 315 от 24.11.2021 -->
-				Прил.6 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.6 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.6 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>1 023,17</td>
 			<td>руб./м3 в час</td>
@@ -324,8 +349,12 @@
 		<tr>
 			<td>С7.1</td>
 			<td>
-				<!-- Прил.7 Решения № 315 от 24.11.2021 -->
-				Прил.7 Решения № 479 от 25.11.2022
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.7 Решения № 315 от 24.11.2021
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.7 Решения № 479 от 25.11.2022
+				</span>
 			</td>
 			<td>2&nbsp;266,49</td>
 			<td>руб.</td>
@@ -335,8 +364,12 @@
 		<tr>
 			<td>С7.2</td>
 			<td>
-				<!-- Прил.7 Решения № 315 от 24.11.2021, п. 2.2.1.1. -->
-				Прил.7 Решения № 479 от 25.11.2022, п. 2.2.1.1.
+				<span v-if="globalStore.contractConnectGlobalDate == 2022">
+					Прил.7 Решения № 315 от 24.11.2021, п. 2.2.1.1.
+				</span>
+				<span v-if="globalStore.contractConnectGlobalDate == 2023">
+					Прил.7 Решения № 479 от 25.11.2022, п. 2.2.1.1.
+				</span>
 			</td>
 			<td>2&nbsp;503,63</td>
 			<td>руб.</td>
@@ -365,7 +398,7 @@
 			<td>
 				Заявитель:<br>
 				<span class="g-white-block"></span>
-				_______________(<span class="edit-highlighting">{{ createString(DataContract?.person.fullname.data) }}</span>)<br>
+				_______________(<span class="edit-highlighting">{{ createString(personStore.fullname.data) }}</span>)<br>
 			</td>
 		</tr>
 	</table>
@@ -378,6 +411,10 @@ import TableDetailsParties from '@/components/TableDetailsParties.vue';
 import { createString, getNowDate } from '@/common/func'
 import { DataContract } from '@/model/dataContract';
 import { defineComponent, PropType } from 'vue';
+import { mapStores } from 'pinia';
+import { useContractStore } from '@/stores/contract.store';
+import { usePersonStore } from '@/stores/person.store';
+import { useGlobalStore } from '@/stores/global.store';
 
 
 export default defineComponent({
@@ -397,6 +434,9 @@ export default defineComponent({
             require: true
         }
     },
+	computed: {
+		...mapStores(useContractStore, usePersonStore, useGlobalStore),
+	},
 	methods: {
         getStringMonth(index = 0, bool = false) {
             let arrayMonthCase = [

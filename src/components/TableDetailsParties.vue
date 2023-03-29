@@ -50,26 +50,26 @@
                 </td>
                 <td>
                     <span class="str-margin bold edit-highlighting">
-                        {{ DataContract.person.fullname.data }}
+                        {{ personStore.fullname.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Адрес: {{ DataContract.contract.contractAddress.data }}
+                        Адрес: {{ contractStore.contractAddress.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Тел: {{DataContract.person.phone.data}}
+                        Тел: {{personStore.phone.data}}
                     </span>
                     <span class="str-margin edit-highlighting">
                         Паспорт: 
-                        {{ DataContract.person.identityCardSeries.data }}
-                        {{ DataContract.person.identityCardNumber.data }}
+                        {{ personStore.identityCardSeries.data }}
+                        {{ personStore.identityCardNumber.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
                         Выдан: 
-                        {{ DataContract.person.identityCardDate.data }}
-                        {{ DataContract.person.identityCardOrgName.data }}
+                        {{ personStore.identityCardDate.data }}
+                        {{ personStore.identityCardOrgName.data }}
                     </span>
                     <span class="str-margin edit-highlighting">
-                        Адрес проживания: {{ DataContract.person.identityAddress.data }}
+                        Адрес проживания: {{ personStore.identityAddress.data }}
                     </span>
                 </td>
                 <td v-if="Quantity === 3">
@@ -86,7 +86,10 @@
                         электронная почта: info@gzf.mrgeng.ru
                     </span>
                     <span class="str-margin">
-                        Банковские реквизиты: ГПБ(АО) «Северо-Западный»<br>
+                        Банковские реквизиты:<br> 
+                        ИНН 7813655197,<br> 
+                        КПП 783011001,  <br> 
+                        ГПБ(АО) «Северо-Западный»<br>
                         Р/С:40702810200150006423,<br> 
                         К/С:30101810200000000827,<br>
                         БИК 044030827,<br>
@@ -96,7 +99,7 @@
                         Р/С:40702810200000009930,<br>
                         К/С:30101810800000000861, БИК 044030861<br>
                     </span>    
-                    ИНН 7813655197,КПП 783011001    
+                      
                     
                     
 
@@ -112,7 +115,7 @@
                 <td>
                     <br>
                     <br>
-                    ______________(<span class="edit-highlighting">{{ createString(DataContract.person.fullname.data) }}</span>)<br>
+                    ______________(<span class="edit-highlighting">{{ createString(personStore.fullname.data) }}</span>)<br>
                     <span class="g-white-block"></span>
                 </td>
                 <td v-if="Quantity === 3">
@@ -126,28 +129,25 @@
     </table>
 </template>
 
-<script>
+<script lang="ts">
 import { DataContract } from '@/model/dataContract';
+import { useContractStore } from '@/stores/contract.store';
+import { usePersonStore } from '@/stores/person.store';
+import { mapStores, } from 'pinia';
+import { defineComponent, } from 'vue';
 
 
-
-
-export default {
+export default defineComponent({
     props: {
         DataContract: {
             type: DataContract
         },
-        PersonList: {
-            type: Array,
-            require: true
-        },
-        ContractInfoList: {
-            type: Array,
-            require: true
-        },
         Quantity: {
             type: Number,
         },
+    },
+    computed: {
+        ...mapStores(usePersonStore, useContractStore)
     },
     methods: {
         createString(str) {
@@ -162,13 +162,19 @@ export default {
             return newStr;
         }   
     }
-}
+})
 
 </script>
 
 <style scoped lang="less">
 
 @import '@/style/_table-base-style.less';
+
+@media print {
+    table {
+        // page-break-before: always;
+    }
+}
 
 table {
     display: table;

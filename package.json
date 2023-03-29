@@ -7,7 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "docxtemplater": "^3.36.1",
+    "file-saver": "^2.0.5",
     "pinia": "^2.0.33",
+    "pizzip": "^3.1.4",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vuetify": "^3.1.8"

@@ -118,6 +118,9 @@ export default defineComponent ({
 			const dataList = new DataList(searchData);
 
 			for (let key in dataList) {
+				if (dataList[key] == '') {
+					continue;
+				} 
 				assignKeyValue(this.contractStore, key, dataList);
 				assignKeyValue(this.personStore, key, dataList);
 			

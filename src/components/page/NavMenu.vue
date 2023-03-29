@@ -1,58 +1,20 @@
 <template>
+
 	<nav class="navbar noprint">
-		<ul class="navbar__list">
-			<li class="navbar__item">
-				<input 
-					id="radio-1" 
-					type="radio" 
-					name="radio" 
-					value="gaz" 
-					@change="globalStore.setDocumentVatiant(DocumentVariant.contractGaz)" checked>
-				<label for="radio-1">Догазификация</label>
-			</li>
-			<li class="navbar__item">
-				<input 
-					id="radio-2" 
-					type="radio" 
-					name="radio" 
-					value="additional" 
-					@change="globalStore.setDocumentVatiant(DocumentVariant.additional)">
-				<label for="radio-2">Допник</label>
-			</li>
-			<li class="navbar__item">
-				<input 
-					id="radio-3" 
-					type="radio" 
-					name="radio" 
-					value="connect" 
-					@change="globalStore.setDocumentVatiant(DocumentVariant.contractConnect)">
-				<label for="radio-3">Техническое присоединение</label>
-			</li>
-			<li class="navbar__item">
-				<input 
-					id="radio-4" 
-					type="radio" 
-					name="radio" 
-					value="act" 
-					@change="globalStore.setDocumentVatiant(DocumentVariant.act)">
-				<label for="radio-4">Акты</label>
-			</li>
-			<li class="navbar__item">
-				<input 
-					id="radio-5" 
-					type="radio" 
-					name="radio" 
-					value="claim" 
-					@change="globalStore.setDocumentVatiant(DocumentVariant.claim)">
-				<label for="radio-5">Заявка</label>
-			</li>
-		</ul>
-	</nav>		
+		<v-radio-group inline class="noprint" v-model="globalStore.documentVariant">
+			<v-radio label="Догазификация" value="gaz"></v-radio>
+			<v-radio label="Допник" value="additional"></v-radio>
+			<v-radio label="Техническое присоединение" value="connect"></v-radio>
+			<v-radio label="Акты" value="act"></v-radio>
+			<v-radio label="Заявка" value="claim"></v-radio>
+		</v-radio-group>
+	</nav>
+
 </template>
 
 <script setup lang="ts">
 
-import { DocumentVariant, useGlobalStore } from '@/stores/global.store';
+import { useGlobalStore } from '@/stores/global.store';
 
 const globalStore = useGlobalStore();
 
@@ -66,9 +28,9 @@ const globalStore = useGlobalStore();
 	background-color: @main-blue-color;
     color: @light-default-color;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 14px;
+    // font-family: Arial, Helvetica, sans-serif;
+    // font-weight: 600;
+    // font-size: 14px;
 
 	display: flex;
 	align-items: stretch;
@@ -76,7 +38,7 @@ const globalStore = useGlobalStore();
 
 	height: 50px;
 	width: 100%;
-	padding: 0px 10px;
+	padding: 5px 10px 5px 10px;
 
 	position: fixed;
 	

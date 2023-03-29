@@ -25,16 +25,16 @@ button {
     border: 0;
     border-radius: 15px;
 
-    background-color: @main-yellow-color;
-    color: @main-graf-color;
+    // background-color: @main-yellow-color;
+    // color: @main-graf-color;
 
-    &:hover {
-        background-color: @second-yellow-color;        
-    }
+    // &:hover {
+    //     background-color: @second-yellow-color;        
+    // }
 
-    &:active {
-        background-color: @main-yellow-color;
-    }
+    // &:active {
+    //     background-color: @main-yellow-color;
+    // }
 }
 
 </style>

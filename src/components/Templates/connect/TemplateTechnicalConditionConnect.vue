@@ -15,9 +15,9 @@
         </div>
         
         <div class="header__condition-name margin-top">
-            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> {{DataContract?.contract.conditionNumber.data}} </span><br>
+            ТЕХНИЧЕСКИЕ УСЛОВИЯ <span class="edit-highlighting"> {{contractStore.conditionNumber.data}} </span><br>
 			от <span class="edit-highlighting">
-                {{DataContract?.contract.contractData.data}} г.
+                {{contractStore.contractData.data}} г.
                 <!-- {{getNowDate()}} г. -->
             </span><br>
             на подключение (технологическое присоединение)<br>газоиспользующего оборудования к сети газораспределения
@@ -47,7 +47,7 @@
             2.
             </td>
             <td class="underline" colspan="3">
-            <span class="edit-highlighting">{{DataContract?.person.fullname.data}}</span>   
+            <span class="edit-highlighting">{{personStore.fullname.data}}</span>   
             </td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@
             расположенный по адресу:   
             </td>
             <td class="underline" colspan="2">
-                <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+                <span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -169,7 +169,7 @@
             Срок подключения (технологического присоединения) объекта капитального строительства к сети газораспределения
             </td>
             <td  class="cell-2 underline" >
-                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(contractStore.contractEnd.data)}}</span>
             </td>
         </tr>
         <tr>
@@ -210,7 +210,7 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
-                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(contractStore.contractEnd.data)}}</span>
             </td>   
             <td class="table__cell-data_align-center">
             5,0
@@ -221,7 +221,7 @@
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
-            <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}} </span>
+            <span class="edit-highlighting">{{contractStore.pipeline.data}} </span>
             </td>   
         </tr>
     </table>
@@ -373,6 +373,9 @@
 
 import { getMonthYearDate, getNowDate, getNowFullFormatDate } from '@/common/func'
 import { DataContract } from '@/model/dataContract';
+import { useContractStore } from '@/stores/contract.store';
+import { usePersonStore } from '@/stores/person.store';
+import { mapStores } from 'pinia';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
@@ -386,6 +389,9 @@ export default defineComponent({
         ContractInfoList: {
             type: Array,
         },
+    },
+    computed: {
+        ...mapStores(useContractStore, usePersonStore),
     },
     methods:{
         getMonthYearDate,
@@ -533,7 +539,7 @@ export default defineComponent({
 }
 
 .margin-top {
-    margin-top: 20pt;
+    margin-top: 10pt;
 }
 
 .cell {

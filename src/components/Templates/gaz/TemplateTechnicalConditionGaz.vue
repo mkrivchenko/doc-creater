@@ -2,12 +2,17 @@
     <div class="break"></div>
     <div class="flex">
         <div class="mark fifty-persent">
-            Приложение N 1 к договору о подключении(технологическом присоединении)газоиспользующего оборудования к сети газораспределения в рамках догазификации<br>
+            Приложение N 1 к договору о подключении (технологическом присоединении) газоиспользующего оборудования к сети газораспределения в рамках догазификации<br>
             от <span class="edit-highlighting">
-                <!-- {{ getNowFullFormatDate() }} г.  -->
-                «{{ DataContract?.contract.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(DataContract?.contract.contractData.data), true) }} {{ DataContract?.contract.contractData.data.split('.')[2] }} г.
-                № {{DataContract?.contract.contractNumber.data}}
+                «{{ contractStore.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(contractStore.contractData.data), true) }} {{ contractStore.contractData.data.split('.')[2] }} г.
+                № {{contractStore.contractNumber.data}}
             </span>
+
+            <!-- Приложение №1<br> к договору о подключении 
+            № <span class="edit-highlighting">{{contractStore.contractNumber.data}}</span> 
+            от <span class="edit-highlighting">«{{ contractStore.contractData.data.split('.')[0].replace(/^0/,'') }}» {{ getStringMonth(getMonth(contractStore.contractData.data), true) }} {{ contractStore.contractData.data.split('.')[2] }} г.</span> 
+            (технологическом присоединении) газоиспользующего оборудования и объектов капитального строительства к сети газораспределения -->
+
         </div>
     </div>
     <div class="header">
@@ -22,7 +27,7 @@
         </div>
 
         <div class="header__condition-number">
-            <span class="edit-highlighting">№ {{DataContract?.contract.contractNumber.data.replace('АК', 'ТУ')}} от {{DataContract?.contract.contractData.data}} г. </span>
+            <span class="edit-highlighting">№ {{contractStore.contractNumber.data.replace('АК', 'ТУ')}} от {{contractStore.contractData.data}} г. </span>
         </div>
 
         <div class="header__condition-name">
@@ -54,7 +59,7 @@
             2.
             </td>
             <td class="underline" colspan="3">
-            <span class="edit-highlighting">{{DataContract?.person.fullname.data}}</span>   
+            <span class="edit-highlighting">{{personStore.fullname.data}}</span>   
             </td>
         </tr>
         <tr>
@@ -92,7 +97,7 @@
             расположенный по адресу:   
             </td>
             <td class="underline" colspan="2">
-                <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+                <span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -145,8 +150,8 @@
             максимальное
             </td>
             <td class="underline cell-2">
-            0,3  
-            <!-- 0,004 -->
+            <!-- 0,3   -->
+            0,004
             </td>
             <td class="cell-2">
             МПа;
@@ -159,8 +164,8 @@
             фактическое (расчетное)
             </td>
             <td class="underline cell-2">
-            0,15
-            <!-- 0,004  -->
+            <!-- 0,15 -->
+            0,004 
             </td>
             <td class="cell-2">
             МПа.
@@ -176,7 +181,7 @@
             Срок подключения (технологического присоединения) объекта капитального строительства к сети газораспределения
             </td>
             <td  class="cell-2 underline" >
-                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(contractStore.contractEnd.data)}}</span>
             </td>
         </tr>
         <tr>
@@ -194,8 +199,8 @@
             Информация о газопроводе в точке подключения
             </td>
             <td class="underline">
-            полиэтилен, подземный, Ду 32  Р=0,15 МПа
-            <!-- полиэтилен, подземный, Ду 32  Р=0,004 МПа -->
+            <!-- полиэтилен, подземный, Ду 32  Р=0,15 МПа -->
+            полиэтилен, подземный, Ду 32  Р=0,004 МПа
             <!-- сталь, надземный, Ду 25  P=0,004 МПа -->
             </td>
         </tr>
@@ -258,18 +263,18 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
-                <span class="edit-highlighting">{{getMonthYearDate(DataContract?.contract.contractEnd.data)}}</span>
+                <span class="edit-highlighting">{{getMonthYearDate(contractStore.contractEnd.data)}}</span>
             </td>   
             <td class="table__cell-data_align-center">
             5
             </td>   
             <td class="table__cell-data_align-center">
-            0,3;0,15
-            <!-- 0,004;<br> 0,004 -->
+            <!-- 0,3;0,15 -->
+            0,004;<br> 0,004
             </td>   
             <td>
             Строящаяся газораспределительная сеть объекта<br>
-            <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}} </span>
+            <span class="edit-highlighting">{{contractStore.pipeline.data}} </span>
             </td>   
         </tr>
     </table>
@@ -290,7 +295,9 @@
             Точка подключения (планируемая)
             </td>
             <td class="underline" colspan="2">
-                Подземный заглушенный газопровод на границе земельного участка ДУ 32
+                
+                {{ globalStore.connectPoint }}
+                <!-- Отключающее устройство ду25 на действующем газопроводе в районе расположения рассматриваемого жилого дома -->
                 <!-- Отключающее устройство ду25 на действующем газопроводе низкого давления в районе расположения рассматриваемого жилого дома -->
             </td>   
         </tr>
@@ -430,8 +437,8 @@
                 Максимальным рабочим давлением
             </td>
             <td class="cell-6">
-                0,15
-                <!-- 0,004 -->
+                <!-- 0,15 -->
+                0,004
             </td>
             <td class="cell-5">
                 МПа  
@@ -459,7 +466,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-                по адресу: <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+                по адресу: <span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
             </td>
         </tr>
         <tr>
@@ -539,7 +546,7 @@
                 -
             </td>
             <td>
-                строительство(реконструкцию) сети газопотребления от точки подключения до газоиспользующего оборудования по адресу:<br> <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+                строительство(реконструкцию) сети газопотребления от точки подключения до газоиспользующего оборудования по адресу:<br> <span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
             </td>
             <td class="cell-5" colspan="2">
                 Да
@@ -647,20 +654,15 @@
 <script lang="ts">
 
 import {getMonthYearDate, getNowDate, getNowFullFormatDate, getStringMonth, getMonth} from '@/common/func'
-import { DataContract } from '@/model/dataContract';
-import { defineComponent, PropType } from 'vue';
+import { useContractStore } from '@/stores/contract.store';
+import { useGlobalStore } from '@/stores/global.store';
+import { usePersonStore } from '@/stores/person.store';
+import { mapStores } from 'pinia';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-    props: {
-        DataContract: {
-            type: Object as PropType<DataContract>,
-        },
-        PersonList: {
-            type: Array,
-        },
-        ContractInfoList: {
-            type: Array,
-        }
+     computed: {
+        ...mapStores(usePersonStore, useContractStore, useGlobalStore),
     },
     methods:{
         getMonthYearDate,
@@ -677,6 +679,9 @@ export default defineComponent({
 <style scoped lang="less">
 * {
     font-size: 10pt;
+}
+.mark {
+    text-align: right;
 }
 
 .margin-bottom {

@@ -33,7 +33,7 @@
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline"><span class="paragraphMargin"></span>
-			<b><span class="contract-header__number edit-highlighting" >{{DataContract?.person.fullname.data}} </span></b>
+			<b><span class="contract-header__number edit-highlighting" >{{personStore.fullname.data}} </span></b>
 		</p>
 		<p class="paragraph-comment">
 			(фамилия, имя, отчество лица - представителя заявителя)
@@ -42,7 +42,7 @@
 
 	<p>
 		именуемый в дальнейшем «Заявитель», в дальнейшем именуемые <b>сторонами</b>, оформили и подписали настоящий акт о том, что в соответствии с договором о подключении (технологическом присоединении) объекта капитального строительства к сети газораспределения (далее-договор) произведено подключение (технологическое присоединение) объекта капитального строительства, расположенного по адресу:
-		<span class="edit-highlighting"><b> {{DataContract?.contract.contractAddress.data}} </b></span>, к сети газораспределения, принадлежащей исполнителю <b>ООО «СибГазСтрой». Основной абонент</b>.                                                   
+		<span class="edit-highlighting"><b> {{contractStore.contractAddress.data}} </b></span>, к сети газораспределения, принадлежащей исполнителю <b>ООО «СибГазСтрой». Основной абонент</b>.                                                   
 	</p>
 
 	<table class="body-table">
@@ -62,7 +62,7 @@
             <td class="table__cell-marker">
             </td>
             <td colspan="3">
-				присоединение сети газораспределения в точке подключения: <span class="edit-highlighting"> {{DataContract?.contract.pipeline.data}} </span> 
+				присоединение сети газораспределения в точке подключения: <span class="edit-highlighting"> {{contractStore.pipeline.data}} </span> 
 			</td>
         </tr>
 		<tr>
@@ -198,7 +198,7 @@
                     <!-- 0,15 МПа -->
                     0,0024 МПа
                     <!-- 0,004 МПа -->
-                </span>, длина <span class="edit-highlighting"> {{actData?.outwardPipeLength.data}} м</span>  
+                </span>, длина <span class="edit-highlighting"> {{pipelineStore.outwardPipeLength.data}} м</span>  
 			</td>
         </tr>
 		<tr>
@@ -263,7 +263,7 @@
             1.
             </td>
             <td class="table__cell-data_align-center">
-                {{Boiler}}
+                {{ globalStore.boiler }}
             </td>   
             <td class="table__cell-data_align-center">
                 1
@@ -278,7 +278,7 @@
             2.
             </td>
             <td class="table__cell-data_align-center">
-                {{Counter}}
+                {{ globalStore.counter }}
             </td>   
             <td class="table__cell-data_align-center">
                 1
@@ -305,19 +305,21 @@
  
 	<p class="paragraph margin-top"><span class="paragraphMargin"></span>
 		Стороны составили настоящий акт о том, что границей разграничения имущественной принадлежности сторон является: 
-        <!-- КШГ25 -->
-        стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка
-        <!-- седловой отвод ПЭ63/32 -->
+        <span class="edit-highlighting">
+            <!-- КШГ25 -->
+            стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка
+            <!-- седловой отвод ПЭ63/32 -->
+        </span>
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline">
-			<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+			<span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
 		</p>
 	</div>	
 
 	<div class="margin-tb">
 		<p class="paragraph underline"><span class="paragraphMargin"></span>
-			Существующий газопровод: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
+			Существующий газопровод: <span class="edit-highlighting">{{contractStore.pipeline.data}}</span>
 		</p>
 		<p class="paragraph-comment">
 			(наименование сети газораспределения, адрес)
@@ -333,7 +335,7 @@
 	</p>
 	<div class="margin-tb">
 		<p class="paragraph underline">
-			<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+			<span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
 		</p>
 		<p class="paragraph-comment">
 			(наименование объекта капитального строительства; адрес)
@@ -344,10 +346,12 @@
 	</p>
 	<p class="paragraph"><span class="paragraphMargin"></span>
 		Стороны оформили и подписали настоящий акт о том, что границей разграничения эксплуатационной ответственности сторон является:
-        <!-- КШГ25 -->
-        стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка
-        <!-- седловой отвод ПЭ63/32 -->
-		<span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}</span>
+        <span class="edit-highlighting">
+            <!-- КШГ25 -->
+            стыковое соединение на подземном заглушенном газопроводе ПЭ32 на границе рассматриваемого участка
+            <!-- седловой отвод ПЭ63/32 -->
+        </span>
+		<span class="edit-highlighting">{{contractStore.contractAddress.data}}</span>
 	</p>
 
 	<div class="elem-print-avoid">
@@ -356,49 +360,6 @@
 			имущественной принадлежности</b>
 		</p>
         
-		<svg v-if="fff === 1" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
-				<!-- viewBox="0 0 508.6 235" styl e=enable-background: n e w 0 0 508.6 235; -->
-				<g>
-					<g>
-						<line class="st0" x1="0.2" y1="38.8" x2="508.6" y2="38.8"/>
-					</g>
-					<g>
-						<line class="st1" x1="0" y1="60" x2="508.4" y2="60"/>
-					</g>
-					<rect x="102.3" y="145.4" class="st2" width="124.1" height="67.9"/>
-					<line class="st3" x1="152.3" y1="145.4" x2="152.3" y2="38.8"/>
-					<line class="st3" x1="279.8" y1="114.3" x2="158.4" y2="35.7"/>
-					<g>
-						<circle class="st4" cx="408.5" cy="21.3" r="9.5"/>
-						<g>
-							<path class="st5" d="M407.4,17.9L407.4,17.9l-1.5,0.8l-0.2-0.9l1.9-1h1v8.5h-1.1V17.9z"/>
-							<path class="st5" d="M411.7,24.7c0-0.5,0.3-0.8,0.8-0.8c0.5,0,0.8,0.3,0.8,0.8c0,0.5-0.3,0.8-0.8,0.8
-								C412,25.5,411.7,25.1,411.7,24.7z"/>
-						</g>
-					</g>
-					<g>
-						<circle class="st4" cx="212" cy="159.5" r="9.5"/>
-						<g>
-							<path class="st5" d="M209,163.7V163l0.9-0.9c2.2-2.1,3.1-3.1,3.1-4.4c0-0.9-0.4-1.6-1.7-1.6c-0.8,0-1.4,0.4-1.8,0.7l-0.4-0.8
-								c0.6-0.5,1.4-0.9,2.4-0.9c1.8,0,2.6,1.2,2.6,2.5c0,1.6-1.1,2.8-2.9,4.5l-0.7,0.6v0h3.8v0.9H209z"/>
-							<path class="st5" d="M215.7,163c0-0.5,0.3-0.8,0.8-0.8c0.5,0,0.8,0.3,0.8,0.8c0,0.5-0.3,0.8-0.8,0.8
-								C216,163.8,215.7,163.5,215.7,163z"/>
-						</g>
-					</g>
-					<rect x="303" y="44.6" class="st6" width="140.6" height="10.1"/>
-					<text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
-					<rect x="283" y="115.2" class="st6" width="203.3" height="73.7"/>
-					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{DataContract?.contract.contractAddress.data}}</tspan></text>
-					<rect x="110.5" y="196.3" class="st6" width="69.6" height="10.2"/>
-					<text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
-					<rect x="13.5" y="124.3" class="st6" width="108.3" height="21.1"/>
-					<text transform="matrix(1 0 0 1 13.4742 131.2255)"><tspan x="0" y="0" class="st7 st8 st9">сеть газопотребления</tspan><tspan x="91.8" y="0" class="st7 st8 st9 st10">	</tspan><tspan x="0" y="12" class="st7 st8 st9">жилого здания</tspan></text>
-					<polygon class="st3" points="138.8,52.3 152.3,38.8 165.8,52.3 152.3,52.3 	"/>
-					<g>
-						<circle class="st11" cx="152.3" cy="38.9" r="7"/>
-					</g>
-				</g>
-		</svg>
         <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve">
     
@@ -454,7 +415,7 @@
                 </g>
                 <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
             </g>
-            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{DataContract?.contract.contractAddress.data}}</text>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{contractStore.contractAddress.data}}</text>
             <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
             <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
             <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
@@ -476,10 +437,10 @@
 		Условные обозначения:
 	</p>
 	<p class="paragraph">
-		1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
+		1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{contractStore.pipeline.data}}</span>
 	</p>
 	<p class="paragraph">
-		2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}»</span>  
+		2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{contractStore.contractAddress.data}}»</span>  
 	</p>
 
 	<div class="elem-print-avoid">
@@ -487,50 +448,7 @@
 			<b>Схема газопроводов с указанием границы разграничения<br> 
 				эксплуатационной ответственности</b>
 		</p>
-		<svg v-if="fff === 1" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve"> 
-				<!-- viewBox="0 0 508.6 235" styl e=enable-background: n e w 0 0 508.6 235; -->
-				<g>
-					<g>
-						<line class="st0" x1="0.2" y1="38.8" x2="508.6" y2="38.8"/>
-					</g>
-					<g>
-						<line class="st1" x1="0" y1="60" x2="508.4" y2="60"/>
-					</g>
-					<rect x="102.3" y="145.4" class="st2" width="124.1" height="67.9"/>
-					<line class="st3" x1="152.3" y1="145.4" x2="152.3" y2="38.8"/>
-					<line class="st3" x1="279.8" y1="114.3" x2="158.4" y2="35.7"/>
-					<g>
-						<circle class="st4" cx="408.5" cy="21.3" r="9.5"/>
-						<g>
-							<path class="st5" d="M407.4,17.9L407.4,17.9l-1.5,0.8l-0.2-0.9l1.9-1h1v8.5h-1.1V17.9z"/>
-							<path class="st5" d="M411.7,24.7c0-0.5,0.3-0.8,0.8-0.8c0.5,0,0.8,0.3,0.8,0.8c0,0.5-0.3,0.8-0.8,0.8
-								C412,25.5,411.7,25.1,411.7,24.7z"/>
-						</g>
-					</g>
-					<g>
-						<circle class="st4" cx="212" cy="159.5" r="9.5"/>
-						<g>
-							<path class="st5" d="M209,163.7V163l0.9-0.9c2.2-2.1,3.1-3.1,3.1-4.4c0-0.9-0.4-1.6-1.7-1.6c-0.8,0-1.4,0.4-1.8,0.7l-0.4-0.8
-								c0.6-0.5,1.4-0.9,2.4-0.9c1.8,0,2.6,1.2,2.6,2.5c0,1.6-1.1,2.8-2.9,4.5l-0.7,0.6v0h3.8v0.9H209z"/>
-							<path class="st5" d="M215.7,163c0-0.5,0.3-0.8,0.8-0.8c0.5,0,0.8,0.3,0.8,0.8c0,0.5-0.3,0.8-0.8,0.8
-								C216,163.8,215.7,163.5,215.7,163z"/>
-						</g>
-					</g>
-					<rect x="303" y="44.6" class="st6" width="140.6" height="10.1"/>
-					<text transform="matrix(1 0 0 1 303.0035 51.5252)" class="st7 st8 st9">Граница земельного участка</text>
-					<rect x="283" y="115.2" class="st6" width="203.3" height="73.7"/>
-					<text transform="matrix(1 0 0 1 283.0249 122.1662)"><tspan x="0" y="0" class="st7 st8 st9">Граница раздела собственности </tspan><tspan x="0" y="12" class="st7 st8 st9">Разграничение установленное в точке врезки </tspan><tspan x="0" y="24" class="st7 st8 st9">газопровода потребителя на подземном </tspan><tspan x="0" y="36" class="st7 st8 st9">газопроводе ПЭ Ø63 в районе земельного </tspan><tspan x="0" y="48" class="st7 st8 st9">участка по адресу: </tspan><tspan x="0" y="60" class="st7 st8 st9">{{DataContract?.contract.contractAddress.data}}</tspan></text>
-					<rect x="110.5" y="196.3" class="st6" width="69.6" height="10.2"/>
-					<text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
-					<rect x="13.5" y="124.3" class="st6" width="108.3" height="21.1"/>
-					<text transform="matrix(1 0 0 1 13.4742 131.2255)"><tspan x="0" y="0" class="st7 st8 st9">сеть газопотребления</tspan><tspan x="91.8" y="0" class="st7 st8 st9 st10">	</tspan><tspan x="0" y="12" class="st7 st8 st9">жилого здания</tspan></text>
-					<polygon class="st3" points="138.8,52.3 152.3,38.8 165.8,52.3 152.3,52.3 	"/>
-                    
-					<g>
-						<circle class="st11" cx="152.3" cy="38.9" r="7"/>
-					</g>
-				</g>
-		</svg>
+
         <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 600 235" style="enable-background:new 0 0 600 235;" xml:space="preserve">
     
@@ -586,7 +504,7 @@
                 </g>
                 <polyline class="st9" points="49.6,425.1 49.6,425.6 73.2,425.6 73.2,425.1 49.6,425.1 		"/>
             </g>
-            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{DataContract?.contract.contractAddress.data}}</text>
+            <text transform="matrix(1 0 0 1 283.0249 134.1662)" class="st7 st8 st9">Адрес {{contractStore.contractAddress.data}}</text>
             <text transform="matrix(1 0 0 1 110.5009 203.2252)" class="st7 st8 st9">Жилой дом</text>
             <text transform="matrix(1 0 0 1 13.4742 131.2255)" class="st7 st8 st9">сеть газопотребления</text>
             <text transform="matrix(1 0 0 1 95.563 107.5499)" class="st7 st8 st9">КШГ25</text>
@@ -610,10 +528,10 @@
 	Условные обозначения:
 	</p>
 	<p class="paragraph">
-	1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{DataContract?.contract.pipeline.data}}</span>
+	1.&ensp;Сеть газораспределения: <span class="edit-highlighting">{{contractStore.pipeline.data}}</span>
 	</p>
 	<p class="paragraph">
-	2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{DataContract?.contract.contractAddress.data}}»</span>  
+	2.&ensp;Сеть газопотребления: «Газоснабжение жилого дома <span class="edit-highlighting">{{contractStore.contractAddress.data}}»</span>  
 	</p>
 
 	<table class="point-table table-fixed margin-top">
@@ -745,37 +663,17 @@
 <script lang="ts">
 
 import {getMonthYearDate, getNowDate, getNowFullFormatDate} from '@/common/func'
-import { Act } from '@/model/act.model';
-import { DataContract } from '@/model/dataContract';
-import { defineComponent, PropType } from 'vue';
+import { useContractStore } from '@/stores/contract.store';
+import { useGlobalStore } from '@/stores/global.store';
+import { usePersonStore } from '@/stores/person.store';
+import { usePipelineStore } from '@/stores/pipeline.store';
+import { mapStores } from 'pinia';
+
+import { defineComponent} from 'vue';
 
 export default defineComponent({
-    props: {
-        DataContract: {
-            type: Object as PropType<DataContract>,
-        },
-        actData: {
-            type: Object as PropType<Act>,
-        },
-        PersonList: {
-            type: Array,
-        },
-        ContractInfoList: {
-            type: Array,
-
-        },
-        Boiler: {
-            type: String,
-            default: () => {
-                ""
-            }
-        },
-        Counter: {
-            type: String,
-            default: () => {
-                ""
-            }
-        },
+    computed: {
+        ...mapStores(useContractStore, usePersonStore, usePipelineStore, useGlobalStore)
     },
     methods:{
         getMonthYearDate,
@@ -931,7 +829,7 @@ export default defineComponent({
 }
 
 .margin-top {
-    margin-top: 20pt;
+    margin-top: 10pt !important;
 }
 
 .margin-tb {

@@ -3,9 +3,12 @@ import { defineStore } from 'pinia';
 export const useGlobalStore = defineStore('global', {
 	state: () => {
 		return {
+			contractConnectGlobalDate: 2023,
+			panel: [0, 1],
 			documentVariant: DocumentVariant.contractGaz,
 			boiler: null,
 			counter: null,
+			connectPoint: "Подземный заглушенный газопровод на границе земельного участка ДУ 32",
 			counters: [
 				"Сигнал СГБ-G4",
 				"Элехант СГБ-4",
@@ -14,6 +17,7 @@ export const useGlobalStore = defineStore('global', {
 				"Бетар СГБМ-4",
 				"Скайметр СГВ-VM-G4",
 				"Газдевайс NPM G4",
+				"БелОмо СГМН-1-1-G6",
 			],
 			boilers: [
 				"Protherm 24кВт",
@@ -22,6 +26,8 @@ export const useGlobalStore = defineStore('global', {
 				"Kentansu 24кВт",
 				"F.Bugatti 24кВт",
 				"Bocsh 24кВт",
+				"Bocsh 28кВт",
+				"Baxi 14кВт",
 				"Baxi 24кВт",
 				"Baxi 31кВт",
 				"Navien 16кВт",
@@ -29,7 +35,11 @@ export const useGlobalStore = defineStore('global', {
 				"Immergas 24кВт",
 				"Лемакс 12,5кВт",
 				"Лемакс 15,5кВт",
-			]
+			],
+			connectPointsList: [
+				"Подземный заглушенный газопровод на границе земельного участка ДУ 32",
+				"Отключающее устройство ду25 на действующем газопроводе в районе расположения рассматриваемого жилого дома"
+			],
 		};
 	},
 	actions: {
